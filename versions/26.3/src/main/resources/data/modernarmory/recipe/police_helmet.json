@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "FFF",
+    "F F"
+  ],
+  "key": {
+    "F": "modernarmory:aramid_fabric"
+  },
+  "result": {
+    "id": "modernarmory:police_helmet",
+    "count": 1
+  }
+}

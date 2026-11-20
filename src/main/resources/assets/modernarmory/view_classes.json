@@ -1,0 +1,43 @@
+{
+ "_doc": "First / third person framing per view class (ViewClass.java). SINGLE SOURCE: read by ViewClass (ADS maths, hip cant) and by tools/modelgen/display.py, which writes the display transforms of every models/item/<gun>.json. After editing run: python tools/modelgen/display.py. Units as in item model JSON (rotation deg, translation 1/16 block).",
+ "RIFLE": {
+  "_note": "Tuned in game on the M4 and M2010.",
+  "hip_yaw_deg": 7,
+  "firstperson_righthand": {"rotation": [0, 0, 0], "translation": [-4.48, 0.0, 4.8], "scale": [0.78, 0.78, 0.78]},
+  "firstperson_lefthand": {"rotation": [0, 0, 0], "translation": [-4.48, 0.0, 4.8], "scale": [0.78, 0.78, 0.78]},
+  "thirdperson_righthand": {"rotation": [0, -17, 0], "translation": [0, -4.5, 3], "scale": [1.5, 0.95, 0.95]},
+  "thirdperson_lefthand": {"rotation": [0, 17, 0], "translation": [0, -4.5, 3], "scale": [1.5, 0.95, 0.95]}
+ },
+ "PISTOL": {
+  "_note": "Tuned in game on the M17 / Glock 17 / Glock 19 (autotest tour): held out nearer the centre than a shouldered rifle (origin ~0.15 blocks right) and a little higher, clear of the hotbar; third person the grip sits in the two-handed crossbow-hold fists.",
+  "hip_yaw_deg": 3,
+  "firstperson_righthand": {"rotation": [0, 0, 0], "translation": [-6.6, 1.5, 2.0], "scale": [0.78, 0.78, 0.78]},
+  "firstperson_lefthand": {"rotation": [0, 0, 0], "translation": [-6.6, 1.5, 2.0], "scale": [0.78, 0.78, 0.78]},
+  "thirdperson_righthand": {"rotation": [0, 0, 0], "translation": [0, -5.0, -3.0], "scale": [0.95, 0.95, 0.95]},
+  "thirdperson_lefthand": {"rotation": [0, 0, 0], "translation": [0, -5.0, -3.0], "scale": [0.95, 0.95, 0.95]}
+ },
+ "HEAVY": {
+  "_note": "Starting values (not yet tuned in game): rifle framing carried lower.",
+  "hip_yaw_deg": 5,
+  "firstperson_righthand": {"rotation": [0, 0, 0], "translation": [-4.48, -1.0, 4.8], "scale": [0.78, 0.78, 0.78]},
+  "firstperson_lefthand": {"rotation": [0, 0, 0], "translation": [-4.48, -1.0, 4.8], "scale": [0.78, 0.78, 0.78]},
+  "thirdperson_righthand": {"rotation": [0, -17, 0], "translation": [0, -4.5, 3], "scale": [1.5, 0.95, 0.95]},
+  "thirdperson_lefthand": {"rotation": [0, 17, 0], "translation": [0, -4.5, 3], "scale": [1.5, 0.95, 0.95]}
+ },
+ "DEVICE": {
+  "_note": "Handheld drones and two-handed controller. Shared low, central framing set for the controller (Y raised 3.3 -> 5.3 so its screen clears the hotbar and hearts at 1280x720 / GUI scale 3). The drones' item animation shrinks them (drone bone scale) and carries them low on the right (tools/modelgen/drones.py finish_drone). Controller screen faces the eye in its authored rest pose. Preview-checked values; no in-game tuning.",
+  "hip_yaw_deg": 0,
+  "firstperson_righthand": {"rotation": [0, 0, 0], "translation": [-8.0, 5.3, 3.0], "scale": [0.78, 0.78, 0.78]},
+  "firstperson_lefthand": {"rotation": [0, 0, 0], "translation": [-8.0, 5.3, 3.0], "scale": [0.78, 0.78, 0.78]},
+  "thirdperson_righthand": {"rotation": [75, -10, 0], "translation": [0, -0.5, 1.5], "scale": [0.8, 0.8, 0.8]},
+  "thirdperson_lefthand": {"rotation": [75, 10, 0], "translation": [0, -0.5, 1.5], "scale": [0.8, 0.8, 0.8]}
+ },
+ "GRENADE": {
+  "_note": "Hand grenades (models: tools/modelgen/grenades.py; the grenade's centre of mass is the model origin). Starting values, not yet tuned in game. First person: the grenade sits in the right fist low and right of centre (origin ~0.30 right, 0.16 below, 0.42 in front of the eye), the left hand beside it for the pin. Third person: upright in the fist like a small item (rotation X 90 turns the model's up along the arm).",
+  "hip_yaw_deg": 0,
+  "firstperson_righthand": {"rotation": [0, 0, 0], "translation": [-4.16, 5.76, 4.8], "scale": [0.78, 0.78, 0.78]},
+  "firstperson_lefthand": {"rotation": [0, 0, 0], "translation": [-4.16, 5.76, 4.8], "scale": [0.78, 0.78, 0.78]},
+  "thirdperson_righthand": {"rotation": [90, 0, 0], "translation": [0, 0.75, 1.5], "scale": [1.0, 1.0, 1.0]},
+  "thirdperson_lefthand": {"rotation": [90, 0, 0], "translation": [0, 0.75, 1.5], "scale": [1.0, 1.0, 1.0]}
+ }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "FRF",
+    "F F"
+  ],
+  "key": {
+    "F": "modernarmory:aramid_fabric",
+    "R": "modernarmory:rifle_plate"
+  },
+  "result": {
+    "id": "modernarmory:ech_helmet",
+    "count": 1
+  }
+}

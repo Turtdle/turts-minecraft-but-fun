@@ -1,0 +1,14 @@
+Modern Armory
+Copyright (c) 2026 Turtdle. All Rights Reserved.
+
+The source code, models, textures, sounds and other assets in this repository are published for reference and so
+players can install the mod. They may not be copied, modified, redistributed or reused in other projects without
+the copyright holder's written permission.
+
+Third-party components
+----------------------
+
+Release downloads include GeckoLib (https://github.com/bernie-g/geckolib), which is distributed under the MIT License,
+Copyright (c) 2020 Bernie-G. Its license text is in the GeckoLib jar.
+
+TEMPLATE_LICENSE.txt covers the NeoForge mod template this project started from (build scripts), not the mod itself.

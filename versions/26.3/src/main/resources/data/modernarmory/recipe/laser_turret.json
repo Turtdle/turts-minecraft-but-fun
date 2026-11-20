@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "DRD",
+    "SBS",
+    "IOI"
+  ],
+  "key": {
+    "D": "minecraft:diamond",
+    "R": "minecraft:redstone_block",
+    "S": "modernarmory:steel_ingot",
+    "B": "minecraft:beacon",
+    "I": "minecraft:iron_block",
+    "O": "minecraft:observer"
+  },
+  "result": {
+    "id": "modernarmory:laser_turret",
+    "count": 1
+  }
+}

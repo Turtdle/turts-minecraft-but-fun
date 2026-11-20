@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:iron_ingot",
+    "minecraft:black_dye",
+    "minecraft:black_dye",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "id": "modernarmory:pmag_40",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "P P",
+    "PBP",
+    "PPP"
+  ],
+  "key": {
+    "P": "modernarmory:ceramic_plate",
+    "B": "minecraft:iron_block"
+  },
+  "result": {
+    "id": "modernarmory:eod_jacket",
+    "count": 1
+  }
+}

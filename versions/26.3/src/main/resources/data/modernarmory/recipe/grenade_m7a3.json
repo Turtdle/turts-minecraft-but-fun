@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:iron_ingot",
+    "minecraft:gunpowder",
+    "minecraft:red_dye",
+    "minecraft:fermented_spider_eye"
+  ],
+  "result": {
+    "id": "modernarmory:grenade_m7a3",
+    "count": 2
+  }
+}

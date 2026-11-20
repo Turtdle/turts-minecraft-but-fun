@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SRS",
+    "CYC",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "modernarmory:steel_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "Y": {
+      "item": "minecraft:spyglass"
+    }
+  },
+  "result": {
+    "id": "modernarmory:drone_scout",
+    "count": 1
+  }
+}

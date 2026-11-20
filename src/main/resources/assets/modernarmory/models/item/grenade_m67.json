@@ -1,0 +1,134 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "front",
+ "base": {
+  "parent": "builtin/entity",
+  "gui_light": "front",
+  "display": {
+   "gui": {
+    "rotation": [
+     15,
+     25,
+     0
+    ],
+    "translation": [
+     0,
+     -1.74,
+     0
+    ],
+    "scale": [
+     4.0,
+     4.0,
+     4.0
+    ]
+   },
+   "ground": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     1.2,
+     1.2,
+     1.2
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     0,
+     180,
+     0
+    ],
+    "translation": [
+     0,
+     -1.8,
+     0
+    ],
+    "scale": [
+     4.0,
+     4.0,
+     4.0
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     90,
+     0,
+     0
+    ],
+    "translation": [
+     0,
+     0.75,
+     1.5
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     90,
+     0,
+     0
+    ],
+    "translation": [
+     0,
+     0.75,
+     1.5
+    ],
+    "scale": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -4.16,
+     5.76,
+     4.8
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -4.16,
+     5.76,
+     4.8
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "modernarmory:item/icon/grenade_m67"
+  }
+ }
+}

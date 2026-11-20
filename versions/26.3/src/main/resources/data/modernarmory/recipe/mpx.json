@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "III",
+    "NTD"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "N": "minecraft:iron_nugget",
+    "T": "minecraft:tripwire_hook",
+    "D": "minecraft:black_dye"
+  },
+  "result": {
+    "id": "modernarmory:mpx",
+    "count": 1
+  }
+}

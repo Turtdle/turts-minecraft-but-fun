@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "F F",
+    "PFP",
+    "RFR"
+  ],
+  "key": {
+    "F": "modernarmory:aramid_fabric",
+    "P": "modernarmory:ceramic_plate",
+    "R": "modernarmory:rifle_plate"
+  },
+  "result": {
+    "id": "modernarmory:iotv",
+    "count": 1
+  }
+}

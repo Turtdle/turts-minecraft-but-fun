@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "IIS",
+    " TD"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "modernarmory:steel_ingot",
+    "T": "minecraft:tripwire_hook",
+    "D": "minecraft:black_dye"
+  },
+  "result": {
+    "id": "modernarmory:scorpion_evo3",
+    "count": 1
+  }
+}

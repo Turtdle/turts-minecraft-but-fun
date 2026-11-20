@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:spyglass",
+    "minecraft:glass_pane",
+    "minecraft:iron_ingot",
+    "minecraft:glowstone_dust"
+  ],
+  "result": {
+    "id": "modernarmory:acog",
+    "count": 1
+  }
+}

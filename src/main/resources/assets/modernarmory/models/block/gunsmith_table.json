@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "modernarmory:block/gunsmith_table_front",
+    "down": "minecraft:block/oak_planks",
+    "up": "modernarmory:block/gunsmith_table_top",
+    "north": "modernarmory:block/gunsmith_table_front",
+    "south": "modernarmory:block/gunsmith_table_side",
+    "east": "modernarmory:block/gunsmith_table_side",
+    "west": "modernarmory:block/gunsmith_table_front"
+  }
+}

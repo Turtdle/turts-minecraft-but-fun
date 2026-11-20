@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "modernarmory:steel_ingot"
+    },
+    {
+      "item": "modernarmory:steel_ingot"
+    },
+    {
+      "item": "minecraft:white_wool"
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    }
+  ],
+  "result": {
+    "id": "modernarmory:suppressor_68_short",
+    "count": 1
+  }
+}

@@ -1,0 +1,1343 @@
+[
+ {
+  "id": "m17",
+  "stats": "bones=26 cubes=66 (bare gun without arms/attachments: 35 cubes, 1.9 x 4.78 x 6.5 units), texture 32x32; slide z -3.5..2.5 (6.0 units = 203 mm), bore y 5.5, trigger z -1.0..-0.5, base plate bottom y ~2.25",
+  "sight_y": 6.75,
+  "sight_line": [
+   0,
+   6.75,
+   2.25
+  ],
+  "eye_z": 13,
+  "arm_style": "pistol",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "suppressor_9mm",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.1,
+   "reload": 1.8,
+   "reload_empty": 2.3
+  },
+  "preview": "tools\\modelgen\\previews\\m17.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\m17.py (data only: a PistolSpec) and the NEW shared family module tools\\modelgen\\striker_pistols.py (frozen dataclasses Palette / Handling / PistolSpec, template-method builder StrikerPistol, subclasses Glock and SigP320). A change to all three pistols is one edit in StrikerPistol; all arms/mounts/animations go through templates.py. No existing file was edited. Built 2 times; not launched in game.\n\nLooked at: m17.noarms, m17.loadout and m17.bare previews. Not viewed: m17.holo preview and all four m17 animation strips (the reload choreography was only checked on the glock17, which uses the same code).\n\nModel: coyote slide and frame, black controls (ambi thumb safety, takedown lever, slide catch, mag catch, trigger), bevelled top rib, front and rear serration plates, ejection port top-right with a black chamber hood, Picatinny rail under the dust cover, black base plate, white 3-dot sights. Extra preview configs: bare, noarms, loadout, holo.\n\nDeviations and uncertainties:\n- optic_mount is a child of `slide`, not `receiver`, and is created directly instead of through templates.mounts(), so the optic reciprocates and stays on the slide while it is locked back. Pivot (0, 6.25, 1.0). The Java side must not assume the receiver parent.\n- The rear sight and optic cover plate are in bone `rear_sight` (child of slide), so they hide when an optic is fitted, as on the real gun. The front post stays.\n- The shared red_dot (CompM4) and holographic are rifle-sized and look oversized on a pistol; a dedicated pistol reflex attachment does not exist. ACOG and sniper scope were deliberately not attached. With red_dot the sight locator sits at (0, 7.5, 2.5).\n- side_mount hangs off a `handguard` bone (the dust cover with the rail), pivot (-0.5, 3, -3.5), so the shared PEQ-15 laser box sits centred under the rail. It is as big as the grip and sticks 1.5 units past the muzzle; a compact pistol light attachment would be better.\n- The first-person fist (3 units) is far bigger than a true-scale grip; the right hand is at (0, 3, 1.5) and the sleeve reaches the bottom edge of the slide. Pistol arm rotations are judged from previews only.\n- Chunky on purpose: slide/frame 1.5 wide (real ~1 unit), sights 0.5 tall. Slide travel 1.5 units. fire length 0.1 s (shot interval 0.33 s at 180 rpm).\n- The rails / stipple / lines patterns barely show at the 32x32 texture.\n- No 21-round extended magazine (no such attachment exists); the 17-round mag is in magazine_default.\n- suppressor_9mm and its registration are Python-only until the Java side registers them.\n- eye_z 13 is a guess (about 11 units behind the rear sight); a real arm's-length hold would be ~17 but makes the sights tiny."
+ },
+ {
+  "id": "glock19",
+  "stats": "bones=20 cubes=50 (bare gun without arms/attachments: 34 cubes), texture 32x32; slide z -3.0..2.5 (5.5 units = 185 mm), bore y 5.5, trigger z -1.0..-0.5, base plate bottom y ~2.75 (half a unit shorter in slide and grip than the glock17)",
+  "sight_y": 6.5,
+  "sight_line": [
+   0,
+   6.5,
+   2.25
+  ],
+  "eye_z": 13,
+  "arm_style": "pistol",
+  "slots": [
+   "MUZZLE",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "suppressor_9mm",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.1,
+   "reload": 1.7,
+   "reload_empty": 2.2
+  },
+  "preview": "tools\\modelgen\\previews\\glock19.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\glock19.py (data only: a PistolSpec) built by the Glock class in the new shared module tools\\modelgen\\striker_pistols.py. Built 2 times; not launched in game.\n\nLooked at: glock19.loadout preview only. Not viewed: bare / noarms previews and all four animation strips (same code as the glock17, whose reload_empty I checked zoomed in).\n\nModel: all black, slide slightly lighter than the frame, flat-topped boxy slide with front and rear serration plates, ejection port with a grey chamber hood, one-slot rail, squared trigger guard, 20 degree grip with a flared magwell lip, trigger safety blade, slide stop / slide lock / mag catch, white-dot front and white-U rear sights. Extra preview configs: bare, noarms, loadout.\n\nDeviations and uncertainties:\n- No OPTIC slot (modelled as the non-MOS gun). To make it MOS, set OPTIC_MOUNT_Z on the Glock class.\n- side_mount hangs off a `handguard` bone (the dust cover), pivot (-0.5, 3, -3.5). The shared PEQ-15 laser box is as big as the grip and sticks 2 units past the muzzle; a compact pistol light attachment would be better.\n- Fire uses recoil 0.55 / flip 5.5 (a touch snappier than the G17) - my choice, not from the specs. fire length 0.1 s (interval 0.32 s at 190 rpm).\n- The oversized first-person fist covers the whole short grip; right hand at (0, 3, 1.75). Pistol arm rotations are judged from previews only.\n- Chunky on purpose: 1.5 wide, sights 0.5 tall; slide travel 1.5 units. Patterns barely show at 32x32.\n- The Gen5 frame cut-out under the trigger guard is not modelled.\n- eye_z 13 is a guess (about 11 units behind the rear sight)."
+ },
+ {
+  "id": "glock17",
+  "stats": "bones=20 cubes=50 (bare gun without arms/attachments: 34 cubes, 1.68 x 4.61 x 6.55 units), texture 32x32; slide z -3.5..2.5 (6.0 units = 202 mm), bore y 5.5, trigger z -1.0..-0.5, base plate bottom y ~2.25",
+  "sight_y": 6.5,
+  "sight_line": [
+   0,
+   6.5,
+   2.25
+  ],
+  "eye_z": 13,
+  "arm_style": "pistol",
+  "slots": [
+   "MUZZLE",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "suppressor_9mm",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.1,
+   "reload": 1.7,
+   "reload_empty": 2.2
+  },
+  "preview": "tools\\modelgen\\previews\\glock17.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\glock17.py (data only: a PistolSpec) built by the Glock class in the new shared module tools\\modelgen\\striker_pistols.py. Built 2 times; not launched in game.\n\nLooked at: glock17.noarms and glock17.bare previews and the reload_empty strip from the first build, then a zoomed side-view reload_empty strip after the fixes (<scratch>\\pistol_zoom\\glock17.reload_empty.side.png): the gun cants, the mag drops out with the left hand, comes back and seats, and it ends at rest. The stock strips are too small to judge because the arms dominate them. Not viewed after the fixes: the still previews, and the idle / fire / reload strips at any point.\n\nFixes made after the first build (apply to all three pistols): the trigger guard bar now runs into the raked grip (it was floating), the white U no longer shows as a white floor from above, and the right hand was lowered to y 3 so the fist leaves the slide clear.\n\nModel: same Glock look as the glock19 with half a unit more slide and grip. Extra preview configs: bare, noarms, loadout.\n\nDeviations and uncertainties:\n- No OPTIC slot (non-MOS gun).\n- side_mount hangs off a `handguard` bone (the dust cover), pivot (-0.5, 3, -3.5). The shared PEQ-15 laser box is as big as the grip and sticks 1.5 units past the muzzle; a compact pistol light attachment would be better.\n- The oversized first-person fist covers most of the grip; right hand at (0, 3, 1.75). Pistol arm rotations are judged from previews only.\n- The slide locked back in reload_empty opens in the first 0.05 s (template behaviour) and is hard to see at strip size.\n- Chunky on purpose: 1.5 wide, sights 0.5 tall; slide travel 1.5 units; fire length 0.1 s (interval 0.32 s at 185 rpm). Patterns barely show at 32x32.\n- eye_z 13 is a guess (about 11 units behind the rear sight)."
+ },
+ {
+  "id": "apc9",
+  "stats": "B&T APC9K PRO (Army SCW) | smg | 9x19 | 30-rd box | semi/auto | 1080 rpm (shot interval 0.0556 s) | MV 368 m/s | 4 MOA | 2.7 kg | 551 mm (373 folded) | 110 mm barrel | reload 2.3 s / empty 2.9 s | model: 86 cubes, 35 bones incl. attachments (bare gun 41 cubes), 17.25 units long, texture 64x32",
+  "sight_y": 7.75,
+  "sight_line": [
+   0,
+   7.75,
+   1.25
+  ],
+  "eye_z": 9,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "suppressor_9mm",
+   "vertical_grip",
+   "angled_grip",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "red_dot"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.05,
+   "reload": 2.3,
+   "reload_empty": 2.9
+  },
+  "preview": "tools\\modelgen\\previews\\apc9.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\apc9.py. Built twice; not launched in game. I viewed the bare and loadout_a previews, an arm-less render (first build only, in the scratchpad) and the reload_empty strip; the idle, fire and reload strips, the issued preview and the all-attachments apc9.preview.png were built but not viewed. The second build lowered the iron sights (SIGHT_Y 8.0 -> 7.75); that change was only seen at small scale in the loadout_a preview, where the rear sight is hidden by the optic.\n\nStructure: all gun-specific numbers are constants at the top of the file; one small builder function per part; arms, mounts, attachments, locators and all four animations go through templates.py, so a mod-wide change there reaches this gun on rebuild.\n\nBones: receiver, bolt, charging_handle, barrel, muzzle_default (three-lug flash hider), handguard, front_sight, rear_sight (pop-up ghost ring, hidden with an optic), stock + stock_default (skeletal side-folder, modelled unfolded), grip, trigger, magazine + magazine_default (smoke-coloured curved 30-rounder with a brass strip showing rounds), right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -9.5), shell_eject (1.1, 5.5, -2.5), sight_line (0, 7.75, 1.25). Mount pivots: optic (0, 7, -2.5), muzzle (0, 5.5, -8.5), underbarrel (0, 3, -6), side (1.25, 5, -6.5). Hands: right (0, 2, 2) as on the M4, left (0, 3.5, -6.5).\n\nUncertainties and deviations:\n- Charging handle: modelled as small ambidextrous handles on the sides of the upper, which is how I recall the APC9 PRO; the spec text says 'at the rear of the upper'. It is a static bone, not animated.\n- Length is 17.25 units (about 578 mm) against 551 mm real; chunky on purpose, like the M4.\n- SIGHT_Y 7.75 is the iron line. With the default red dot the Java side should use the sight_red_dot locator (axis y 8.25, rear face z -1.0).\n- eye_z 9.0 is an estimate (about 7.75 behind the rear sight, just past the butt plate at z 7.75); not tuned in game.\n- fire is 0.05 s, below the 0.0556 s shot interval; recoil 0.5 units and rise 1.5 degrees (lighter than the M4 for 9 mm).\n- reload_empty uses the bolt_release template: the bolt opens in the first 0.05 s, is held 2 units back, and the left hand slaps the catch at (-1.5, 4, -1.5).\n- Left hand and vertical grip overlap, because the fore-end is only 3.5 units long (the M4 has a similar overlap).\n- Not included: sniper_scope (12 units long on a 10.5-unit rail), bipod (reaches 8 units forward, past the muzzle), stock_ctr and pmag_40 (no buffer tube, not STANAG). STOCK and MAGAZINE slots therefore have no attachments; the default parts are still in stock_default / magazine_default for later.\n- suppressor_9mm hides muzzle_default; the real can clamps over the three lugs.\n- Folded-stock state is not modelled.\n- Java still has to register suppressor_9mm (already flagged by the template author)."
+ },
+ {
+  "id": "mpx",
+  "stats": "SIG Sauer MPX 8 in (Army COTS) | smg | 9x19 | 30-rd box | semi/auto | 850 rpm (shot interval 0.0706 s) | MV 400 m/s | 3 MOA | 2.7 kg | 610 mm (425 collapsed) | 8 in barrel | reload 2.3 s / empty 2.9 s | model: 83 cubes, 33 bones incl. attachments (bare gun about 38 cubes), 18.25 units long, texture 64x32",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   0
+  ],
+  "eye_z": 8.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "suppressor_9mm",
+   "vertical_grip",
+   "angled_grip",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "red_dot"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.065,
+   "reload": 2.3,
+   "reload_empty": 2.9
+  },
+  "preview": "tools\\modelgen\\previews\\mpx.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\mpx.py. Built twice; not launched in game. I viewed the bare and loadout_a previews, an arm-less render (first build only, in the scratchpad) and the reload_empty strip; the idle, fire and reload strips, the issued preview and the all-attachments mpx.preview.png were built but not viewed. The M-LOK slot boxes were added in the second build and only seen at small scale in the loadout_a preview.\n\nStructure: same as apc9.py - constants at the top, one builder function per part, everything shared (arms, mounts, attachments, locators, animations) through templates.py.\n\nBones: receiver, bolt, charging_handle (AR-type T handle, static), barrel, muzzle_default (three-lug flash hider), handguard (slim M-LOK tube with dark slot boxes and a continuous top rail), stock + stock_default (two-rod telescoping stock, modelled extended), grip, trigger, magazine + magazine_default (slim, slightly curved black polymer), right_arm, left_arm. There are no front_sight / rear_sight bones: the gun has no irons. Locators: muzzle_flash (0, 5.5, -11), shell_eject (1.1, 5.5, -1), sight_line (0, 8.25, 0). Mount pivots: optic (0, 7, -1.5), muzzle (0, 5.5, -10), underbarrel (0, 4.5, -6.25), side (1, 5.5, -5.75). Hands: right (0, 2, 2) as on the M4, left (0, 4.5, -8).\n\nUncertainties and deviations:\n- sight_line is the axis of the default red dot at its rear face (rail 7.0 + 1.25, z = optic mount + 1.5), the same point as the sight_red_dot locator. With no optic fitted there is nothing to aim through; the Java side has to decide what to do then (keep this line, or always fit the red dot).\n- eye_z 8.5 is an estimate (about 8.5 behind the red dot's rear face, past the butt at z 7.25); not tuned in game.\n- fire is 0.065 s, below the 0.0706 s shot interval; recoil 0.5 units, rise 1.5 degrees.\n- reload_empty uses the bolt_release template with the default catch point on the left of the receiver above the magazine; the charging handle is not pulled.\n- Receiver, grip and trigger keep the M4 layout, so the shared first-person transforms should fit; length 18.25 units (about 611 mm) matches the 610 mm spec.\n- Not included: sniper_scope, bipod (legs would reach 4 units past the muzzle), stock_ctr (the MPX stock is not on an AR buffer tube) and pmag_40. STOCK and MAGAZINE slots have no attachments; the default parts are in stock_default / magazine_default.\n- No flip-up BUIS modelled (spec says iron_sights false).\n- Side mount is the flat M-LOK face at x = 1.0, with no picatinny strip.\n- Java still has to register suppressor_9mm (already flagged by the template author)."
+ },
+ {
+  "id": "m16a4",
+  "stats": "M16A4 | assault_rifle | 5.56 | 800 rpm | semi/burst(3) | 30 rd box | 945 m/s | 3.4 kg | 1000 mm = 30 units (z -20..10) | 20 in barrel | ~3.5 MOA | reload 2.4 s / empty 2.9 s | 43 gun cubes (120 with arms + all attachments), 40 bones",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   1.25
+  ],
+  "eye_z": 9.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE",
+   "MAGAZINE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_556",
+   "compensator_556",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser",
+   "pmag_40"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.07,
+   "reload": 2.4,
+   "reload_empty": 2.9
+  },
+  "preview": "tools\\modelgen\\previews\\m16a4.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m16a4.py, a small subclass (M16A4) of the new shared base class Ar15Platform in tools\\modelgen\\platform_ar15.py. I added that module (no existing file edited) so the three AR-family guns share receiver, bolt, grip, STANAG mag, A2 sight/flash hider helpers and all wiring to templates.py; a family-wide change is one edit there, a mod-wide one stays in templates.py. It is not in guns/ because build.py treats every file there as a gun. m4.py is not ported to it.\n\nBuilt once; I viewed the noarms and bare previews and the reload_empty strip. Not launched in game. Extra previews: m16a4.noarms / .bare / .loadout_cco / .loadout_acog .preview.png in the same folder.\n\nModel: fixed A2 stock, 9-unit KAC RAS quad rail with delta ring, A2 front sight tower at z -16..-15 with bayonet lug, slim barrel, A2 birdcage in muzzle_default (mount at z -18, muzzle_flash at z -20.25). The detachable carry handle is the 'rear_sight' bone, so it is hidden when any optic is fitted. Mounts: optic (0,7,-1), underbarrel (0,4,-9), side (1.25,5.5,-12.5). Hands: right (0,2,2), left (0,4.5,-10.5).\n\nDecisions and uncertainties:\n- default_attachments left empty: the spec lists the M68 CCO as default optic but also iron_sights true, and the carry handle is the recognisable silhouette. If you want it issued with the optic, use {OPTIC: red_dot} (red_dot is modelled as the M68).\n- No STOCK slot: stock_ctr is excluded because the A2 stock sits on a rifle-length tube; stock boxes are on the plain 'stock' bone.\n- SIGHT_Y kept at 8.0 (same as the M4) so the front post tip stays below the red dot axis (8.25). This makes the carry handle low: only a 0.5-unit gap under it.\n- eye_z 9.5 is a guess (8.25 units behind the aperture, scaled from the M4's verified 10.5); tune in game.\n- Burst fire is Java-side; the fire clip is one shot (0.07 s, under the 0.075 s interval).\n- Laser at the front of the right rail overlaps the left fist by about 1 unit in z, the same relation as on the M4.\n- reload_empty uses the template's bolt-release with the left-hand bolt-catch slap at the default point (-1.5, 3.5, -4)."
+ },
+ {
+  "id": "hk416",
+  "stats": "HK416 D14.5RS | carbine | 5.56 | 850 rpm | semi/auto | 30 rd box | 884 m/s | 3.49 kg | 886 mm = 26.5 units (z -16..10.5) | 14.5 in barrel | ~2 MOA | reload 2.3 s / empty 2.8 s | 37 gun cubes (120 with arms + all attachments), 42 bones",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   1.5
+  ],
+  "eye_z": 10.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE",
+   "STOCK",
+   "MAGAZINE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_556",
+   "compensator_556",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser",
+   "stock_ctr",
+   "pmag_40"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.066,
+   "reload": 2.3,
+   "reload_empty": 2.8
+  },
+  "preview": "tools\\modelgen\\previews\\hk416.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\hk416.py, subclass Hk416 of Ar15Platform (tools\\modelgen\\platform_ar15.py, new shared AR-family base class).\n\nBuilt once; I viewed only the noarms preview. The arm previews and all four animation strips were built but not viewed (same templates and hand layout as the other two). Not launched in game. Extra previews: hk416.noarms / .bare / .loadout_delta / .loadout_b .preview.png.\n\nModel: thick HK quad rail (2.5 wide body, 3 across the side rails, z -11..-4, no delta ring) with an inflated front lip, piston gas block at z -12.5 carrying a hooded folding front sight, heavy-profile barrel, birdcage in muzzle_default (mount z -14, muzzle_flash z -16.25), diopter-style flip-up rear in 'rear_sight' with a drum knob, buffer tube plus HK stock with convex rubber butt pad in stock_default, darker steel magazine in magazine_default. Mounts: optic (0,7,-1), underbarrel (0,3.75,-7.5), side (1.5,5.5,-6). Hands: right (0,2,2), left (0,4.25,-9).\n\nDecisions and uncertainties:\n- default_attachments left empty because the gun has irons; the spec's typical Delta fit is the EOTech, so {OPTIC: holographic} is the alternative (no magnifier attachment exists).\n- Length follows the HK spec sheet (886 mm) rather than the 900 mm figure.\n- fire is 0.066 s, just under the 0.0706 s interval at 850 rpm.\n- eye_z 10.5 copied from the M4 (same receiver and rear sight position); not tuned in game.\n- The diopter is a simple aperture frame, not a real rotating drum; the HK grip uses the shared A2-style grip block."
+ },
+ {
+  "id": "mcx",
+  "stats": "SIG MCX Virtus 11.5 in SBR | carbine | 5.56 | 850 rpm | semi/auto | 30 rd box | 810 m/s | 3.0 kg | 787 mm = 23.5 units (z -14..9.5) | 11.5 in barrel | ~2 MOA | reload 2.3 s / empty 2.8 s | 32 gun cubes bare, 40 with the issued red dot (109 with arms + all attachments), 38 bones",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   0.5
+  ],
+  "eye_z": 8.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE",
+   "MAGAZINE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_556",
+   "compensator_556",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser",
+   "pmag_40"
+  ],
+  "default_attachments": {
+   "OPTIC": "red_dot"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.066,
+   "reload": 2.3,
+   "reload_empty": 2.8
+  },
+  "preview": "tools\\modelgen\\previews\\mcx.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\mcx.py, subclass Mcx of Ar15Platform (tools\\modelgen\\platform_ar15.py, new shared AR-family base class).\n\nBuilt twice (second build added the M-LOK slots); I viewed the noarms preview, the issued (red dot) preview and the reload strip. Not launched in game. Extra previews: mcx.issued / .noarms / .bare / .loadout_sof / .loadout_b .preview.png.\n\nModel: FDE/coyote receiver, handguard and stock with black grip, magazine and barrel. Slim 2-wide M-LOK handguard (z -11..-4) with a continuous top rail and dark slot insets at 3, 6 and 9 o'clock, gas valve above the short barrel, 3-prong flash hider in muzzle_default (mount z -12, muzzle_flash z -14.25). Flat rear plate with no buffer tube and no forward assist; side-folding skeleton stock (hinge, twin rods, lock block, butt) on the plain 'stock' bone with its pivot at the left-side hinge (-1,5.5,2.5), so Java could fold it. Mounts: optic (0,7,-1), underbarrel (0,4.5,-7), side (1,5.5,-6). Hands: right (0,2,2), left (0,4.75,-8.5).\n\nDecisions and uncertainties:\n- No iron sights, so there are no front_sight / rear_sight bones. SIGHT_Y 8.25 is the red dot's axis and sight_line sits at the rear face of its tube, matching the att_red_dot 'sight_red_dot' locator. With a different optic the Java side should use that optic's own sight locator.\n- The spec's optic is an Aimpoint Micro T-2; the only red dot available is the larger CompM4-style red_dot, so it looks oversized on this gun.\n- FDE is my colour choice (the spec allows black or FDE) to set it apart from the two black ARs; switching to black is a palette edit in mcx.py.\n- No STOCK slot (stock_ctr needs a buffer tube). The underbarrel and side mounts stand in for M-LOK rail sections.\n- eye_z 8.5 is a guess (8 units behind the red dot's rear face); tune in game.\n- The bare gun is 32 cubes, slightly under the 35 guideline; it is 40 with the issued optic.\n- No stock-folding animation was made; the stock-fold pose is not used by any template."
+ },
+ {
+  "id": "m7",
+  "stats": "bones 38, cubes 106 (all attachments included; issued loadout shows 50), texture 64x64. Bare gun z -14.75..9 = 23.75 units (796 mm); with suppressor_762 z -19.25..9 = 28.25 units (946 mm, real 914). 2 wide (2.5 at side rails), rail top y 7.",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   1.05
+  ],
+  "eye_z": 4.05,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "acog",
+   "MUZZLE": "suppressor_762"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.07,
+   "reload": 2.6,
+   "reload_empty": 3.2
+  },
+  "preview": "tools\\modelgen\\previews\\m7.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\m7.py is only a spec; the geometry comes from the new shared family module tools\\modelgen\\ngsw.py (frozen dataclasses: NgswGun base -> SpearRifle for M7/XM8, BeltFed for M250). ngsw.py sits beside bolt_rifle.py / shotguns.py, not in guns/, so build-all is unaffected. Family-wide changes (palette, issued optic/suppressor, rail height, stock, grip) are one edit in ngsw.py; mod-wide ones stay in templates.py. m7.py also exports SIGHT_Y and EYE_Z.\n\nVerification: 1 build. I viewed m7.issued.preview.png and the reload_empty strip; both look right. The bare / loadout_cqb previews and the idle / fire / reload strips were built but not viewed. Not launched in game.\n\nMount points: optic (0,7,-1), muzzle (0,5.5,-12.5), underbarrel (0,3.5,-10), side (1.25,5.5,-10). Locators: muzzle_flash (0,5.5,-14.75), shell_eject (1.1,5.75,-2.5). Hands: right (0,2,2), left (0,4,-7.5). Magazine pivot (0,4,-3.5); bolt catch for the empty reload at (-1.5,4.5,-2.5). Action bone: bolt; charging_handle is the left side handle (not animated).\n\nUncertainties / approximations:\n- No M157 or SLX attachment exists. The defaults reported are the closest existing ids: acog (boxy magnified optic) and suppressor_762 (black, 2.25 across, so slimmer and darker than the real coyote SLX). SIGHT_Y and sight_line are the ACOG axis and eyepiece; if Java uses the per-optic sight_<id> locators these are only the fallback.\n- eye_z 4.05 = eyepiece + 3 units of eye relief (ngsw.EYE_RELIEF); judged on paper, not in game.\n- No iron sights and no rear_sight bone (spec says none issued).\n- The muzzle mount is at the handguard front, so muzzle_default (2 units of barrel + flash hider) is hidden under a muzzle device and the can starts at the handguard like the real gun. Suppressed length is still about 3.5% long.\n- STOCK and MAGAZINE slots are not supported (no buffer tube, SR-25 magazine), but the parts are still in stock_default / magazine_default so attachments could be added later.\n- The bipod hangs 5.5 units past the handguard under the suppressor (same overhang as the M4).\n- fire uses recoil 1.0 / rise 2.5 (a bit more than the M4); 750 rpm gives a 0.08 s interval, fire is 0.07 s.\n- The side-folding stock is modelled as a hinge block only; there is no fold animation."
+ },
+ {
+  "id": "xm8",
+  "stats": "bones 38, cubes 105 (all attachments included; issued loadout shows 49), texture 64x32. Bare gun z -12.75..9 = 21.75 units (729 mm); with suppressor_762 z -17.25..9 = 26.25 units (879 mm, real 870 extended). 2 wide, rail top y 7.",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   1.05
+  ],
+  "eye_z": 4.05,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "acog",
+   "MUZZLE": "suppressor_762"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.07,
+   "reload": 2.5,
+   "reload_empty": 3.1
+  },
+  "preview": "tools\\modelgen\\previews\\xm8.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\xm8.py is a spec for the same ngsw.SpearRifle class as the M7 (tools\\modelgen\\ngsw.py). It differs from the M7 only in numbers: handguard front -10 (M7 -12), slim barrel, 25-round tan magazine (4 units below the well, 12 degree sweep), no folding hinge block, reload 2.5 / 3.1 s.\n\nVerification: 1 build. I viewed xm8.issued.preview.png only; it reads as a shorter M7 with a longer tan magazine. No animation strips were viewed for this gun (same templates and class as the M7, whose reload_empty strip I checked). Not launched in game.\n\nMount points: optic (0,7,-1), muzzle (0,5.5,-10.5), underbarrel (0,3.5,-8.5), side (1.25,5.5,-8.5). Locators: muzzle_flash (0,5.5,-12.75), shell_eject (1.1,5.75,-2.5). Hands: right (0,2,2), left (0,4,-6.5). Magazine pivot (0,4,-3.5). Action bone: bolt.\n\nUncertainties / approximations:\n- Same optic / suppressor substitution as the M7 (acog for the M157, suppressor_762 for the heat-shielded 6 in can); the sleeve is not modelled.\n- The handguard is short, so the left fist touches the front of the magazine well and sits right behind the underbarrel clamp; the laser on the side rail is close to the hand. Worth a look in first person.\n- The bipod is included for parity with the M7 but its legs reach z -16.5, past the bare muzzle (-12.75); it only looks right with the suppressor fitted. Drop it from the Java registration if that bothers you.\n- Stock is the same shape as the M7's minus the hinge (the real one is a different collapsible stock); STOCK / MAGAZINE slots unsupported.\n- eye_z is eyepiece + 3 units, not tuned in game. No iron sights, no rear_sight bone."
+ },
+ {
+  "id": "m250",
+  "stats": "bones 37, cubes 96 (all attachments included; issued loadout shows 57), texture 64x64. Bare gun z -19.25..9 = 28.25 units (946 mm, real 933); with suppressor_762 z -23.75..9 = 32.75 units (1097 mm, real 1063). Receiver 3 wide, pouch x -2..1, rail top y 7.",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   2.05
+  ],
+  "eye_z": 5.05,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "acog",
+   "MUZZLE": "suppressor_762",
+   "UNDERBARREL": "bipod"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.068,
+   "reload": 7,
+   "reload_empty": 6
+  },
+  "preview": "tools\\modelgen\\previews\\m250.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\m250.py is a spec for ngsw.BeltFed in tools\\modelgen\\ngsw.py (shares palette, grip, stock, handguard, mounts and build order with the M7/XM8 through the NgswGun base).\n\nVerification: 2 builds (the second only darkened the pouch and feed cover). I viewed m250.issued.preview.png from the first build and the reload_empty strip from the second: cover opens, pouch swaps, left hand racks the side handle, ends at rest. The recoloured still previews, the bare / loadout_cqb previews and the idle / fire / reload strips were not viewed. Not launched in game.\n\nBones: magazine (pivot (-0.5,4,-5)) with magazine_default = pouch + brass belt up the left side; feed_cover (hinge pivot (0,6.5,-3), z -7..-3); charging_handle on the left (pivot (-1.5,5,-1.5), knob (-2,5,-1.5)); bolt in the right-side port. Mount points: optic (0,7,0) on the fixed rail behind the cover, muzzle (0,5.5,-17), underbarrel (0,3.5,-12), side (1.25,5.5,-11.5). Locators: muzzle_flash (0,5.5,-19.25), shell_eject (1.6,5,-4.5). Hands: right (0,2,2), left (0,4,-9.5).\n\nDecisions and uncertainties:\n- Arm style is 'rifle', not the template's 'mg'. With 'mg' the left fist sits on top of the feed cover at about y 8, directly in the optic's sight line (8.25), so it would block ADS. The hand is under the handguard between the pouch and the bipod instead; reload_belt works with either style (it uses the rifle cant of 12/20 degrees, stronger than the mg style's 6/10).\n- I believe the real feed cover opens sideways, but templates.reload_belt only supports a rear-hinged cover lifting front-up (65 degrees), so that is what is animated. A side-opening cover would need an axis option in reload_belt.\n- sniper_scope is deliberately not fitted: its objective would sit over the feed cover and clip it when it opens.\n- The bipod is reported as a default attachment (UNDERBARREL: bipod) using the shared Harris model folded forward under the barrel, rather than a built-in bipod; the real one folds back under the handguard. If Java only handles OPTIC / MUZZLE defaults, the gun ships without a bipod.\n- Timings follow the spec as given, so the non-empty reload (7.0 s) is longer than the empty one (6.0 s) even though the empty one adds the charging-handle pull. Check that this is intended.\n- fire is 0.068 s (90% of the 0.075 s interval at 800 rpm), recoil 0.7 / rise 1.5. The gun fires from an open bolt but the bolt bone cycles like a closed-bolt gun.\n- Same optic / suppressor substitution as the M7; eye_z 5.05 = eyepiece + 3 units, not tuned in game. No iron sights, no rear_sight bone. STOCK / MAGAZINE slots unsupported.\n- The belt is on the left, so it is not visible from the right-side view; the pouch is ranger green-brown fabric to stand out from the coyote receiver."
+ },
+ {
+  "id": "mk17",
+  "stats": "FN SCAR-H Mk 17 Mod 0 | 7.62x51 | 20-rd box | semi/auto 600 rpm | 870 m/s | 3.58 kg | 965 mm (model 28.75 units, z -17.75..11) | 16 in barrel | 1.5 MOA | reload 2.5 s / empty 3.0 s | 38 gun cubes (112 with arms and all attachments), 38 bones, 64x64 texture",
+  "sight_y": 8.5,
+  "sight_line": [
+   0,
+   8.5,
+   2.25
+  ],
+  "eye_z": 11,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.07,
+   "reload": 2.5,
+   "reload_empty": 3
+  },
+  "preview": "tools\\modelgen\\previews\\mk17.preview.png",
+  "notes": "Files: tools\\modelgen\\guns\\mk17.py declares a RifleSpec only; the geometry is ScarBuilder in the NEW shared module tools\\modelgen\\platforms_762.py (base RifleBuilder pipeline + ScarBuilder + Ar10Builder; part variants are methods named stock_<x> / handguard_<x> / magazine_<x> picked from the spec). It sits beside templates.py, not in guns/, because build.py loads every guns/*.py as a gun. Arms, mounts, attachments, locators and all four animations go through templates.py. Built 1 time; I looked at the bare preview and the reload_empty strip (mag leaves and returns, ends at rest); fire/reload/idle strips and the loadout_sof preview were built but not viewed. Not launched in game. Mounts: optic (0,7.5,-2), muzzle (0,5.5,-16), underbarrel (0,3.5,-7.5), side (1.25,5.5,-8); left hand (0,4,-11); muzzle_flash (0,5.5,-17.75); shell_eject (1.1,5.5,-3.25). The rail top is 7.5 (0.5 higher than the M4), so irons and the sniper scope axis are both at 8.5. eye_z 11 = M4's 8.75 units behind the rear sight, which is right at the butt pad; try 10.5 if it looks too far back. The reciprocating charging handle (left side) is part of the 'bolt' bone, so it cycles with fire and locks back in reload_empty; reload_empty uses the template's bolt-catch slap. Underbarrel mount is behind the left hand like the M4, so folded bipod legs pass through the fist. No STOCK or MAGAZINE slot (no CTR on a SCAR, no pmag); the stock is a plain 'stock' bone with the hinge pivot on the right, the magazine is in magazine_default. default_attachments left empty: the Mk 17 has irons and no single issued optic (typical SOF fit is an EOTech = 'holographic', shown in mk17.loadout_sof.preview.png). All FDE as per spec; magazine dark steel. The Java side still has to register suppressor_762 / compensator_762 and flash_compensator_762."
+ },
+ {
+  "id": "mk20",
+  "stats": "FN Mk 20 Mod 0 SSR | 7.62 M118LR | 20-rd box | semi 120 rpm | 783 m/s | 4.85 kg | 1080 mm (model 32.5 units, z -21.25..11.25) | 20 in heavy barrel | 1 MOA | reload 2.5 s / empty 3.3 s | 42 gun cubes (116 with arms and all attachments), 38 bones, 64x64 texture",
+  "sight_y": 8.5,
+  "sight_line": [
+   0,
+   8.5,
+   2.25
+  ],
+  "eye_z": 7,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.1,
+   "reload": 2.5,
+   "reload_empty": 3.3
+  },
+  "preview": "tools\\modelgen\\previews\\mk20.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\mk20.py (RifleSpec for ScarBuilder in tools\\modelgen\\platforms_762.py). Same platform as the mk17 with a 3-unit longer upper, heavy 20 in barrel, fixed precision stock (raised cheek piece on posts, LOP knob, bag-rider hook), extended magazine base pad, black polymer lower and grip as the spec says (real rifles are often all FDE; it is one Palette line to change). Built 2 times (second was a magazine colour change); I viewed loadout_issued (scope + bipod) from the first build; the animation strips and the other previews were not viewed. Not launched in game. Mounts: optic (0,7.5,-2), muzzle (0,5.5,-19.5), underbarrel (0,3.5,-13.5), side (1.25,5.5,-13); left hand (0,4,-9.5); muzzle_flash (0,5.5,-21.25); shell_eject (1.1,5.5,-3.25). It has back-up irons, so SIGHT_Y / sight_line are the irons (8.5, rear aperture at z 2.25); the sniper scope's axis is also 8.5 and its eyepiece ends at z 4.0 (sight_sniper_scope locator). eye_z 7.0 is for the default scope (eyepiece 4.0 + about 3 units eye relief); with irons only use about 11. The rear_sight bone is hidden under an optic, the front sight stays up. Folded bipod feet reach z -21.5, 0.25 past the bare muzzle. fire is 0.1 s with a stronger kick (recoil 1.2, rise 3). The Java side still has to register the 7.62 muzzle devices."
+ },
+ {
+  "id": "m110",
+  "stats": "KAC M110 SASS | 7.62 M118LR | 20-rd box | semi 120 rpm | 783 m/s | 6.27 kg | 1029 mm (model 31 units, z -21..10) | 20 in barrel | 1 MOA | reload 2.5 s / empty 3.3 s | 37 gun cubes (111 with arms and all attachments), 39 bones, 64x64 texture",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   1.75
+  ],
+  "eye_z": 7,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope",
+   "MUZZLE": "suppressor_762"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.1,
+   "reload": 2.5,
+   "reload_empty": 3.3
+  },
+  "preview": "tools\\modelgen\\previews\\m110.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m110.py (RifleSpec for Ar10Builder in tools\\modelgen\\platforms_762.py). AR-10 receiver = the M4's heights with a 7-unit receiver, 3-unit magazine well and longer ejection port; 10-unit URX quad rail (rails at 12/3/6/9), gas block / QD plate in front of the rail, fixed A2-length stock with LOP knob, straight steel magazine, FDE with black grip, barrel and details. Built 1 time; I viewed the bare preview only; the animation strips and loadout_issued preview were not viewed. Not launched in game. Mounts: optic (0,7,-2), muzzle (0,5.5,-19.5), underbarrel (0,4,-13), side (1.25,5.5,-13); left hand (0,4.5,-9.5); muzzle_flash (0,5.5,-21); shell_eject (1.1,5.5,-1.5). It has back-up irons, so SIGHT_Y / sight_line are the irons (8.0, same as the M4); the sniper scope's axis is also 8.0 with its eyepiece at z 4.0. eye_z 7.0 is for the default scope; irons only about 10 (the butt plate is at z 10). MUZZLE default suppressor_762 because the KAC QD suppressor is issued with the system; drop it if you want the rifle to start unsuppressed. The existing sniper_scope attachment is a 6.5-20x50 Leupold, used as stand-in for the 3.5-10x40. No STOCK slot (fixed rifle stock, plain 'stock' bone) and no MAGAZINE attachment. Separate 'charging_handle' bone exists but is not animated (reload_empty uses the bolt-catch slap). Folded bipod feet end level with the bare muzzle. The Java side still has to register the 7.62 muzzle devices."
+ },
+ {
+  "id": "m110a1",
+  "stats": "HK M110A1 CSASS | 7.62 M118LR | 20-rd box | semi 120 rpm | 750 m/s | 3.81 kg | 1009 mm (model 30 units, z -18.5..11.5) | 16.3 in barrel | 1.5 MOA | reload 2.4 s / empty 3.2 s | 29 gun cubes (109 with arms and all attachments), 39 bones, 64x64 texture",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   4
+  ],
+  "eye_z": 7,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE",
+   "STOCK"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser",
+   "stock_ctr"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope",
+   "MUZZLE": "suppressor_762"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.1,
+   "reload": 2.4,
+   "reload_empty": 3.2
+  },
+  "preview": "tools\\modelgen\\previews\\m110a1.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m110a1.py (RifleSpec for Ar10Builder in tools\\modelgen\\platforms_762.py). Same AR-10 platform as the m110 with: RAL 8000 tan, slim slotted M-LOK tube with a rail only on top plus short accessory rails at the underbarrel and side mounts, 16.3 in barrel, HK collapsible stock with raised cheek comb on a buffer tube (in stock_default), slightly curved tan polymer magazine, no forward assist, NO iron sights. Built 2 times (second moved the left hand behind the bipod mount); I viewed loadout_issued (scope + suppressor + bipod) both times; the animation strips and bare preview were not viewed. Not launched in game. Mounts: optic (0,7,-2), muzzle (0,5.5,-17), underbarrel (0,4,-11.5), side (1.25,5.5,-12); left hand (0,5,-8); muzzle_flash (0,5.5,-18.5); shell_eject (1.1,5.5,-1.5). No irons, so SIGHT_Y 8.0 is the issued scope's optical axis (rail 7.0 + 1.0) and sight_line sits at its eyepiece (z 4.0); if the scope is removed the bare rifle has nothing at that height to aim with. eye_z 7.0 = eyepiece + about 3 units eye relief. Gun cube count (29) is slightly under the 35 guideline because there are no sights; the silhouette still reads. stock_ctr is offered because the receiver extension is AR-pattern; the real HK tube is proprietary, so drop STOCK if you want to be strict. suppressor_762 stands in for the stubby OSS SRM6, sniper_scope for the S&B 3-20x50. Stock is about 1 unit longer than real to hit the 1009 mm overall length. Folded bipod feet reach z -19.5, 1 past the bare muzzle. The Java side still has to register the 7.62 muzzle devices."
+ },
+ {
+  "id": "mk13",
+  "stats": "Mk 13 Mod 7 | .300 WM (300wm) | bolt | 5-rd box | 40 rpm | 869 m/s | 6.1 kg | 1207 mm (36 units: butt z 11, bare barrel end z -24, brake tip z -25) | reload 3.5 s / empty 4.5 s | 0.6 MOA | 41 cubes bare, 92 with all attachments",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   2
+  ],
+  "eye_z": 4.75,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_300",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 1.5,
+   "reload": 3.5,
+   "reload_empty": 4.5
+  },
+  "preview": "tools\\modelgen\\previews\\mk13.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\mk13.py. Built once; I viewed the bare preview and the reload_empty strip (mag swap then right-hand bolt cycle, starts and ends at rest). The fire, reload and idle strips and the issued/loadout previews were built but not viewed. Not launched in game.\n\nArchitecture: I added one new shared module, tools\\modelgen\\bolt_rifle.py (no existing file edited). It holds a frozen dataclass BoltRifle that owns everything common to the three rifles: bolt_handle/trigger/AR-grip builders, derived sight_y / sight_line / eye_z / muzzle_flash, and finish(), which calls templates.arms, mounts, attach, locators and the four animation templates and sets the preview loadouts. Each gun file is only its own geometry plus one RIFLE = BR.BoltRifle(...) spec, so a family-wide change is one edit in bolt_rifle.py and a mod-wide change stays in templates.py.\n\nLook: AICS 2.0 with dark-earth panels over a black skeleton, thumbhole folding stock with tall cheekpiece and thick pad, short fore-end with the heavy barrel in an open channel, stubby 5-round magazine, large bolt knob on the right.\n\nDecisions and uncertainties:\n- Underbarrel: the spec lists only top and side rails, but the rifle is described with a folding bipod, so I added a short bipod rail under the fore-end tip and an underbarrel mount that takes only the bipod (no grips). Drop `underbarrel=` in the spec if you want it strictly top/sides.\n- The factory brake is in muzzle_default (1 unit long, hidden when suppressor_300 is fitted). The muzzle_flash locator is at the brake tip, z -25.3.\n- eye_z 4.75 = eyepiece z 2.0 + 2.75 units eye relief (about 9 cm); judged from the model only.\n- Fire length 1.5 s = 60/40 rpm. The base reload timeline is stretched from 2.2 s to 3.5 s and 3.0 s to 4.5 s, so the motions are slower than the M2010's.\n- Bolt pull is 3.0 units, lift 70 degrees, same as the M2010.\n- Colour: dark earth chosen (spec allows FDE or OD)."
+ },
+ {
+  "id": "mk21",
+  "stats": "Mk 21 PSR (Remington MSR) | .338 LM (338lm) | bolt | 10-rd box | 40 rpm | 905 m/s | 6.5 kg | 1295 mm (38.5 units: butt z 11.5, bare barrel end z -25, brake tip z -27) | reload 3.5 s / empty 4.5 s | 1 MOA | 42 cubes bare, 104 with all attachments",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   2
+  ],
+  "eye_z": 4.75,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_338",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 1.5,
+   "reload": 3.5,
+   "reload_empty": 4.5
+  },
+  "preview": "tools\\modelgen\\previews\\mk21.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\mk21.py, built on the shared tools\\modelgen\\bolt_rifle.py (see mk13 notes). Built once; I viewed the bare preview and the fire strip (recoil, then the right hand lifts, pulls and returns the bolt; ends at rest). The reload strips and the issued/loadout previews were built but not viewed. Not launched in game.\n\nLook: FDE chassis, long round tubular handguard (8-sided cylinder, z -19 to -6) under a monolithic top rail, rail sections at 3/6/9 o'clock, squat AAC brake, black AR grip, skeletal folding stock on a thin tube with cheek riser and rear hook, long straight 10-round magazine.\n\nDecisions and uncertainties:\n- At 1-unit resolution the round tube reads as slightly octagonal/boxy in the side view.\n- The AAC brake is in muzzle_default (2 units, hidden when suppressor_338 is fitted). muzzle_flash is at the brake tip, z -27.3.\n- Default optic is reported as sniper_scope (the existing Leupold model stands in for the S&B 5-25x56; no S&B attachment exists).\n- eye_z 4.75 = eyepiece z 2.0 + 2.75 eye relief; judged from the model only.\n- Bolt pull kept at 3.0 units (not lengthened for .338) so the bolt stops short of the cheek riser at z 6.5.\n- Left hand is at (0, 4.5, -11), just under the tube; the fist shows slightly above the tube's lower edge in the side view, same relation as the M2010."
+ },
+ {
+  "id": "mk22",
+  "stats": "Mk 22 (Barrett MRAD) | .338 NM (338nm) | bolt | 10-rd box | 40 rpm | 818 m/s | 7.0 kg | 1255 mm (37.5 units: butt z 11, bare barrel end z -24.5, brake tip z -26.5) | reload 3.5 s / empty 4.5 s | 0.8 MOA | 41 cubes bare, 103 with all attachments",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   2
+  ],
+  "eye_z": 4.75,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_338",
+   "vertical_grip",
+   "angled_grip",
+   "bipod",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 1.5,
+   "reload": 3.5,
+   "reload_empty": 4.5
+  },
+  "preview": "tools\\modelgen\\previews\\mk22.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\mk22.py, built on the shared tools\\modelgen\\bolt_rifle.py (see mk13 notes). Built once; I viewed the bare preview and the loadout_sniper preview (scope, suppressor_338, bipod and laser all sit correctly on their mounts). None of its four animation strips were viewed; they use the same template calls as mk13/mk21 and built without a rest-pose error. Not launched in game.\n\nLook: coyote-brown slab-sided upper (taller than the other two, y 4.5-6) on a black polymer lower, one continuous top rail from receiver to handguard tip (z -20), long slim slotted handguard with Picatinny blocks at 3/6/9, fluted coyote barrel, large black multi-port brake with baffle wings, black AR grip, boxy folding stock with black cheek rest and a window, straight black 10-round magazine.\n\nDecisions and uncertainties:\n- The Barrett brake is in muzzle_default (2 units, hidden when suppressor_338 is fitted). muzzle_flash is at the brake tip, z -26.8.\n- Default optic is reported as sniper_scope (stand-in for the Leupold Mark 5HD). The issued AML 338 suppressor is not reported as a default; add MUZZLE: suppressor_338 if you want it suppressed out of the box.\n- Trigger pin is at (0, 3.5, -0.5) and the magazine pivot at (0, 3.5, -3.75), half a unit lower than the other two because of the deeper lower.\n- shell_eject is at (1.1, 5.5, -2.25).\n- eye_z 4.75 = eyepiece z 2.0 + 2.75 eye relief; judged from the model only.\n- The M-LOK slots are only the 'slots' texture pattern, and the stock window is small at this scale.\n- The stock's real fold-to-bolt-handle latch is not modelled; the stock bone pivot is the right-side hinge at (1, 4, 3.5) on all three rifles.\n- No Java registration was done for any of the three guns."
+ },
+ {
+  "id": "m590",
+  "stats": "Mossberg M590A1 | shotgun | 12ga_00 | pump | 60 rpm | tube 8 | MV 400 m/s | 3.4 kg | 1041 mm (31 units) | 20 in barrel | 6 MOA | reload 0.65 s per shell, empty 1.7 s",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   0.5
+  ],
+  "eye_z": 9.5,
+  "arm_style": "shotgun_pump",
+  "slots": [],
+  "attachments_included": [],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 1,
+   "reload": 0.65,
+   "reload_empty": 1.7
+  },
+  "preview": "tools\\modelgen\\previews\\m590.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m590.py. Built once (16 bones, 46 cubes); I viewed the still preview and the fire and reload_empty strips, not idle or reload. Not launched in game.\n\nNEW SHARED MODULE (not in the brief): I added tools\\modelgen\\shotguns.py, imported by all three guns. It holds the family's materials (ShotgunPalette), PortedReceiver (receiver with a real ejection-port hole), ShellBones, aperture_sight / post_sight and tube_reloads, so a family-wide change is one edit. No existing file was edited.\n\nModel: parkerized receiver and heavy barrel, full-length magazine tube with cap, barrel ring and bayonet lug, slotted heat shield, ribbed pump, fixed synthetic stock with recoil pad and sling swivel, top-tang safety, metal trigger guard, ghost-ring rear and blade front. No rails on the issued gun, so no mount bones and no attachments.\n\nBones: receiver, barrel, trigger, bolt, pump, stock, rear_sight, front_sight, shell, shell_chamber, right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -20.75), shell_eject (1.1, 5.5, -3.25), sight_line.\n\n'shell' is a bone with a cube, not an empty locator: its pivot is the loading port (0, 3.5, -3.75) and it carries a shell hidden inside the receiver, which reload_shell moves in the hand. 'shell_chamber' sits inside the closed bolt and shows in the port whenever the bolt is back, including during the fire pump stroke (reads as the next round).\n\nUncertainties: right hand is on the stock wrist at (0, 3, 3.25) with the rifle arm rotation, so the trigger-finger position is judged from the preview only. Left hand is 0.5 above the pump's bottom face, following the M4/M2010 pattern. Fire length is the full 1.0 s shot interval (60 rpm), which may feel slow. 'step' easing on the shell bones is unconfirmed in game (template caveat)."
+ },
+ {
+  "id": "benelli_m4",
+  "stats": "Benelli M4 Super 90 / M1014 | shotgun | 12ga_00 | semi | 180 rpm | tube 7 | MV 395 m/s | 3.82 kg | 1010 mm (30 units) | 18.5 in barrel | 5 MOA | reload 0.6 s per shell, empty 1.5 s",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   0.75
+  ],
+  "eye_z": 9.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.25,
+   "reload": 0.6,
+   "reload_empty": 1.5
+  },
+  "preview": "tools\\modelgen\\previews\\benelli_m4.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\benelli_m4.py. Built once (24 bones, 70 cubes with attachments; 45 bare). I viewed the bare preview (benelli_m4.bare.preview.png) and the reload_empty strip only; the fire, reload and idle strips and the red-dot loadout preview were built but not viewed. Not launched in game. Uses the new shared module tools\\modelgen\\shotguns.py (see the m590 notes).\n\nModel: matte-black receiver with a Picatinny rail (z -4.5..0, top y 7), ghost ring with ears behind the rail in 'rear_sight' (hidden when an optic is fitted), tall front post on the barrel, bulged polymer fore-end with two steel gas-piston stubs, magazine tube to near the muzzle with a barrel clamp, large bolt handle, oversized bolt-release button, pistol grip, skeletal collapsible stock with cheek rest.\n\nMounts: optic_mount (0, 7, -2.25) only. No muzzle, underbarrel, side, stock or magazine slots (12 ga has no matching muzzle device and the stock is not an AR buffer tube). sniper_scope was left out on purpose; add it to OPTICS in the gun file if wanted.\n\nBones: receiver, barrel, handguard, trigger, bolt, grip, stock, rear_sight, front_sight, shell, shell_chamber, right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -20.25), shell_eject (1.1, 5.5, -3.25), sight_line. 'shell' is a bone with a hidden shell cube, pivot at the loading port (0, 3.5, -3.75).\n\nAnimations: fire uses fire_auto with 2.5 bolt travel, recoil 1.5, rise 5, length 0.25 s (below the 0.33 s interval). reload_empty is the non-pump reload_shell: the bolt opens in the first 0.05 s, is held, then released. The hand does not visibly press the bolt-release button; the template has no such step.\n\nUncertainties: the bolt handle slides along the outside of the right wall with no modelled slot. Left hand at (0, 3.5, -10) is judged from the preview. 'step' easing is unconfirmed in game."
+ },
+ {
+  "id": "m26mass",
+  "stats": "M26 MASS (stand-alone) | shotgun | 12ga_00 | straight_pull | 40 rpm | box 5 | MV 335 m/s | 2.27 kg | 670 mm (20.5 units as modelled) | 7.75 in barrel | 8 MOA | reload 2.8 s, empty 3.8 s",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   2.25
+  ],
+  "eye_z": 10.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "STOCK"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "stock_ctr"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 1.5,
+   "reload": 2.8,
+   "reload_empty": 3.8
+  },
+  "preview": "tools\\modelgen\\previews\\m26mass.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m26mass.py. Built once (25 bones, 73 cubes with attachments; 42 bare). I viewed the bare preview (m26mass.bare.preview.png) and the fire and reload_empty strips; the reload and idle strips and the loadout_a preview were built but not viewed. Not launched in game. Uses the new shared module tools\\modelgen\\shotguns.py (see the m590 notes).\n\nModel: short boxy black receiver with a full-length top rail, stubby barrel ending in a wide stand-off device with four prongs, slim 5-round box magazine ahead of the trigger guard, pistol grip, flip-up irons (rear in 'rear_sight', front with wings), M4-style buttstock in stock_default. It is about 0.5 unit longer than the 20-unit spec because it reuses the M4's 7-unit stock.\n\nAction: 'bolt_handle' is the bolt body (seen in the right-side ejection port) plus the charging lever on the LEFT, knob at (-2.5, 5.5, -4). fire_straight_pull and the empty reload use hand='left', pull 2.5. The real lever is reversible; left was chosen so the firing hand stays on the grip.\n\nMounts: optic_mount (0, 7, -2.25). stock_ctr is attached at the stock pivot (0, 5.5, 3) because the stand-alone gun takes an M4 buttstock. The magazine is in magazine_default under 'magazine' (pivot (0, 3.5, -3.25)), but there is no magazine attachment for it. No muzzle slot: the stand-off is integral and sits in 'barrel', not muzzle_default. sniper_scope was left out on purpose.\n\nLocators: muzzle_flash (0, 5.5, -10.5), shell_eject (1.1, 5.5, -2.5), sight_line.\n\nAnimations: reload is reload_mag scaled to 2.8 s. reload_empty is reload_mag with empty_action='cycle', lift 0, left hand, scaled to 3.8 s. Fire is the full 1.5 s shot interval (40 rpm), so the straight pull is slow; shorten FIRE_S if it drags in game.\n\nUncertainties: the left hand at (0, 4, -6) sits under the receiver front just ahead of the magazine, and the fist may clip the front of the magazine slightly. Bolt and lever are one bone, so the bolt in the port moves with the lever (intended)."
+ },
+ {
+  "id": "m249",
+  "stats": "M249 SAW | lmg | 5.56 | 850 rpm auto | belt/box 200 | 915 m/s | 7.5 kg | 1035 mm (31 units: butt z+10, muzzle z-21) | 4 MOA | reload 9 s / empty 7 s | 49 cubes bare, 100 with all attachments, 38 bones",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   1.5
+  ],
+  "eye_z": 2,
+  "arm_style": "mg_shouldered (registered by heavy_weapons.py in templates.ARM_STYLES: 'mg' reload cant with the rifle left-arm rotation; right hand (0,2,2), left hand (0,3,-10.5) under the handguard)",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "suppressor_556",
+   "compensator_556",
+   "vertical_grip",
+   "angled_grip",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "acog"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.06,
+   "reload": 9,
+   "reload_empty": 7
+  },
+  "preview": "tools\\modelgen\\previews\\m249.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m249.py (class M249(BeltFedGun), model() = M249().build()). Built twice; viewed the bare preview and the reload_empty strip only (fire, reload, idle strips and the loadout previews were built but not viewed). Not launched in game.\n\nNEW SHARED FILE: tools\\modelgen\\heavy_weapons.py (I created it; no existing file edited). It holds the OOP base for this family: GunBuilder (template-method pipeline: materials -> parts -> T.arms -> mounts/attach -> T.locators -> T.idle -> animations -> preview configs), BeltFedGun, MagFedGun, and part helpers (rear_aperture, front_post, linked_belt, folded_legs, pistol_grip, blade_trigger). All arms/mounts/animations still go through templates.py. It registers two arm styles via T.ARM_STYLES.setdefault: 'mg_shouldered' and 'spade'; these would ideally move into templates.py.\n\nDeviations / things the Java side should know:\n- eye_z 2.0 is for the default optic (acog eyepiece at z -0.95 + ~3 units relief; optic axis y = 8.25, locator sight_acog). For iron sights use eye_z ~9.5 (cheek on the stock, 8 behind the rear aperture).\n- default optic: the issued M145 MGO does not exist as an attachment; 'acog' is the closest stand-in.\n- optic_mount is a child of feed_cover, not receiver (the rail is the cover, so the optic swings up with it during reloads). BeltFedGun pre-creates the bone with the same name/pivot before T.mounts runs.\n- Feed cover hinges at its FRONT like the real gun (reload_belt called with open_deg=-65, pivot at the front edge); the template docs assume a rear hinge. In the strip the cover opens rear-up and closes correctly.\n- Belt-fed mapping: 'magazine' = the OD 200-round box under the receiver, with child bone 'belt' (brass/copper strip up the left side); 'feed_cover'; 'bolt' (ejection port, right); 'charging_handle' (right side, knob (1.4,5.25,-7), pulled 3 units by the right hand in reload_empty).\n- Spec has reload 9 s longer than empty 7 s; I followed it, so the non-empty belt change (template base 4.2 s) plays at ~0.47x speed and the empty one (base 5.0 s, includes the charge) at ~0.71x.\n- fire = 0.06 s (85% of the 70.6 ms shot interval), recoil 0.5, rise 1.2 deg.\n- STANAG well is modelled (angled block, left side) but there is no STANAG magazine bone and pmag_40 is not included, because 'magazine' is the belt box.\n- Integral bipod is modelled folded (bone 'bipod'); the Harris 'bipod' attachment is left out since it would overlap it.\n- Extra bones: front_sight, rear_sight (hidden with an optic), bipod, grip, stock (no stock_default: no stock attachment fits), belt, muzzle_default (birdcage). Locators: muzzle_flash (0,5.5,-21.25), shell_eject (1.1,4.4,-4).\n- Stock is a simplified hollow-triangle PIP shape; carry handle is a low upright bar (top y 7.25, below the sight line)."
+ },
+ {
+  "id": "m240",
+  "stats": "M240B | gpmg | 7.62x51 | 700 rpm auto | belt 100 | 935 m/s | 12.5 kg | 1245 mm (37 units: butt z+10.5, muzzle z-26.5) | 3.5 MOA | reload 9 s / empty 7 s | 52 cubes bare, 104 with all attachments, 38 bones",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   0.5
+  ],
+  "eye_z": -0.5,
+  "arm_style": "mg_shouldered (registered by heavy_weapons.py; right hand (0,2,2), left hand (0,3,-13.5) under the handguard)",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "suppressor_762",
+   "compensator_762",
+   "vertical_grip",
+   "angled_grip",
+   "laser"
+  ],
+  "default_attachments": {
+   "OPTIC": "acog"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.07,
+   "reload": 9,
+   "reload_empty": 7
+  },
+  "preview": "tools\\modelgen\\previews\\m240.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m240.py (class M240(BeltFedGun) from tools\\modelgen\\heavy_weapons.py). Built once; I viewed only the bare preview. None of its animation strips or loadout previews were viewed (the animations are the same BeltFedGun code that I checked on the M249 and M2A1 strips). Not launched in game.\n\n- eye_z -0.5 is for the default optic (acog eyepiece at z -3.45 + ~3 units relief; axis y = 8.25). That is far forward because the cover rail sits far forward; if the gun looks too big in ADS use the iron-sight value eye_z ~9.0 (cheek on the stock) or move the optic mount back (MOUNTS['optic'] z, currently -5.5).\n- default optic: M145 MGO approximated by 'acog'.\n- optic_mount is a child of feed_cover (not receiver); feed cover is front-hinged (open_deg=-65). Same as the M249.\n- Belt-fed mapping: 'magazine' = tan 100-round soft pouch hanging on the LEFT of the receiver plus child 'belt'; 'feed_cover'; 'bolt'; 'charging_handle' on the right (knob (1.4,5.25,-3), pull 3, right hand).\n- reload 9 s / reload_empty 7 s per the spec (non-empty is the slower one, as given).\n- fire = 0.07 s (shot interval 85.7 ms), recoil 0.7, rise 1.5 deg, bolt travel 2.5.\n- Silhouette is close to the M249 in this blocky style; it differs by the longer receiver with trunnion block and riveted plates, solid stock, side pouch, right-side carry handle, conical flash suppressor (muzzle_default) and front sight near the muzzle. The handguard plus heat shield cover z -17.5..-11, so the exposed barrel is a bit shorter than on the real gun.\n- Integral bipod modelled folded back (bone 'bipod'); Harris 'bipod' attachment left out. No stock attachment (plain 'stock' bone).\n- Locators: muzzle_flash (0,5.5,-26.75), shell_eject (1.1,4.4,-4.75) on the right side (the real gun ejects downward)."
+ },
+ {
+  "id": "m2a1",
+  "stats": "M2A1 | heavy_machine_gun | .50 BMG | 550 rpm auto (+single) | belt 100 | 887 m/s | 38.2 kg | 1654 mm (49.5 units: spade grips z+3, flash hider z-46.5) | 4 MOA | reload 8 s / empty 10 s | 54 cubes, 18 bones",
+  "sight_y": 8.5,
+  "sight_line": [
+   0,
+   8.5,
+   -5
+  ],
+  "eye_z": 8,
+  "arm_style": "spade (new style registered by heavy_weapons.py in templates.ARM_STYLES: both fists on the spade grips, R (105,22,0) / L (105,-22,0), no trigger finger; right hand (1.75,5.25,2.5), left hand (-1.75,5.25,2.5))",
+  "slots": [],
+  "attachments_included": [],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.07,
+   "reload": 8,
+   "reload_empty": 10
+  },
+  "preview": "tools\\modelgen\\previews\\m2a1.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m2a1.py (class M2A1(BeltFedGun) from tools\\modelgen\\heavy_weapons.py). Built once; viewed the main preview and the reload_empty strip (cover opens, can swap, right hand racks the retracting handle, ends at rest). fire/reload/idle strips not viewed. Not launched in game.\n\n- HANDS ARE NOT AT THE STANDARD GRIP POSITION: there is no pistol grip, so the hands are on the spade grips at bore height (y 5.25, z 2.5, x +-1.75) instead of (0,2,2), and the 'trigger' bone is the butterfly paddle on the back plate (pivot (0,5.5,1)). The shared first-person transform will probably need a per-gun offset (gun lower / further forward). The spade arm rotations are judged from the preview only.\n- Modelled on a low M3 tripod as its own bone 'tripod' (pintle, head, three legs, T&E, ammo-can tray; feet at about y -3.4) so Java can hide it, e.g. in third person or GUI. The ammo can sits on the tripod tray: if the tripod is hidden the can floats beside the receiver.\n- Belt-fed mapping: 'magazine' = OD ammo can on the left plus child 'belt' (.50 belt into the feedway); 'feed_cover' front-hinged (open_deg=-65); 'bolt' is only a small stud in the right-side slot (the real bolt is not visible); 'charging_handle' = retracting slide handle on the right (knob (2.5,4.5,-9.5), pull 4).\n- No rails (spec): no mount bones, no attachments, flash hider is part of 'barrel' (no muzzle_default). 'rear_sight' and 'front_sight' bones exist on the receiver top.\n- eye_z 8 (Java, after QA: 6 put the grips and fists over the bottom third of the aimed view): ~19 cm behind the spade grips, 13 units behind the rear leaf; there is no stock/cheek weld. Sight radius is short (rear z -5, front z -14).\n- shell_eject (0.5,3.4,-9) is on the BOTTOM of the receiver (the M2 ejects downward). muzzle_flash (0,5.5,-46.75).\n- fire = 0.07 s (shot interval 109 ms), recoil 0.6, rise 0.8 deg. Semi mode has no separate animation.\n- The gun is 3 units wide and ~50 long, by far the largest model in the family; GUI/third-person transforms will need their own scale."
+ },
+ {
+  "id": "m107",
+  "stats": "Barrett M107 | anti_materiel_rifle | .50 BMG | semi, ~60 rpm practical | box 10 | 853 m/s | 13 kg | 1448 mm (43 units with the brake: pad z+10, brake front z-33; bare muzzle z-29.5) | 2 MOA | reload 4 s / empty 5.5 s | 45 cubes bare, 87 with all attachments, 30 bones",
+  "sight_y": 8,
+  "sight_line": [
+   0,
+   8,
+   4.5
+  ],
+  "eye_z": 7,
+  "arm_style": "rifle (right hand (0,2,2), left hand (0,4.5,-11) under the barrel shroud)",
+  "slots": [
+   "OPTIC",
+   "MUZZLE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "muzzle_brake_50"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope",
+   "MUZZLE": "muzzle_brake_50"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 0.3,
+   "reload": 4,
+   "reload_empty": 5.5
+  },
+  "preview": "tools\\modelgen\\previews\\m107.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m107.py (class M107(MagFedGun) from tools\\modelgen\\heavy_weapons.py). Built once; viewed the loadout_issue preview (scope + brake) and the reload_empty strip (mag swap, then the right hand racks the charging handle, ends at rest). The bare preview and the fire/reload/idle strips were not viewed. Not launched in game.\n\n- IMPORTANT: the arrowhead muzzle brake is NOT part of the bare model. It is the shared attachment muzzle_brake_50 (one definition for the whole mod), reported as a default attachment together with sniper_scope (Leupold Mk 4). If Java does not fit default attachments, the M107 shows a bare barrel with a thread protector (muzzle_default) and loses its signature silhouette. Java must also register muzzle_brake_50 and its locator flash_muzzle_brake_50 (template author's caveat).\n- SIGHT_Y 8.0 / sight_line (0,8,4.5) are the folding iron sights (rear_sight is hidden when an optic is fitted; front_sight at z -12.25 is not hidden and stands in front of the scope objective). The default scope's axis is also y 8.0 (rail 7.0 + 1.0), eyepiece at z 4.0 (locator sight_sniper_scope); eye_z 7.0 = eyepiece + ~3 units eye relief. For bare irons use eye_z ~9.5.\n- Rails: top only (spec), so no underbarrel/side mounts; integral bipod modelled folded FORWARD along the shroud (bone 'bipod') - I am not certain of the real fold direction.\n- Action: 'bolt' bone = carrier in the right-side ejection port plus the charging handle (knob (1.6,5.5,-2.5)). The Barrett has no bolt hold-open, so reload_empty uses reload_mag(empty_action='cycle', lift_deg=0, pull=3) with the right hand; reload is the plain mag swap. Lengths 4.0 / 5.5 s from the spec (template base 2.2 / 3.0 s, so both play slower than the M4's).\n- fire: T.fire_auto with length 0.3 s, recoil 1.8, rise 5 deg, bolt travel 3, plus one extra track added in MagFedGun: the 'barrel' bone (with muzzle mount and brake) slides back 1 unit for the short-recoil action. That extra track is written after the template's rest-pose check but starts and ends at zero.\n- 'handguard' bone is the perforated barrel shroud; 'stock' holds the rear housing, rear grip, monopod socket and recoil pad (no stock attachment). 'magazine' is a plain bone (no magazine_default: no .50 magazine attachment exists).\n- Locators: muzzle_flash (0,5.5,-29.75) at the bare muzzle, shell_eject (1.1,5.5,-3.5)."
+ },
+ {
+  "id": "scorpion_evo3",
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.048,
+   "reload": 2.2,
+   "reload_empty": 2.6
+  },
+  "notes": "tools/modelgen/guns/scorpion_evo3.py; RIFLE view; left-side charging handle racked on reload_empty; stock modelled extended only"
+ },
+ {
+  "id": "mp5",
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.07,
+   "reload": 2.2,
+   "reload_empty": 2.8
+  },
+  "notes": "tools/modelgen/guns/mp5.py; RIFLE view; H&K MP5A5, 21.0 units long, A5 retractable stock modelled extended only; slots OPTIC + MUZZLE only (no rails: optic_mount on the receiver top at the claw-mount position (0, 6.75, -1.25), muzzle_mount on the 3-lug barrel (0, 5.5, -9.25)); attachments included: red_dot, holographic, micro_red_dot, suppressor_9mm; iron sight line y 7.5 at the rear drum z 2.0 (ironSights(7.5f, 9f), eye_z 9 is an estimate like the Scorpion's); bone rear_sight (drum) hides under an optic. reload_empty (2.8 s) is the HK slap from templates.reload_hk_slap, bone charging_handle (left of the cocking tube, pulls 2.5 units, turns 40 deg up into the notch), key times in seconds: hand on the handle 0.28, handle pulled back 0.448, handle LOCKED back/up in the notch t = 0.541, old magazine out 1.008, fresh magazine seated 1.895, slap on the magazine base 2.035, hand raised over the handle 2.315, handle SLAPPED down t = 2.371, handle and bolt home (bolt closes) t = 2.427, hand back on the handguard 2.707. reload (2.2 s): magazine out 0.5, seated 1.45, base slap 1.6. fire 0.07 s (800 rpm = 0.075 s shot interval); the charging handle does not move when firing."
+ },
+ {
+  "id": "deagle",
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.16,
+   "reload": 2.0,
+   "reload_empty": 2.4
+  },
+  "notes": "tools/modelgen/guns/deagle.py; PISTOL view; optic_mount on the receiver (does not reciprocate); slide locks back in reload_empty only"
+ },
+ {
+  "id": "anaconda",
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.25,
+   "reload": 2.6,
+   "reload_empty": 2.6
+  },
+  "notes": "tools/modelgen/guns/anaconda.py; PISTOL view; templates.fire_revolver / reload_revolver; cylinder feed, no case ejection"
+ },
+ {
+  "id": "famas",
+  "stats": "FAMAS F1 | bullpup assault rifle | 5.56 | 1000 rpm | semi/burst/auto | 25 rd straight box | 960 m/s | 3.61 kg | 757 mm = 22.6 units (z -9.75..12.85) | 488 mm (19.2 in) barrel | reload 2.6 s / empty 3.1 s | 46 gun cubes (95 with arms + all attachments), 31 bones",
+  "sight_y": 9.0,
+  "sight_line": [
+   0,
+   9.0,
+   5.25
+  ],
+  "eye_z": 12.25,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "micro_red_dot",
+   "acog",
+   "suppressor_556",
+   "compensator_556"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.06,
+   "reload": 2.6,
+   "reload_empty": 3.1
+  },
+  "preview": "tools\\modelgen\\previews\\famas.preview.png",
+  "notes": "tools/modelgen/guns/famas.py; RIFLE view; GIAT FAMAS F1 bullpup, 22.6 units long (muzzle z -9.75, butt pad z 12.85), bore y 5.5. One-piece dark grey plastic body (z -5.25..12.35), long carry handle on two pillars (z -5.25..6.0, bar y 7.75..8.5) with the front post in ears on its front end (bone front_sight, z -4.75) and the rear aperture on its rear end (bone rear_sight, z 5.25, hides under an optic); straight 25-round magazine BEHIND the grip (bone magazine, pivot (0, 3.75, 5.125)); full-hand trigger guard; ejection port and bone bolt on the right of the butt (shell_eject (1.1, 5.625, 7.625)); bipod legs folded back along both sides (bone bipod_legs, static); flash hider / grenade sleeve in muzzle_default (muzzle_flash z -9.75). Slots OPTIC + MUZZLE only: optic_mount on top of the carry handle (0, 8.5, 0), muzzle_mount (0, 5.5, -7.5); attachments included: red_dot, holographic, micro_red_dot, acog, suppressor_556, compensator_556. Iron sight line y 9.0 at the rear aperture z 5.25 (ironSights(9.0f, 12.25f); eye_z 12.25 = 7 units behind the rear sight like the MP5, an estimate, not tuned in game). Hands: right (0, 2, 2), left (0, 4, -4) under the forend. Animations from templates.py (no template changes): fire 0.06 s (1000 rpm = 0.06 s shot interval; bolt cycles 1.5 units, the cocking handle does not move when firing). reload (2.6 s, templates.reload_mag; the left hand swings out to the left round the grip to the magazine behind it), key times in seconds: hand on the magazine 0.355, magazine out 0.591, fresh magazine seated 1.714, slap on the magazine base 1.891, hand back on the forend 2.364. reload_empty (3.1 s, reload_mag with empty_action='cycle', left hand): magazine out 0.517, fresh magazine seated 1.498, slap on the magazine base 1.653, hand on the cocking handle 2.005, charging handle back t = 2.232 (bone charging_handle on top of the body under the carry handle, slides 2.5 units back; bone bolt follows), released 2.304, charging handle home (bolt closes) t = 2.480, hand back on the forend 2.769. Extra previews: famas.noarms / .bare / .loadout_a / .loadout_b / .loadout_micro .preview.png and famas.anim.*.preview.png. Not launched in game."
+ },
+ {
+  "id": "vector",
+  "stats": "KRISS Vector Gen II SMG | smg | .45 ACP | 25-rd Glock 21 magazine with +12 extension | semi/auto | 1200 rpm (shot interval 0.05 s) | 620 mm stock extended | 5.5 in barrel | reload 2.2 s / empty 2.7 s | model: 101 cubes, 37 bones incl. attachments and arms (bare gun 43 cubes, 3.1 x 11.07 x 18.6 units), z -9.5..9.0, bore y 5.5, texture 64x64",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   2.25
+  ],
+  "eye_z": 10,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "micro_red_dot",
+   "suppressor_9mm",
+   "vertical_grip",
+   "angled_grip",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.05,
+   "reload": 2.2,
+   "reload_empty": 2.7
+  },
+  "preview": "tools\\modelgen\\previews\\vector.preview.png",
+  "notes": "tools/modelgen/guns/vector.py; RIFLE view; all arms / mounts / attachments / animations through templates.py. Built and previews viewed (noarms, bare, loadout_a, reload_empty strip, icon; after the UNDERBARREL slot was added: vertical_grip / angled_grip with and without arms); not launched in game.\n\nBones: receiver (flat-topped upper with full-length rail y 7.0-7.5, slim lower, magazine well under the front, Super V housing that drops below the well in front of the trigger), bolt (right, in the ejection port), charging_handle (folding lever on the LEFT of the front, knob (-1.6, 6.25, -6.5), travels 2.0 units; static in fire), barrel, muzzle_default (thread protector), handguard (railed nose in front of the well; carries side_mount and underbarrel_mount), front_sight / rear_sight (flip-up irons; rear_sight hides under an optic), stock + stock_default (side-folder, modelled unfolded only), grip, trigger, magazine + magazine_default, right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -9.5), shell_eject (1.1, 5.25, -5.15), sight_line (0, 8.25, 2.25). Mount pivots: optic (0, 7.5, -2.75), muzzle (0, 5.5, -9.0), side (1.25, 4.75, -7.5), underbarrel (0, 3.0, -7.75) = bottom face of the nose's short bottom rail (y 3.0..3.5, z -8.5..-6.75). vertical_grip sits at the mount: its 2-long clamp (z -8.75..-6.75) ends flush with the front of the magazine well. angled_grip is added in vector.py at (0, 3.0, -8.6), 0.85 further forward, because the 4-long AFG centred on the 1.75-long rail would run into the magazine: its heel ends 0.1 in front of the magazine and its saddle / finger shelf overhang the nose by about 2 (to z -10.6, 1.1 past the thread protector). Hands: right (0, 2, 2), left (0, 2, -8.25) round the nose in front of the magazine well.\n\nReload key times in seconds. reload (2.2 s): magazine out 0.50, fresh magazine seated 1.45, slap on the base 1.60. reload_empty (2.7 s): magazine out 0.45, fresh magazine seated 1.305, slap on the base 1.44, left hand on the charging handle 1.746, handle (and bolt) pulled fully back 1.944, handle RELEASED 2.007, handle and bolt home (bolt closes) 2.16, hand back on the gun 2.41. fire 0.05 s = the 1200 rpm shot interval (recoil 0.35 units, rise 0.8 deg: the Super V system).\n\nDeviations and uncertainties:\n- The rail top is at y 7.5 (other SMGs 7.0) because the Vector's rail sits high over its low bore; sight line y 8.25. With an optic use its sight_<id> locator (red_dot / holographic / acog axis y 8.75, micro_red_dot 8.5).\n- eye_z 10 is an estimate (7.75 behind the rear sight, as the APC9); not tuned in game.\n- There is no .45 suppressor in attachments.py; the shared pistol / SMG can suppressor_9mm is fitted (hides muzzle_default).\n- The left hand stays at (0, 2, -8.25) with or without a grip (the templates have no grip-specific hold): a fitted vertical grip hangs right where that fist is, so the fist wraps the top of its shaft; with the AFG the fist sits on its ramp.\n- The left hand holds the nose / front of the magazine well and overlaps the magazine front edge slightly.\n- The laser on the right side rail reaches 0.5 past the nose (to z -9.0)."
+ },
+ {
+  "id": "usp",
+  "stats": "H&K USP45 | pistol | .45 ACP | 12-rd magazine | semi | 200 mm | model: bones=21 cubes=53 (bare gun without arms/attachments: 37 cubes, 1.73 x 5.08 x 6.6 units), texture 32x32; slide z -3.5..2.5 (6.0 units = 200 mm), slide top y 6.25, bore y 5.5, trigger z -1.0..-0.5, floor plate bottom y ~2.0",
+  "sight_y": 6.75,
+  "sight_line": [
+   0,
+   6.75,
+   2.25
+  ],
+  "eye_z": 13,
+  "arm_style": "pistol",
+  "slots": [
+   "MUZZLE",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "suppressor_9mm",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.1,
+   "reload": 1.8,
+   "reload_empty": 2.3
+  },
+  "preview": "tools\\modelgen\\previews\\usp.preview.png",
+  "notes": "tools/modelgen/guns/usp.py; PISTOL view; class Usp(StrikerPistol) defined in the gun file (striker_pistols.py untouched): taller slab slide (1.25), rear-only serrations, 3-dot sights, long trigger guard with a 45-degree cut front corner, USP accessory groove under the dust cover, control lever + slide release on the left, ambidextrous magazine paddle, exposed hammer. Built and previews viewed (noarms, bare, icon); not launched in game.\n\nBones: receiver, handguard (dust cover + groove; carries side_mount), grip, barrel, slide (with sights), trigger, magazine + magazine_default, controls, hammer (child of receiver, pivot (0, 4.9, 2.55), +X rotation cocks it), right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -3.75), shell_eject (0.85, 6.0, -0.75), sight_line (0, 6.75, 2.25). Mounts: muzzle (0, 5.5, -3.6), side (-0.5, 3.0, -3.75) = the shared laser box centred under the dust cover. Right hand (0, 3.75, 1.0).\n\nAnimations (templates.fire_pistol / reload_mag, plus hammer keys added in the gun file). fire 0.1 s: slide back 1.5 units at 0.03, held to 0.045, home 0.085; the hammer is cocked 50 deg from 0.02 to 0.07 and down at 0.085. Reload key times in seconds. reload (1.8 s): magazine out 0.41, fresh magazine seated 1.19, slap on the base 1.31. reload_empty (2.3 s): slide locked back from 0.04 (hammer cocked with it), magazine out 0.44, fresh magazine seated 1.28, slap on the base 1.42, slide RELEASED 1.81, slide home 1.86 (hammer down 1.95).\n\nDeviations and uncertainties:\n- There is no .45 suppressor in attachments.py; the one pistol can, suppressor_9mm, is fitted.\n- The hammer returns to its down (rest) position after every shot because every clip must end at the rest pose; a real USP stays cocked after firing.\n- The shared PEQ-15 laser box is as big as the grip and sticks past the muzzle (as on the Glocks / M17).\n- eye_z 13 copied from the other pistols (a guess there too)."
+ },
+ {
+  "id": "m9",
+  "stats": "Beretta M9 (92FS) | pistol | 9x19 | 15-rd magazine | semi | 217 mm | model: bones=21 cubes=57 (bare gun without arms/attachments: 41 cubes, 1.9 x 4.64 x 7.33 units), texture 32x32; slide z -4.0..2.5 (6.5 units = 217 mm), barrel to z -4.25, bore y 5.5, trigger z -1.0..-0.5, base plate bottom y ~2.15",
+  "sight_y": 6.5,
+  "sight_line": [
+   0,
+   6.5,
+   2.25
+  ],
+  "eye_z": 13,
+  "arm_style": "pistol",
+  "slots": [
+   "MUZZLE",
+   "SIDE"
+  ],
+  "attachments_included": [
+   "suppressor_9mm",
+   "laser"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.1,
+   "reload": 1.8,
+   "reload_empty": 2.3
+  },
+  "preview": "tools\\modelgen\\previews\\m9.preview.png",
+  "notes": "tools/modelgen/guns/m9.py; PISTOL view; class BerettaM9(StrikerPistol) defined in the gun file (striker_pistols.py untouched): open-top slide (front bridge with the front sight, two low side rails, breech block) over a bare, lighter barrel that stays put when the slide cycles; ambidextrous safety / decocker levers on the slide (they ride with it); exposed ring hammer; smooth dust cover, hooked trigger guard, black checkered grip panels with screws, lanyard loop. Built and previews viewed (noarms, icon); not launched in game.\n\nBones: receiver, handguard (dust cover; carries side_mount), grip, barrel, slide (with sights and safety levers), trigger, magazine + magazine_default, controls, hammer (child of receiver, pivot (0, 4.9, 2.55), +X rotation cocks it), right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -4.25), shell_eject (0.85, 5.75, -0.875), sight_line (0, 6.5, 2.25). Mounts: muzzle (0, 5.5, -4.25), side (-0.5, 3.0, -3.5). Right hand (0, 3.75, 1.0).\n\nAnimations (templates.fire_pistol / reload_mag, plus hammer keys added in the gun file). fire 0.1 s: slide back 1.5 units at 0.03, held to 0.045, home 0.085; hammer cocked 50 deg from 0.02 to 0.07, down at 0.085. Reload key times in seconds. reload (1.8 s): magazine out 0.41, fresh magazine seated 1.19, slap on the base 1.31. reload_empty (2.3 s): slide locked back from 0.04 (hammer cocked with it), magazine out 0.44, fresh magazine seated 1.28, slap on the base 1.42, slide RELEASED 1.81, slide home 1.86 (hammer down 1.95).\n\nDeviations and uncertainties:\n- The real M9 has no accessory rail; the SIDE slot was kept to match the other 9 mm pistols, so side_mount sits under the smooth dust cover and the shared laser box hangs there (it reaches 0.75 past the muzzle).\n- No OPTIC slot.\n- The hammer returns to its down (rest) position after every shot because every clip must end at the rest pose.\n- eye_z 13 copied from the other pistols (a guess there too)."
+ },
+ {
+  "id": "awm",
+  "stats": "Accuracy International AWM (L115A1) | .338 Lapua Magnum | bolt | 5-rd box | 46 rpm (fire clip 1.3 s) | 6.9 kg | 1200 mm (36 units: butt z 11, bare barrel end z -23.5, brake tip z -25) | 27 in fluted barrel | reload 2.6 s / empty 3.2 s | 60 cubes issued (scope), 94 with all attachments",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   2
+  ],
+  "eye_z": 4.75,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_338",
+   "bipod"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 1.3,
+   "reload": 2.6,
+   "reload_empty": 3.2
+  },
+  "preview": "tools\\modelgen\\previews\\awm.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\awm.py (subclasses bolt_rifle.BoltRifle inside the gun file; no shared module edited). Built and viewed: the issued preview and the 32 px sprite. Not launched in game.\n\nLook: olive-green AI thumbhole stock whose side panels run to the fore-end tip, black rubber cheek piece, butt spacers + pad, butt spike, flat black action with a scope rail, long fluted barrel free-floating over the fore-end, two-port muzzle brake (muzzle_default, 1.5 long, hidden when suppressor_338 is fitted), 5-round steel magazine, bipod spigot block under the fore-end tip.\n\nBones: receiver, bolt (bolt body + handle + knob in ONE bone, pivot (0, 5.5, 2.75) on the bolt axis; note the older bolt guns call it bolt_handle), trigger, barrel, muzzle_default, handguard, grip, stock, magazine, right_arm, left_arm, optic_mount (0, 6.5, -4), muzzle_mount (0, 5.5, -23.5), underbarrel_mount (0, 3.5, -16.5; bipod only). Locators: muzzle_flash (0, 5.5, -25.3), shell_eject (1.1, 5.5, -2.75), sight_line (0, 7.5, 2) = eyepiece of the default sniper scope; eye_z 4.75 = eyepiece + 2.75 eye relief.\n\nAnimation key times (seconds).\nfire 1.3 (templates.fire_bolt): shot 0, recoil peak 0.04, settled 0.22; hand on the knob 0.42, handle up 0.54, bolt back 0.70 (held to 0.74), bolt forward 0.88, handle down 1.00, hand back on the grip 1.24.\nreload 2.6 (templates.reload_mag, base 2.2 stretched): left hand on the magazine 0.35, magazine out 0.45-0.85, fresh magazine rising 1.18-1.54, seated 1.71, base slap 1.89, left hand back on the fore-end 2.36, gun level 2.6.\nreload_empty 3.2 (reload_mag + bolt cycle, base 3.0 stretched): left hand on the magazine 0.32, magazine out 0.41-0.77, seated 1.55, base slap 1.71, right hand on the knob 2.04, handle up 2.17, bolt back 2.34 (held to 2.38), bolt forward 2.52, handle down 2.65, hand back on the grip 2.90.\n\nUncertainties: green chosen over tan. Bolt lift 70 degrees / pull 3 units are the family defaults (a real AW lifts 60). The bipod is the UNDERBARREL attachment, not a default part."
+ },
+ {
+  "id": "m24",
+  "stats": "M24 SWS (Remington 700 long action) | 7.62x51 mm | bolt | 5-rd INTERNAL magazine, top-loaded | 46 rpm (fire clip 1.3 s) | 5.4 kg | 1092 mm (32.5 units: butt z 10.5, muzzle z -22) | 24 in heavy barrel | reload 2.5 s (3 rounds) / empty 3.34 s (5 rounds) | 53 cubes issued (scope), 87 with all attachments",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   2
+  ],
+  "eye_z": 4.75,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "bipod"
+  ],
+  "default_attachments": {
+   "OPTIC": "sniper_scope"
+  },
+  "animations": {
+   "idle": 3,
+   "fire": 1.3,
+   "reload": 2.5,
+   "reload_empty": 3.34
+  },
+  "preview": "tools\\modelgen\\previews\\m24.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\m24.py (subclasses bolt_rifle.BoltRifle and holds its own TopLoad reload class; no shared module edited). Built and viewed: the issued preview, the reload strip and the 32 px sprite. Not launched in game.\n\nLook: conventional one-piece dark-green H-S Precision stock (no pistol grip: the right hand is on the wrist at (0, 3, 3.25)), stippled black grip panels, straight comb, adjustable butt plate on a knurled steel wheel, round Remington 700 action on two-piece scope bases, long plain heavy barrel with a crowned bare muzzle (no muzzle_default), flush floor plate and trigger guard - NO external magazine and no `magazine` bone.\n\nBones: receiver, bolt (body + handle + knob, pivot (0, 5.5, 2.75)), trigger, round (one brass cartridge, at rest hidden in the internal magazine under the bolt; pivot (0.35, 4.4, -3.5)), barrel, handguard, stock, right_arm, left_arm, optic_mount (0, 6.5, -4), muzzle_mount (0, 5.5, -22), underbarrel_mount (0, 3.5, -14; bipod only). Locators: muzzle_flash (0, 5.5, -22.3), shell_eject (1.1, 5.5, -3.5), sight_line (0, 7.5, 2); eye_z 4.75.\n\nHOW THE RELOAD WORKS: one clip per reload, to be used with the normal MAGAZINE feed (not the per-shell tube loop). The gun rolls its ejection port toward the shooter, the RIGHT hand lifts the bolt handle and pulls the bolt back, leaves it open, then N times drops out of view, comes back with a cartridge (`round` bone) over the port and thumbs it down into the magazine; finally it takes the knob again, pushes the bolt forward, turns it down and returns to the wrist. The left hand never leaves the fore-end. `reload` pushes 3 rounds, `reload_empty` 5. Each round takes 0.42 s (TopLoad.per_round), so other counts are a one-line change.\n\nAnimation key times (seconds).\nfire 1.3 (templates.fire_bolt): shot 0, recoil peak 0.04, settled 0.22; hand on the knob 0.42, handle up 0.54, bolt back 0.70 (held to 0.74), bolt forward 0.88, handle down 1.00, hand back on the wrist 1.24.\nreload 2.5: bolt_grab 0.2, bolt_up 0.32, bolt_back 0.48, round1_in 0.88, round2_in 1.3, round3_in 1.72, bolt_regrab 1.9, bolt_forward 2.04, bolt_down 2.16, hand_home 2.4, end 2.5.\nreload_empty 3.34: bolt_grab 0.2, bolt_up 0.32, bolt_back 0.48, round1_in 0.88, round2_in 1.3, round3_in 1.72, round4_in 2.14, round5_in 2.56, bolt_regrab 2.74, bolt_forward 2.88, bolt_down 3, hand_home 3.24, end 3.34.\n(bolt_grab = hand on the knob, bolt_up = handle lifted, bolt_back = bolt fully open, roundN_in = cartridge N pressed home, bolt_regrab = hand on the knob again, bolt_forward = bolt closed, bolt_down = handle locked, hand_home = hand back on the wrist.)\n\nUncertainties: 'step' easing on the `round` bone (it jumps into the hand while out of view) is the same unconfirmed-in-game caveat as the shotgun shells. The fist may clip the scope's windage turret slightly while loading. The scope is the shared sniper_scope (the mod has no separate Leupold 10x model)."
+ },
+ {
+  "id": "spas12",
+  "stats": "Franchi SPAS-12 | shotgun | 12 ga | pump / semi-auto (mode switched in Java) | tube 8 | 4.4 kg | 1041 mm stock extended; modelled FOLDED: 930 mm (27.5 units: grip heel z 4, muzzle z -22.5) | 21.5 in barrel | fire clip 0.9 s (pump stroke) | reload 0.7 s per shell, empty 1.7 s | 63 cubes",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   0.75
+  ],
+  "eye_z": 7,
+  "arm_style": "shotgun_pump",
+  "slots": [],
+  "attachments_included": [],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3,
+   "fire": 0.9,
+   "reload": 0.7,
+   "reload_empty": 1.7
+  },
+  "preview": "tools\\modelgen\\previews\\spas12.preview.png",
+  "notes": "File: tools\\modelgen\\guns\\spas12.py (uses shotguns.py and the templates unchanged). Built and viewed: the still preview and the 32 px sprite. Not launched in game.\n\nLook: all black; folding steel stock folded over the top (hinge block behind the receiver, two slotted struts along the receiver's top edges, open butt frame standing over the heat shield, steel arm hook swung back along the top right with its tip turned down), ribbed perforated heat shield wrapped round the barrel from the receiver to in front of the pump, fat ribbed pump fore-end, magazine tube to just short of the muzzle with a barrel clamp, pistol grip, oversized trigger guard, aperture rear sight and blade front. No rails, so no mount bones and no attachments.\n\nBones: receiver, trigger, bolt, barrel, pump, grip, stock, rear_sight, front_sight, shell (pivot = loading port (0, 3.5, -3.75)), shell_chamber, right_arm, left_arm. Locators: muzzle_flash (0, 5.5, -22.75), shell_eject (1.1, 5.5, -3.25), sight_line (0, 7.5, 0.75). The sight line runs between the stock struts and through the open butt frame. eye_z 7 is a suggestion (with the stock folded there is no butt to measure from; the grip heel is at z 4).\n\nAnimation key times (seconds).\nfire 0.9 (templates.fire_pump; the only fire clip, for both modes): shot 0, recoil peak 0.04, pump starts back 0.26, fully back 0.44 (held to 0.50), forward / closed 0.64, settled 0.82.\nreload 0.7 (one shell, looped per shell; templates.reload_shell base 0.8 scaled): left hand off the pump and out of view 0.21, under the loading port 0.44, shell thumbed into the tube 0.525, hand back on the pump 0.7.\nreload_empty 1.7: pump racked back 0.08-0.24, hand fetches a shell, shell dropped into the ejection port 1.0, hand back on the pump 1.30, pump forward 1.36-1.48 (chambers), gun level 1.68.\n\nUncertainties: there is no separate bolt-only fire clip for semi-auto mode (Java can play `fire` as is, or skip it). 'step' easing on the shell bones is unconfirmed in game (template caveat)."
+ },
+ {
+  "id": "ak47",
+  "stats": "AKM / AK-47 | assault rifle | 7.62x39 | 600 rpm | semi/auto | 30 rd curved steel magazine | 715 m/s | 3.3 kg | 880 mm = 26.3 units (z -15.3..11.0) | 415 mm (16.3 in) barrel | reload 2.4 s / empty 2.9 s | 67 gun cubes (137 with arms + all attachments), 36 bones, 64x64 texture",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   -4.65
+  ],
+  "eye_z": 9.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "micro_red_dot",
+   "acog",
+   "suppressor_762",
+   "compensator_762"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.1,
+   "reload": 2.4,
+   "reload_empty": 2.9
+  },
+  "preview": "tools\\modelgen\\previews\\ak47.preview.png",
+  "notes": "tools/modelgen/guns/ak47.py; RIFLE view; AKM, 26.3 units long (muzzle z -15.3, butt plate z 11.0), bore y 5.5. Dark stamped receiver (z -4.5..3.5, y 4.0..6.25) with the ribbed dust cover (top y 6.75), long safety lever and ejection port on the right; light brown wood stock (bone stock, steel butt plate), pistol grip, lower handguard and gas-tube cover (bone handguard); gas tube and angled gas block on the barrel, cleaning rod under it; front post between two ears (bone front_sight, z -13.9); tangent rear sight on its block in front of the dust cover (bone rear_sight, notch at z -4.65); AKM slant brake in muzzle_default (muzzle_flash z -15.3); curved 30-round magazine (bone magazine, pivot = its FRONT LUG (0, 4.0, -3.9)). Slots OPTIC + MUZZLE: muzzle_mount (0, 5.5, -14.6); optic_mount (0, 7.5, -0.75) on an AK side mount. The receiver carries the factory side rail (always visible: dovetail strip on the LEFT, x -1.2..-1.0, y 4.85..5.35, z -1.75..2.25, over the trigger group). The side mount is only drawn with an optic: it is built in ak47.py as bone side_mount_<optic> under each att_<optic> (four identical copies, never shown together; GunRenderer hides an att_* bone with its children, no Java rule needed): clamp on the side rail (x -1.6..-1.2, y 4.75..5.6, z -1.25..1.75) with a throw lever, an upright arm up the left side, a deck bridging the dust cover 0.05 clear of its crown (y 6.95..7.2, z -2.5..1.5) and a short picatinny rail (x -0.6..0.6, y 7.2..7.5, z -3.25..1.75). Attachments included: red_dot, holographic, micro_red_dot, acog, suppressor_762, compensator_762 (flash_compensator_762). Optic sight locators: sight_red_dot (0, 8.75, 0.75), sight_holographic (0, 8.75, -0.25), sight_micro_red_dot (0, 8.5, 0.25), sight_acog (0, 8.75, 1.3). The tangent rear sight stays in place (notch z -4.65) and hides under any optic (bone rear_sight, as on every gun); the front sight stays (it is far forward on the barrel, below the optic line). Iron sight line y 7.5 at the rear notch z -4.65, which is far forward on an AK (ironSights(7.5f, 9.5f); eye_z 9.5 = over the stock comb 1.5 units ahead of the butt plate, an estimate, not tuned in game; the rear notch is then 14 units from the eye and small, as on the real rifle). Hands: right (0, 2, 2), left (0, 4, -7.25) under the lower handguard. shell_eject (1.1, 6.0, -2.5). Bone charging_handle IS the bolt carrier (pivot (0, 6.0, -3.4), knob on the right at x 1.45; bone bolt, the carrier seen in the port, is its child): it reciprocates in fire (2.2 units) and is what reload_empty racks (2.75 units). Animations from templates.py without template changes; the magazine rock (24 deg round the front lug, out and in) is re-keyed inside ak47.py. fire 0.1 s (600 rpm = 0.1 s shot interval). reload (2.4 s), key times in seconds: hand on the magazine 0.327, magazine rocked off the lug / out 0.545, fresh magazine hooked on the lug 1.418, magazine seated 1.582, slap on the magazine base 1.745, hand back on the handguard 2.182. reload_empty (2.9 s; no bolt hold-open on an AK, the bolt is closed during the swap): magazine out 0.483, fresh magazine hooked 1.257, magazine seated 1.402, slap on the base 1.547, right hand on the charging handle 1.914, charging handle back t = 2.127, released 2.194, charging handle home (bolt closes) t = 2.359, right hand back on the grip 2.629. Extra previews: ak47.bare / .noarms / .suppressed / .red_dot / .holographic / .micro_red_dot / .acog (acog + compensator) .preview.png and ak47.anim.*.preview.png. Not launched in game."
+ },
+ {
+  "id": "aug",
+  "stats": "Steyr AUG A1 | bullpup assault rifle | 5.56 | 750 rpm | semi/auto | 30 rd translucent magazine | 970 m/s | 3.6 kg | 790 mm = 23.6 units (z -12.1..11.5) | 508 mm (20 in) barrel | integral 1.5x optic | reload 2.6 s / empty 3.1 s | 63 gun cubes (79 with arms + all attachments), 21 bones, 64x32 texture",
+  "sight_y": 8.25,
+  "sight_line": [
+   0,
+   8.25,
+   4.0
+  ],
+  "eye_z": 7.0,
+  "arm_style": "rifle",
+  "slots": [
+   "MUZZLE"
+  ],
+  "attachments_included": [
+   "suppressor_556",
+   "compensator_556"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.08,
+   "reload": 2.6,
+   "reload_empty": 3.1
+  },
+  "preview": "tools\\modelgen\\previews\\aug.preview.png",
+  "notes": "tools/modelgen/guns/aug.py; RIFLE view; Steyr AUG A1 bullpup, 23.6 units long (muzzle z -12.1, butt pad z 11.5), bore y 5.5. One-piece olive green polymer stock with the pistol grip and full-hand trigger guard (all in bone receiver / grip), dark grey receiver in front of it (z -4.75..2.5), barrel with the gas cylinder on the right and the vertical foregrip folded down (bone foregrip, child of barrel, z -5.5), closed birdcage flash hider in muzzle_default (muzzle_flash z -12.1), smoky dark grey 'translucent' magazine with the rounds showing through BEHIND the grip (bone magazine, pivot (0, 3.5, 5.5)), ejection port and bone bolt on the right of the butt (shell_eject (1.1, 5.625, 8.125)). INTEGRAL OPTIC: bone scope (child of receiver, always visible, not an attachment): a hollow square sighting tube 1.5 across with a 1 x 1 window, z -3.75 (objective) .. 4.0 (eyepiece), outside y 7.5..9.0, on two webs over the receiver; optical axis y 8.25. sight_line (0, 8.25, 4.0) = the optical axis on the REAR face of the eyepiece, i.e. where the eye looks through it; sight_y 8.25. eye_z 7.0 = 3 units of eye relief behind the eyepiece (same relief as the M110's scope), an estimate, not tuned in game; the tube is open, so at 1.5x the game can either look through the 1 x 1 window or draw its scope picture. Slots MUZZLE only: muzzle_mount (0, 5.5, -11.1); attachments included: suppressor_556, compensator_556 (flash_compensator_556). No optic_mount and no rear_sight bone. Hands: right (0, 2, 2), left (0, 3.0, -5.5) round the foregrip. Bone charging_handle on the LEFT of the receiver under the optic (pivot (0, 6.3, -3.5), knob at x -1.35, slides 2.75 units back; non-reciprocating, it does not move when firing). Animations from templates.py without template changes (the bullpup hand detours round the grip are added inside aug.py like the FAMAS). fire 0.08 s (750 rpm = 0.08 s shot interval; bolt cycles 1.5 units). reload (2.6 s), key times in seconds: hand on the magazine 0.355, magazine out 0.591, fresh magazine seated 1.714, slap on the magazine base 1.891, hand back on the foregrip 2.364. reload_empty (3.1 s, the left hand does everything): magazine out 0.517, fresh magazine seated 1.498, slap on the magazine base 1.653, hand on the cocking handle 2.005, charging handle back t = 2.232 (bone bolt follows), released 2.304, charging handle home (bolt closes) t = 2.480, hand back on the foregrip 2.769. Extra previews: aug.bare / .noarms / .suppressed .preview.png and aug.anim.*.preview.png. Not launched in game."
+ },
+ {
+  "id": "m14",
+  "stats": "M14 | battle rifle | 7.62x51 | 750 rpm | semi/auto | 20 rd box magazine | 850 m/s | 4.5 kg | 1118 mm = 33.4 units (z -22.9..10.5) | 559 mm (22 in) barrel | reload 2.4 s / empty 2.9 s | 60 gun cubes (121 with arms + all attachments), 34 bones, 64x64 texture",
+  "sight_y": 7.25,
+  "sight_line": [
+   0,
+   7.25,
+   2.25
+  ],
+  "eye_z": 9.25,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC",
+   "MUZZLE",
+   "UNDERBARREL"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "acog",
+   "sniper_scope",
+   "suppressor_762",
+   "compensator_762",
+   "bipod"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.08,
+   "reload": 2.4,
+   "reload_empty": 2.9
+  },
+  "preview": "tools\\modelgen\\previews\\m14.preview.png",
+  "notes": "tools/modelgen/guns/m14.py; RIFLE view; M14, 33.4 units long (muzzle z -22.9, butt plate z 10.5), bore y 5.5. Full-length walnut stock (bone stock: fore-end from z -13.8, deep middle, semi-pistol-grip wrist, butt, steel butt plate with the folded shoulder rest), brown handguard over the barrel (bone handguard), low parkerized receiver (z -4.5..3.0, top y 6.4) with the open-top action, gas cylinder under the barrel (z -18.3..-14.3) and front band, winged front blade (bone front_sight, z -20.2), rear aperture between two ears with its knobs (bone rear_sight, z 2.25, hides under an optic), long slotted flash suppressor in muzzle_default (muzzle_flash z -22.9), straight 20-round magazine (bone magazine, pivot = its FRONT LUG (0, 3.5, -4.0)). Slots OPTIC + MUZZLE + UNDERBARREL: a low scope-mount rail over the receiver (always visible, z -4.0..0.75, top y 6.9, side bracket on the left) carries optic_mount (0, 6.9, -1.75); muzzle_mount (0, 5.5, -20.5); underbarrel_mount (0, 4.15, -14.8): 0.05 under the gas cylinder, the bipod's 1.5-long base (z -15.8..-14.3) against the front face of the front band, like the issue M2 bipod clamped to the gas cylinder; the folded Harris legs run forward under the barrel and the feet end at the muzzle (z -22.8, inside the flash suppressor's length, clear of the bayonet lug). A yoke round the gas cylinder (bone bipod_clamp, child of att_bipod, so only drawn with the bipod: x -0.55..0.55, y 4.15..5.0, z -15.8..-15.3, behind the spindle valve) with its clamp screw on the left ties the base to the cylinder. Attachments included: red_dot, holographic, acog, sniper_scope, suppressor_762, compensator_762 (flash_compensator_762), bipod. The front sight stays on with a muzzle device (it sits on the barrel behind the mount). Optic axes: red_dot / holographic / acog y 8.15, sniper_scope y 7.9 with its eyepiece at z 4.3. Iron sight line y 7.25 at the rear aperture z 2.25 (ironSights(7.25f, 9.25f); eye_z 9.25 = 7 units behind the rear sight like the MP5 / FAMAS, an estimate, not tuned in game; the rail top at 6.9 stays under the aperture's 0.5 hole). No pistol grip: right hand (0, 2.6, 2.5) round the wrist of the stock, left (0, 3.65, -8.5) under the fore-end. shell_eject (1.0, 6.1, -2.0). Bone op_rod = operating rod with its handle on the right (pivot (0, 5.9, -2.6), knob at x 1.45; bone bolt is its child): it reciprocates in fire (2.4 units). Animations from templates.py without template changes; the rock-in magazine (18 deg round the front lug) and the locked-open action are re-keyed inside m14.py. fire 0.08 s (750 rpm = 0.08 s shot interval). reload (2.4 s), key times in seconds: hand on the magazine 0.327, magazine rocked off / out 0.545, fresh magazine hooked on the front lug 1.418, magazine rocked in and seated 1.582, slap on the magazine base 1.745, hand back on the fore-end 2.182. reload_empty (2.9 s): the op rod snaps to its bolt-stop position (2.6 units back) in the first 0.048 s and stays locked open during the swap; magazine out 0.483, fresh magazine hooked 1.257, magazine seated 1.402, slap on the base 1.547, right hand on the op-rod handle 1.914, op-rod handle pulled fully back (3.0 units) t = 2.127, released 2.194, op rod home (bolt closes) t = 2.359, right hand back on the wrist 2.629. Extra previews: m14.bare / .noarms / .scoped / .red_dot / .bipod / .bipod_scoped (with arms) .preview.png and m14.anim.*.preview.png. Not launched in game."
+ },
+ {
+  "id": "aa12",
+  "stats": "MPS AA-12 (Atchisson Assault Shotgun) | shotgun | 12ga_00 | auto (open bolt) | 300 rpm | drum 20 | 5.2 kg | 991 mm = 29.5 units (z -18.0..11.5) | 18 in barrel (13.6 units) | reload 3.0 s, empty 3.8 s | 60 gun cubes (98 with arms + all optics), 27 bones, 64x64 texture",
+  "sight_y": 8.75,
+  "sight_line": [
+   0,
+   8.75,
+   2.5
+  ],
+  "eye_z": 10.0,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "micro_red_dot",
+   "acog"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.16,
+   "reload": 3.0,
+   "reload_empty": 3.8
+  },
+  "preview": "tools\\modelgen\\previews\\aa12.preview.png",
+  "notes": "tools/modelgen/guns/aa12.py; RIFLE view. Long slab-sided black body (bone receiver, shotguns.PortedReceiver z -7.5..4.0, y 3.5..6.5, real ejection port on the right z -5..-2) with a carry-handle-like sight bridge on top: a Picatinny deck (x -0.6..0.6, y 7.25..7.75, z -13.25..3.25) on three pillars, also part of bone receiver; ventilated fore-end (bone handguard, z -13.5..-7.5) with the short vertical front grip moulded under it; 18 in barrel with a muzzle nut (bone barrel, muzzle z -18.0); fixed straight-line stock with a thick rubber recoil pad (bone stock, butt z 11.5); pistol grip (bone grip); 20-round drum (bone magazine / magazine_default, pivot (0, 3.5, -4.75)): an octagonal drum 5.5 across and 3.0 deep on the axis (0, 0.25, -4.75) with hubs front and rear and a feed tower. Slot OPTIC only: optic_mount (0, 7.75, -2.5) on the deck. Optic sight locators: sight_red_dot (0, 9.0, -1.0), sight_holographic (0, 9.0, -2.0), sight_micro_red_dot (0, 8.75, -1.5), sight_acog (0, 9.0, -0.45). Iron sights on the deck: fold-away aperture in bone rear_sight (aperture plane z 2.5) and a winged post in bone front_sight (z -13.25..-12.25); sight line y 8.75 (ironSights(8.75f, 10.0f); eye_z 10.0 = 1.5 ahead of the butt, an estimate, not tuned in game). Locators: muzzle_flash (0, 5.5, -18.0), shell_eject (1.1, 5.5, -3.5), sight_line (0, 8.75, 2.5). Hands: right (0, 1.75, 2), left (0, 3.0, -10.5) round the front grip. Open bolt: bone bolt rests 2.25 back (only its front edge shows at the rear of the port); fire = templates.fire_auto with bolt_travel -2.25 (the bolt runs forward over the port and back), recoil 0.45, rise 1.0, 0.16 s (shot interval 0.2 s). Bone bolt_handle is the non-reciprocating charging handle on top of the body under the deck (pivot (0, 6.8, -5.5), knob at its left end (-0.6, 6.8, -5.5)). reload = templates.reload_mag scaled to 3.0 s (x1.364): drum out 0.682, drum seated 1.977, slap on the drum 2.182, hand back on the front grip 2.727. reload_empty = reload_mag(empty=True, empty_action='cycle', lift_deg=0, hand='left', pull 3.0) scaled to 3.8 s (x1.267): drum out 0.633, drum seated 1.837, slap 2.027, left hand on the charging handle 2.457, handle back 2.736, released 2.825, handle home 3.040, hand back on the front grip 3.395. Extra previews: aa12.bare / .noarms / .red_dot / .holographic / .micro_red_dot / .acog .preview.png and aa12.anim.*.preview.png. Uncertain: seen side-on the drum is a 3 x 5.5 rectangle (it is only round from the front / three-quarter views, as on the real gun); the charging handle is pulled with the LEFT hand (hand='right' is a one-word change in aa12.py and then starts at the template's 1.72 instead of 1.68); left-hand placement judged from previews. Not launched in game."
+ },
+ {
+  "id": "saiga12",
+  "stats": "Kalashnikov Saiga-12 | shotgun | 12ga_00 | semi | box 8 | 3.6 kg | 1020 mm = 30.5 units (z -19.5..11.0) | 19 in barrel (14.4 units) | reload 2.4 s, empty 3.0 s | 59 gun cubes (117 with arms + all optics and their side mounts), 31 bones, 64x64 texture",
+  "sight_y": 7.5,
+  "sight_line": [
+   0,
+   7.5,
+   -4.65
+  ],
+  "eye_z": 9.5,
+  "arm_style": "rifle",
+  "slots": [
+   "OPTIC"
+  ],
+  "attachments_included": [
+   "red_dot",
+   "holographic",
+   "micro_red_dot",
+   "acog"
+  ],
+  "default_attachments": {},
+  "animations": {
+   "idle": 3.0,
+   "fire": 0.22,
+   "reload": 2.4,
+   "reload_empty": 3.0
+  },
+  "preview": "tools\\modelgen\\previews\\saiga12.preview.png",
+  "notes": "tools/modelgen/guns/saiga12.py; RIFLE view. All-black AK-pattern 12 gauge. The receiver uses the AK-47's datum lines on purpose (z -4.5..3.5, y 4.0..6.25, dust cover top 6.75): saiga12.py loads guns/ak47.py and reuses its _side_mount and _rock_magazine, so the side rail / side mount and the magazine rock have one source. Bone receiver: stamped receiver, ribbed dust cover, long ejection port (z -4.2..-1.2) and big safety lever on the right, factory side rail on the LEFT (x -1.2..-1.0, y 4.85..5.35, z -1.75..2.25), rear sight block in front of the dust cover. Bone barrel: 19 in barrel to the thread protector (muzzle z -19.5), short bare gas tube and gas block (z -11.75), AK front sight block (collar + tower) near the muzzle. Bone handguard: one-piece vented polymer handguard under the barrel (z -10.75..-4.5). Bone stock: fixed polymer AK stock with a rubber butt pad (butt z 11.0). Bone grip: polymer pistol grip. Bone magazine / magazine_default: straight, fat 8-round box, 1.5 wide x 2.5 deep x 6.0 long, canted 10 degrees forward, pivot = its FRONT LUG (0, 4.0, -4.2). Irons: bone front_sight = post between two ears on the block (z -18.1), bone rear_sight = tangent leaf with the notch at z -4.65 (on the block in front of the dust cover, where the real Saiga-12 and the mod's AK-47 have it, not on the rear trunnion); sight line y 7.5 (ironSights(7.5f, 9.5f); eye_z 9.5 as on the AK-47, an estimate, not tuned in game). Slot OPTIC only: optic_mount (0, 7.5, -0.75) on the AK side mount, built as bone side_mount_<optic> under each att_<optic> exactly as on the AK-47 (only drawn while that optic is fitted). Optic sight locators: sight_red_dot (0, 8.75, 0.75), sight_holographic (0, 8.75, -0.25), sight_micro_red_dot (0, 8.5, 0.25), sight_acog (0, 8.75, 1.3). No muzzle slot (the thread protector is part of bone barrel). Locators: muzzle_flash (0, 5.5, -19.5), shell_eject (1.1, 6.0, -2.7), sight_line (0, 7.5, -4.65). Hands: right (0, 2, 2), left (0, 4.0, -8.0) under the handguard. Bone charging_handle IS the bolt carrier (pivot (0, 6.0, -3.6), knob on the right at x 1.45; bone bolt, the carrier seen in the port, is its child): it reciprocates in fire (templates.fire_auto, 2.4 units, recoil 1.5, rise 4.0, 0.22 s) and is what reload_empty racks (3.0 units). reload = templates.reload_mag at 2.4 s (x1.091) with the AK rock (24 degrees round the front lug): magazine out 0.545, seated 1.582, slap on the base 1.745, hand back on the handguard 2.182. reload_empty = reload_mag(empty=True, empty_action='cycle', lift_deg=0, hand='right') at its base 3.0 s (x1.0): magazine out 0.5, seated 1.45, slap 1.6, right hand on the charging handle 1.98, handle back 2.2, released 2.27, handle home 2.44, right hand back on the grip 2.72. Extra previews: saiga12.bare / .noarms / .red_dot / .holographic / .micro_red_dot / .acog .preview.png and saiga12.anim.*.preview.png. Uncertain: rpm / shot interval was not given (fire is 0.22 s, keep the interval above it); left-hand placement judged from previews. Not launched in game."
+ }
+]

@@ -1,0 +1,1132 @@
+{
+  "m4_fire": {
+    "sounds": [
+      {
+        "name": "modernarmory:m4_fire_1",
+        "volume": 0.92
+      },
+      {
+        "name": "modernarmory:m4_fire_2",
+        "volume": 0.92
+      },
+      {
+        "name": "modernarmory:m4_fire_3",
+        "volume": 0.92
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "bullet_crack": {
+    "sounds": [
+      {
+        "name": "modernarmory:bullet_crack_1",
+        "volume": 0.6
+      },
+      {
+        "name": "modernarmory:bullet_crack_2",
+        "volume": 0.6
+      },
+      {
+        "name": "modernarmory:bullet_crack_3",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.bullet_crack"
+  },
+  "ricochet": {
+    "sounds": [
+      {
+        "name": "modernarmory:ricochet_1",
+        "volume": 0.6
+      },
+      {
+        "name": "modernarmory:ricochet_2",
+        "volume": 0.6
+      },
+      {
+        "name": "modernarmory:ricochet_3",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.ricochet"
+  },
+  "dry_fire": {
+    "sounds": [
+      "modernarmory:dry_fire"
+    ]
+  },
+  "fire_select": {
+    "sounds": [
+      "modernarmory:fire_select"
+    ]
+  },
+  "m4_reload": {
+    "sounds": [
+      "modernarmory:m4_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m2010_fire": {
+    "sounds": [
+      {
+        "name": "modernarmory:m2010_fire_1",
+        "volume": 0.59
+      },
+      {
+        "name": "modernarmory:m2010_fire_2",
+        "volume": 0.59
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "m2010_reload": {
+    "sounds": [
+      "modernarmory:m2010_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m4_reload_empty": {
+    "sounds": [
+      "modernarmory:m4_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m2010_reload_empty": {
+    "sounds": [
+      "modernarmory:m2010_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m2010_fire_loud": {
+    "sounds": [
+      {
+        "name": "modernarmory:m2010_fire_loud_1",
+        "volume": 0.81
+      },
+      {
+        "name": "modernarmory:m2010_fire_loud_2",
+        "volume": 0.81
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "m4_fire_suppressed": {
+    "sounds": [
+      {
+        "name": "modernarmory:m4_fire_suppressed_1",
+        "volume": 0.59
+      },
+      {
+        "name": "modernarmory:m4_fire_suppressed_2",
+        "volume": 0.59
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "fire_12ga": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_12ga_1",
+        "volume": 1.0
+      },
+      {
+        "name": "modernarmory:fire_12ga_2",
+        "volume": 1.0
+      },
+      {
+        "name": "modernarmory:fire_12ga_3",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "m590_reload": {
+    "sounds": [
+      "modernarmory:m590_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m590_reload_empty": {
+    "sounds": [
+      "modernarmory:m590_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m590_cycle": {
+    "sounds": [
+      "modernarmory:m590_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "fire_9mm_pistol": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_9mm_pistol_1",
+        "volume": 0.63
+      },
+      {
+        "name": "modernarmory:fire_9mm_pistol_2",
+        "volume": 0.63
+      },
+      {
+        "name": "modernarmory:fire_9mm_pistol_3",
+        "volume": 0.63
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_9mm_smg": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_9mm_smg_1",
+        "volume": 0.71
+      },
+      {
+        "name": "modernarmory:fire_9mm_smg_2",
+        "volume": 0.71
+      },
+      {
+        "name": "modernarmory:fire_9mm_smg_3",
+        "volume": 0.71
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_9mm_suppressed": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_9mm_suppressed_1",
+        "volume": 0.31
+      },
+      {
+        "name": "modernarmory:fire_9mm_suppressed_2",
+        "volume": 0.31
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "fire_68": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_68_1",
+        "volume": 0.81
+      },
+      {
+        "name": "modernarmory:fire_68_2",
+        "volume": 0.81
+      },
+      {
+        "name": "modernarmory:fire_68_3",
+        "volume": 0.81
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_68_suppressed": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_68_suppressed_1",
+        "volume": 0.53
+      },
+      {
+        "name": "modernarmory:fire_68_suppressed_2",
+        "volume": 0.53
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "fire_762": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_762_1",
+        "volume": 1.0
+      },
+      {
+        "name": "modernarmory:fire_762_2",
+        "volume": 1.0
+      },
+      {
+        "name": "modernarmory:fire_762_3",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_762_suppressed": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_762_suppressed_1",
+        "volume": 0.7
+      },
+      {
+        "name": "modernarmory:fire_762_suppressed_2",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "fire_300wm": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_300wm_1",
+        "volume": 0.78
+      },
+      {
+        "name": "modernarmory:fire_300wm_2",
+        "volume": 0.78
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_300wm_suppressed": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_300wm_suppressed_1",
+        "volume": 0.61
+      },
+      {
+        "name": "modernarmory:fire_300wm_suppressed_2",
+        "volume": 0.61
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "fire_338": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_338_1",
+        "volume": 0.82
+      },
+      {
+        "name": "modernarmory:fire_338_2",
+        "volume": 0.82
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_338_suppressed": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_338_suppressed_1",
+        "volume": 0.63
+      },
+      {
+        "name": "modernarmory:fire_338_suppressed_2",
+        "volume": 0.63
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m2010_fire"
+  },
+  "fire_50bmg": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_50bmg_1",
+        "volume": 0.88
+      },
+      {
+        "name": "modernarmory:fire_50bmg_2",
+        "volume": 0.88
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "m17_reload": {
+    "sounds": [
+      "modernarmory:m17_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m17_reload_empty": {
+    "sounds": [
+      "modernarmory:m17_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "glock17_reload": {
+    "sounds": [
+      "modernarmory:glock17_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "glock17_reload_empty": {
+    "sounds": [
+      "modernarmory:glock17_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "glock19_reload": {
+    "sounds": [
+      "modernarmory:glock19_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "glock19_reload_empty": {
+    "sounds": [
+      "modernarmory:glock19_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "apc9_reload": {
+    "sounds": [
+      "modernarmory:apc9_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "apc9_reload_empty": {
+    "sounds": [
+      "modernarmory:apc9_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mpx_reload": {
+    "sounds": [
+      "modernarmory:mpx_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mpx_reload_empty": {
+    "sounds": [
+      "modernarmory:mpx_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m16a4_reload": {
+    "sounds": [
+      "modernarmory:m16a4_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m16a4_reload_empty": {
+    "sounds": [
+      "modernarmory:m16a4_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "hk416_reload": {
+    "sounds": [
+      "modernarmory:hk416_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "hk416_reload_empty": {
+    "sounds": [
+      "modernarmory:hk416_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mcx_reload": {
+    "sounds": [
+      "modernarmory:mcx_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mcx_reload_empty": {
+    "sounds": [
+      "modernarmory:mcx_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m7_reload": {
+    "sounds": [
+      "modernarmory:m7_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m7_reload_empty": {
+    "sounds": [
+      "modernarmory:m7_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "xm8_reload": {
+    "sounds": [
+      "modernarmory:xm8_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "xm8_reload_empty": {
+    "sounds": [
+      "modernarmory:xm8_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk17_reload": {
+    "sounds": [
+      "modernarmory:mk17_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk17_reload_empty": {
+    "sounds": [
+      "modernarmory:mk17_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk20_reload": {
+    "sounds": [
+      "modernarmory:mk20_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk20_reload_empty": {
+    "sounds": [
+      "modernarmory:mk20_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m110_reload": {
+    "sounds": [
+      "modernarmory:m110_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m110_reload_empty": {
+    "sounds": [
+      "modernarmory:m110_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m110a1_reload": {
+    "sounds": [
+      "modernarmory:m110a1_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m110a1_reload_empty": {
+    "sounds": [
+      "modernarmory:m110a1_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk13_reload": {
+    "sounds": [
+      "modernarmory:mk13_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk13_reload_empty": {
+    "sounds": [
+      "modernarmory:mk13_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk13_cycle": {
+    "sounds": [
+      "modernarmory:mk13_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "mk21_reload": {
+    "sounds": [
+      "modernarmory:mk21_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk21_reload_empty": {
+    "sounds": [
+      "modernarmory:mk21_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk21_cycle": {
+    "sounds": [
+      "modernarmory:mk21_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "mk22_reload": {
+    "sounds": [
+      "modernarmory:mk22_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk22_reload_empty": {
+    "sounds": [
+      "modernarmory:mk22_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mk22_cycle": {
+    "sounds": [
+      "modernarmory:mk22_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "benelli_m4_reload": {
+    "sounds": [
+      "modernarmory:benelli_m4_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "benelli_m4_reload_empty": {
+    "sounds": [
+      "modernarmory:benelli_m4_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m26mass_reload": {
+    "sounds": [
+      "modernarmory:m26mass_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m26mass_reload_empty": {
+    "sounds": [
+      "modernarmory:m26mass_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m26mass_cycle": {
+    "sounds": [
+      "modernarmory:m26mass_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "m249_reload": {
+    "sounds": [
+      "modernarmory:m249_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m249_reload_empty": {
+    "sounds": [
+      "modernarmory:m249_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m250_reload": {
+    "sounds": [
+      "modernarmory:m250_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m250_reload_empty": {
+    "sounds": [
+      "modernarmory:m250_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m240_reload": {
+    "sounds": [
+      "modernarmory:m240_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m240_reload_empty": {
+    "sounds": [
+      "modernarmory:m240_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m2a1_reload": {
+    "sounds": [
+      "modernarmory:m2a1_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m2a1_reload_empty": {
+    "sounds": [
+      "modernarmory:m2a1_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m107_reload": {
+    "sounds": [
+      "modernarmory:m107_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m107_reload_empty": {
+    "sounds": [
+      "modernarmory:m107_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "fire_50ae": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_50ae_1",
+        "volume": 0.78
+      },
+      {
+        "name": "modernarmory:fire_50ae_2",
+        "volume": 0.78
+      },
+      {
+        "name": "modernarmory:fire_50ae_3",
+        "volume": 0.78
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_44mag": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_44mag_1",
+        "volume": 0.48
+      },
+      {
+        "name": "modernarmory:fire_44mag_2",
+        "volume": 0.48
+      },
+      {
+        "name": "modernarmory:fire_44mag_3",
+        "volume": 0.48
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "scorpion_evo3_reload": {
+    "sounds": [
+      "modernarmory:scorpion_evo3_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "scorpion_evo3_reload_empty": {
+    "sounds": [
+      "modernarmory:scorpion_evo3_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "deagle_reload": {
+    "sounds": [
+      "modernarmory:deagle_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "deagle_reload_empty": {
+    "sounds": [
+      "modernarmory:deagle_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "anaconda_reload": {
+    "sounds": [
+      "modernarmory:anaconda_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "anaconda_reload_empty": {
+    "sounds": [
+      "modernarmory:anaconda_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "grenade_pin": {
+    "sounds": [
+      {
+        "name": "modernarmory:grenade_pin",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.grenade_pin"
+  },
+  "grenade_spoon": {
+    "sounds": [
+      {
+        "name": "modernarmory:grenade_spoon",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.grenade_spoon"
+  },
+  "grenade_bounce": {
+    "sounds": [
+      {
+        "name": "modernarmory:grenade_bounce",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.grenade_bounce"
+  },
+  "flashbang": {
+    "sounds": [
+      {
+        "name": "modernarmory:flashbang",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.flashbang"
+  },
+  "smoke_hiss": {
+    "sounds": [
+      {
+        "name": "modernarmory:smoke_hiss",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.smoke_hiss"
+  },
+  "thermite_burn": {
+    "sounds": [
+      {
+        "name": "modernarmory:thermite_burn",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.thermite_burn"
+  },
+  "flash_ring": {
+    "sounds": [
+      {
+        "name": "modernarmory:flash_ring",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.flash_ring"
+  },
+  "drone_rotor_scout": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_rotor_scout",
+        "volume": 0.7,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_rotor"
+  },
+  "drone_rotor_fpv": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_rotor_fpv",
+        "volume": 0.75,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_rotor"
+  },
+  "drone_beep": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_beep",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_beep"
+  },
+  "drone_spot": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_spot",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_spot"
+  },
+  "drone_arm": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_arm",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_arm"
+  },
+  "drone_warning": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_warning",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_warning"
+  },
+  "drone_crash": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_crash",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_crash"
+  },
+  "drone_detonation": {
+    "sounds": [
+      {
+        "name": "modernarmory:drone_detonation",
+        "volume": 1.0
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.drone_detonation"
+  },
+  "hit_body": {
+    "subtitle": "subtitles.modernarmory.hit_body",
+    "sounds": [
+      {
+        "name": "modernarmory:hit_body",
+        "volume": 0.6
+      }
+    ]
+  },
+  "hit_head": {
+    "subtitle": "subtitles.modernarmory.hit_head",
+    "sounds": [
+      {
+        "name": "modernarmory:hit_head",
+        "volume": 0.6
+      }
+    ]
+  },
+  "laser_hum": {
+    "sounds": [
+      {
+        "name": "modernarmory:laser_hum",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.laser_hum"
+  },
+  "laser_burn": {
+    "sounds": [
+      {
+        "name": "modernarmory:laser_burn",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.laser_burn"
+  },
+  "laser_lock": {
+    "sounds": [
+      {
+        "name": "modernarmory:laser_lock",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.laser_lock"
+  },
+  "laser_overheat": {
+    "sounds": [
+      {
+        "name": "modernarmory:laser_overheat",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.laser_overheat"
+  },
+  "mp5_reload": {
+    "sounds": [
+      "modernarmory:mp5_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "mp5_reload_empty": {
+    "sounds": [
+      "modernarmory:mp5_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "famas_reload": {
+    "sounds": [
+      "modernarmory:famas_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "famas_reload_empty": {
+    "sounds": [
+      "modernarmory:famas_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "fire_762x39": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_762x39_1",
+        "volume": 0.92
+      },
+      {
+        "name": "modernarmory:fire_762x39_2",
+        "volume": 0.92
+      },
+      {
+        "name": "modernarmory:fire_762x39_3",
+        "volume": 0.92
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "fire_45acp": {
+    "sounds": [
+      {
+        "name": "modernarmory:fire_45acp_1",
+        "volume": 0.66
+      },
+      {
+        "name": "modernarmory:fire_45acp_2",
+        "volume": 0.66
+      },
+      {
+        "name": "modernarmory:fire_45acp_3",
+        "volume": 0.66
+      }
+    ],
+    "subtitle": "subtitles.modernarmory.m4_fire"
+  },
+  "ak47_reload": {
+    "sounds": [
+      "modernarmory:ak47_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "ak47_reload_empty": {
+    "sounds": [
+      "modernarmory:ak47_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "aug_reload": {
+    "sounds": [
+      "modernarmory:aug_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "aug_reload_empty": {
+    "sounds": [
+      "modernarmory:aug_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m14_reload": {
+    "sounds": [
+      "modernarmory:m14_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m14_reload_empty": {
+    "sounds": [
+      "modernarmory:m14_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "awm_reload": {
+    "sounds": [
+      "modernarmory:awm_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "awm_reload_empty": {
+    "sounds": [
+      "modernarmory:awm_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "awm_cycle": {
+    "sounds": [
+      "modernarmory:awm_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "m24_reload": {
+    "sounds": [
+      "modernarmory:m24_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m24_reload_empty": {
+    "sounds": [
+      "modernarmory:m24_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m24_cycle": {
+    "sounds": [
+      "modernarmory:m24_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "spas12_reload": {
+    "sounds": [
+      "modernarmory:spas12_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "spas12_reload_empty": {
+    "sounds": [
+      "modernarmory:spas12_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "spas12_cycle": {
+    "sounds": [
+      "modernarmory:spas12_cycle"
+    ],
+    "subtitle": "subtitles.modernarmory.cycle"
+  },
+  "vector_reload": {
+    "sounds": [
+      "modernarmory:vector_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "vector_reload_empty": {
+    "sounds": [
+      "modernarmory:vector_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "usp_reload": {
+    "sounds": [
+      "modernarmory:usp_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "usp_reload_empty": {
+    "sounds": [
+      "modernarmory:usp_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m9_reload": {
+    "sounds": [
+      "modernarmory:m9_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "m9_reload_empty": {
+    "sounds": [
+      "modernarmory:m9_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "armor_hit_soft": {
+    "subtitle": "subtitles.modernarmory.armor_hit_soft",
+    "sounds": [
+      {
+        "name": "modernarmory:armor_hit_soft",
+        "volume": 0.8
+      }
+    ]
+  },
+  "armor_hit_plate": {
+    "subtitle": "subtitles.modernarmory.armor_hit_plate",
+    "sounds": [
+      {
+        "name": "modernarmory:armor_hit_plate",
+        "volume": 0.8
+      }
+    ]
+  },
+  "aa12_reload": {
+    "sounds": [
+      "modernarmory:aa12_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "aa12_reload_empty": {
+    "sounds": [
+      "modernarmory:aa12_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "saiga12_reload": {
+    "sounds": [
+      "modernarmory:saiga12_reload"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  },
+  "saiga12_reload_empty": {
+    "sounds": [
+      "modernarmory:saiga12_reload_empty"
+    ],
+    "subtitle": "subtitles.modernarmory.reload"
+  }
+}

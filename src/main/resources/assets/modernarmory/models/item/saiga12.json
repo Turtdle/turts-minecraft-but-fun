@@ -1,0 +1,134 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "front",
+ "base": {
+  "parent": "builtin/entity",
+  "gui_light": "front",
+  "display": {
+   "gui": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     -2.08,
+     -1.24,
+     0
+    ],
+    "scale": [
+     0.49,
+     0.49,
+     0.49
+    ]
+   },
+   "ground": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.33,
+     0.33,
+     0.33
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     0,
+     90,
+     0
+    ],
+    "translation": [
+     3.48,
+     -2.07,
+     0
+    ],
+    "scale": [
+     0.82,
+     0.82,
+     0.82
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     0,
+     -17,
+     0
+    ],
+    "translation": [
+     0,
+     -4.5,
+     3
+    ],
+    "scale": [
+     1.5,
+     0.95,
+     0.95
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     0,
+     17,
+     0
+    ],
+    "translation": [
+     0,
+     -4.5,
+     3
+    ],
+    "scale": [
+     1.5,
+     0.95,
+     0.95
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -4.48,
+     0.0,
+     4.8
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -4.48,
+     0.0,
+     4.8
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "modernarmory:item/icon/saiga12"
+  }
+ }
+}

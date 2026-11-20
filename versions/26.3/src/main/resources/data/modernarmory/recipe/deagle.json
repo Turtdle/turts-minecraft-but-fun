@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SS",
+    "TI"
+  ],
+  "key": {
+    "S": "modernarmory:steel_ingot",
+    "T": "minecraft:tripwire_hook",
+    "I": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "modernarmory:deagle",
+    "count": 1
+  }
+}

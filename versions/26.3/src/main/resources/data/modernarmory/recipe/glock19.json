@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "IN",
+    "TD"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "N": "minecraft:iron_nugget",
+    "T": "minecraft:tripwire_hook",
+    "D": "minecraft:black_dye"
+  },
+  "result": {
+    "id": "modernarmory:glock19",
+    "count": 1
+  }
+}

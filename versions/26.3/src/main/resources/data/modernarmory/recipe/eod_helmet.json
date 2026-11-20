@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "PPP",
+    "PGP"
+  ],
+  "key": {
+    "P": "modernarmory:ceramic_plate",
+    "G": "minecraft:glass_pane"
+  },
+  "result": {
+    "id": "modernarmory:eod_helmet",
+    "count": 1
+  }
+}

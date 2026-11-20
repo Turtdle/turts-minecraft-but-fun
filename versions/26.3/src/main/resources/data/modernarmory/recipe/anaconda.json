@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SS",
+    "TD"
+  ],
+  "key": {
+    "S": "modernarmory:steel_ingot",
+    "T": "minecraft:tripwire_hook",
+    "D": "minecraft:black_dye"
+  },
+  "result": {
+    "id": "modernarmory:anaconda",
+    "count": 1
+  }
+}

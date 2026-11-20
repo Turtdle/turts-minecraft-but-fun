@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:yellow_dye"
+  ],
+  "result": {
+    "id": "modernarmory:aramid_fabric",
+    "count": 2
+  }
+}

@@ -1,0 +1,6 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "modernarmory:item/muzzle_brake_50"
+ }
+}

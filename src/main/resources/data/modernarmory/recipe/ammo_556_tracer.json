@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "modernarmory:ammo_556"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ],
+  "result": {
+    "id": "modernarmory:ammo_556_tracer",
+    "count": 8
+  }
+}

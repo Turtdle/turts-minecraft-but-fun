@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " L ",
+    " S ",
+    "SRS"
+  ],
+  "key": {
+    "L": "minecraft:lightning_rod",
+    "S": "modernarmory:steel_ingot",
+    "R": "minecraft:redstone"
+  },
+  "result": {
+    "id": "modernarmory:drone_relay",
+    "count": 1
+  }
+}

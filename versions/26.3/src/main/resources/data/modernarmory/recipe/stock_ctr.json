@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:stick",
+    "minecraft:black_dye",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "id": "modernarmory:stock_ctr",
+    "count": 1
+  }
+}

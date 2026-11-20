@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:redstone_torch",
+    "minecraft:glass_pane",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "id": "modernarmory:laser",
+    "count": 1
+  }
+}

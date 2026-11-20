@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "F F",
+    "RFR",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "item": "modernarmory:aramid_fabric"
+    },
+    "R": {
+      "item": "modernarmory:rifle_plate"
+    }
+  },
+  "result": {
+    "id": "modernarmory:plate_carrier",
+    "count": 1
+  }
+}

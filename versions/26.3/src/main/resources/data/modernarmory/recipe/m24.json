@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " S ",
+    "IIB",
+    "DGT"
+  ],
+  "key": {
+    "S": "minecraft:spyglass",
+    "I": "minecraft:iron_ingot",
+    "B": "minecraft:iron_block",
+    "D": "minecraft:black_dye",
+    "G": "minecraft:green_dye",
+    "T": "minecraft:tripwire_hook"
+  },
+  "result": {
+    "id": "modernarmory:m24",
+    "count": 1
+  }
+}

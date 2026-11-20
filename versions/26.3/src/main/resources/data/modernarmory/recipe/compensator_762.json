@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:iron_ingot",
+    "minecraft:iron_ingot",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "id": "modernarmory:compensator_762",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "modernarmory:ammo_50bmg",
+    "minecraft:glowstone_dust"
+  ],
+  "result": {
+    "id": "modernarmory:ammo_50bmg_tracer",
+    "count": 8
+  }
+}

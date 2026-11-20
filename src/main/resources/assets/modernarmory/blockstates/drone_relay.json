@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "modernarmory:block/drone_relay"
+    },
+    "facing=east": {
+      "model": "modernarmory:block/drone_relay",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "modernarmory:block/drone_relay",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "modernarmory:block/drone_relay",
+      "y": 270
+    }
+  }
+}

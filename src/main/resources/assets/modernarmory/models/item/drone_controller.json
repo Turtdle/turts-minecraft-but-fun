@@ -1,0 +1,134 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "front",
+ "base": {
+  "parent": "builtin/entity",
+  "gui_light": "front",
+  "display": {
+   "gui": {
+    "rotation": [
+     20,
+     155,
+     0
+    ],
+    "translation": [
+     0,
+     -0.8,
+     0
+    ],
+    "scale": [
+     1.5,
+     1.5,
+     1.5
+    ]
+   },
+   "ground": {
+    "rotation": [
+     90,
+     0,
+     0
+    ],
+    "translation": [
+     0,
+     3,
+     0
+    ],
+    "scale": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     28,
+     180,
+     0
+    ],
+    "translation": [
+     0,
+     -1.1,
+     0
+    ],
+    "scale": [
+     1.65,
+     1.65,
+     1.65
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     75,
+     -10,
+     0
+    ],
+    "translation": [
+     0,
+     -0.5,
+     1.5
+    ],
+    "scale": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     75,
+     10,
+     0
+    ],
+    "translation": [
+     0,
+     -0.5,
+     1.5
+    ],
+    "scale": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -8.0,
+     5.3,
+     3.0
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -8.0,
+     5.3,
+     3.0
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "modernarmory:item/icon/drone_controller"
+  }
+ }
+}

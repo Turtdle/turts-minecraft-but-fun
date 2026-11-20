@@ -1,0 +1,124 @@
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "idle": {
+   "animation_length": 3.2,
+   "bones": {
+    "controller": {
+     "position": {
+      "0": {
+       "vector": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "easing": "easeInOutSine"
+      },
+      "1.6": {
+       "vector": [
+        0.0,
+        -0.07,
+        0.035
+       ],
+       "easing": "easeInOutSine"
+      },
+      "3.2": {
+       "vector": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "easing": "easeInOutSine"
+      }
+     }
+    },
+    "right_arm": {
+     "position": {
+      "0": {
+       "vector": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "easing": "easeInOutSine"
+      },
+      "1.6": {
+       "vector": [
+        0.0,
+        -0.07,
+        0.035
+       ],
+       "easing": "easeInOutSine"
+      },
+      "3.2": {
+       "vector": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "easing": "easeInOutSine"
+      }
+     }
+    },
+    "left_arm": {
+     "position": {
+      "0": {
+       "vector": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "easing": "easeInOutSine"
+      },
+      "1.6": {
+       "vector": [
+        0.0,
+        -0.07,
+        0.035
+       ],
+       "easing": "easeInOutSine"
+      },
+      "3.2": {
+       "vector": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "easing": "easeInOutSine"
+      }
+     }
+    },
+    "led_status": {
+     "scale": {
+      "0": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "0.512": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "0.513": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "3.199": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "3.2": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     }
+    }
+   },
+   "loop": true
+  }
+ }
+}

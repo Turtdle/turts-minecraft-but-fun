@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "S S",
+    "CRC",
+    "SMS"
+  ],
+  "key": {
+    "S": "modernarmory:steel_ingot",
+    "R": "minecraft:redstone",
+    "C": "minecraft:copper_ingot",
+    "M": "modernarmory:grenade_m67"
+  },
+  "result": {
+    "id": "modernarmory:drone_fpv",
+    "count": 1
+  }
+}

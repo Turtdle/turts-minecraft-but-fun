@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:iron_ingot",
+    "minecraft:white_wool"
+  ],
+  "result": {
+    "id": "modernarmory:suppressor_9mm",
+    "count": 1
+  }
+}

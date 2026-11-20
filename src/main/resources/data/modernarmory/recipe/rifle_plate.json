@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SS",
+    "FF"
+  ],
+  "key": {
+    "S": {
+      "item": "modernarmory:steel_ingot"
+    },
+    "F": {
+      "item": "modernarmory:aramid_fabric"
+    }
+  },
+  "result": {
+    "id": "modernarmory:rifle_plate",
+    "count": 1
+  }
+}

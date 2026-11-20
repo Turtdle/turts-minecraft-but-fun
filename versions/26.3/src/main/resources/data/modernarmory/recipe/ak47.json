@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "III",
+    "PBT"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "P": "minecraft:oak_planks",
+    "B": "minecraft:iron_block",
+    "T": "minecraft:tripwire_hook"
+  },
+  "result": {
+    "id": "modernarmory:ak47",
+    "count": 1
+  }
+}

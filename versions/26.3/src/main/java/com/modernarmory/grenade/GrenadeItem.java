@@ -1,0 +1,129 @@
+package com.modernarmory.grenade;
+
+import java.util.function.Consumer;
+
+import org.jspecify.annotations.Nullable;
+
+import com.modernarmory.registry.ModSounds;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.level.Level;
+import com.geckolib.animatable.GeoItem;
+import com.geckolib.animatable.client.GeoRenderProvider;
+import com.geckolib.animatable.instance.AnimatableInstanceCache;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
+import com.geckolib.animation.object.PlayState;
+import com.geckolib.renderer.GeoItemRenderer;
+import com.geckolib.util.GeckoLibUtil;
+
+/**
+ * A hand grenade, thrown with CS-style controls (GrenadeHandler): hold left or right click and the pin comes out
+ * (the spoon is still held, so nothing is burning yet); let go and it is thrown, the spoon flies and the fuze
+ * starts. Left = overhand, right = underhand, both together = medium. Let go before the pin is out, or switch
+ * items, and nothing happens.
+ */
+public class GrenadeItem extends Item implements GeoItem {
+    /** How long the pin pull takes (the "pull_pin" animation). */
+    public static final int PIN_TICKS = 8;
+    private static final String CONTROLLER = "main", ACTIONS = "actions";
+    private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
+
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final GrenadeType type;
+
+    public GrenadeItem(GrenadeType type, Properties properties) {
+        super(properties);
+        this.type = type;
+        GeoItem.registerSyncedAnimatable(this);
+    }
+
+    public GrenadeType type() {
+        return type;
+    }
+
+    @Override
+    public Component getName(ItemStack stack) {
+        return Component.translatableWithFallback(getDescriptionId() /* 26.x: no per-stack variant */, type.name());
+    }
+
+    /** The pin comes out (the spoon is still held, so nothing burns yet). Called by GrenadeHandler. */
+    void pullPin(ServerPlayer player, ItemStack stack) {
+        ServerLevel level = (ServerLevel) player.level();
+        level.playSound(null, player, ModSounds.GRENADE_PIN.get(), SoundSource.PLAYERS, 0.8f, 1.0f);
+        triggerAnim(player, GeoItem.getOrAssignId(stack, level), ACTIONS, "pull_pin");
+    }
+
+    /** Let go before the pin was out, or switched away: the pin goes back in. */
+    void cancel(ServerPlayer player, ItemStack stack) {
+        stopTriggeredAnim(player, GeoItem.getOrAssignId(stack, (ServerLevel) player.level()), ACTIONS, "pull_pin");
+    }
+
+    /** Throws it: the grenade leaves the hand where the throw animation lets go of it; the spoon flies, the fuze starts. */
+    void throwFrom(ServerPlayer player, ItemStack stack, ThrowKind kind) {
+        ServerLevel level = (ServerLevel) player.level();
+        triggerAnim(player, GeoItem.getOrAssignId(stack, level), ACTIONS, kind.animation);
+        player.getCooldowns().addCooldown(stack, 10); // 26.x: cooldowns are keyed by the stack's cooldown group
+        GrenadeThrows.schedule(level, type.releaseTicks(kind.under), () -> {
+            if (!player.isAlive()) return;
+            GrenadeEntity.throwFrom(player, type, kind);
+            level.playSound(null, player, ModSounds.GRENADE_SPOON.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
+            player.awardStat(Stats.ITEM_USED.get(this));
+            if (!player.getAbilities().instabuild) stack.shrink(1);
+        });
+    }
+
+    @SuppressWarnings("deprecation") // deprecated in 26.3 but still called by ItemStack when building tooltips
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip,
+                                TooltipFlag flag) {
+        tooltip.accept(Component.literal(type.description()).withStyle(ChatFormatting.GRAY));
+        tooltip.accept(Component.literal(String.format("Fuze %.1f s", type.fuzeSeconds())).withStyle(ChatFormatting.DARK_GRAY));
+        tooltip.accept(Component.literal("Hold left / right click: pin out. Release left: overhand, right: underhand, both: medium").withStyle(ChatFormatting.DARK_GRAY));
+    }
+
+    // ---- GeckoLib (animations from tools/modelgen/guns/<id>.py: idle, pull_pin, hold, throw, throw_under)
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        // GeckoLib 5: controllers no longer take the animatable instance
+        controllers.add(new AnimationController<GrenadeItem>(CONTROLLER, 2, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<GrenadeItem>(ACTIONS, 1, state -> PlayState.STOP)
+                .triggerableAnim("pull_pin", RawAnimation.begin().thenPlay("pull_pin").thenLoop("hold"))
+                .triggerableAnim("throw", RawAnimation.begin().thenPlay("throw"))
+                .triggerableAnim("throw_under", RawAnimation.begin().thenPlay("throw_under")));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
+        consumer.accept(new GeoRenderProvider() {
+            private com.modernarmory.client.renderer.@Nullable GrenadeRenderer renderer;
+
+            @Override
+            public @Nullable GeoItemRenderer<?> getGeoItemRenderer() {
+                if (renderer == null) renderer = new com.modernarmory.client.renderer.GrenadeRenderer(GrenadeItem.this);
+                return renderer;
+            }
+        });
+    }
+}

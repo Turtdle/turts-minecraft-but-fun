@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:iron_ingot",
+    "minecraft:gunpowder",
+    "minecraft:glowstone_dust",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "id": "modernarmory:grenade_m84",
+    "count": 2
+  }
+}

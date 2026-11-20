@@ -1,0 +1,134 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "front",
+ "base": {
+  "parent": "builtin/entity",
+  "gui_light": "front",
+  "display": {
+   "gui": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     -3.71,
+     -1.66,
+     0
+    ],
+    "scale": [
+     0.38,
+     0.38,
+     0.38
+    ]
+   },
+   "ground": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.25,
+     0.25,
+     0.25
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     0,
+     90,
+     0
+    ],
+    "translation": [
+     6.14,
+     -2.76,
+     0
+    ],
+    "scale": [
+     0.63,
+     0.63,
+     0.63
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     0,
+     -17,
+     0
+    ],
+    "translation": [
+     0,
+     -4.5,
+     3
+    ],
+    "scale": [
+     1.5,
+     0.95,
+     0.95
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     0,
+     17,
+     0
+    ],
+    "translation": [
+     0,
+     -4.5,
+     3
+    ],
+    "scale": [
+     1.5,
+     0.95,
+     0.95
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -4.48,
+     -1.0,
+     4.8
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "translation": [
+     -4.48,
+     -1.0,
+     4.8
+    ],
+    "scale": [
+     0.78,
+     0.78,
+     0.78
+    ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "modernarmory:item/icon/m107"
+  }
+ }
+}

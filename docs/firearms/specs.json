@@ -1,0 +1,1037 @@
+{
+ "guns": [
+  {
+   "id": "m17",
+   "name": "SIG Sauer M17 (MHS full-size)",
+   "category": "pistol",
+   "cartridge": "9x19",
+   "muzzle_velocity_ms": 373,
+   "rpm": 180,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 17,
+   "weight_kg": 0.833,
+   "length_mm": 203,
+   "barrel_in": 4.7,
+   "reload_s": 1.8,
+   "empty_reload_s": 2.3,
+   "accuracy_moa": 3.5,
+   "iron_sights": true,
+   "default_optic": "none (slide is cut for a reflex sight, issued with a cover plate)",
+   "muzzle_device": "none",
+   "rails": [
+    "bottom"
+   ],
+   "stock": "none",
+   "looks": "Coyote-tan (FDE) polymer P320 grip module with a matching coyote-tan PVD-coated stainless slide, while the controls and the ambidextrous manual thumb safety are black. The slide is squared off with angled front and rear cocking serrations, and a rectangular optic cover plate sits just ahead of the rear sight. It has a short Picatinny accessory rail under the dust cover, SIGLITE tritium night sights (front dot plus two rear dots), and a flush 17-round magazine. The 21-round extended magazine sticks out about 2 cm below the grip with a black or tan baseplate.",
+   "notes": "MV is estimated for the 4.7 in barrel using 124 gr M882. The Army's M1152 115 gr FMJ-FN is advertised at 1,320 fps (about 402 m/s) from a test barrel, so with M1152 expect roughly 385-395 m/s from the M17. Weight is 833 g (29.4 oz) with an empty magazine; it is about 1.03 kg loaded with 17 rounds. The Army issues 17-round standard magazines and 21-round extended ones (use 21 if the mod wants the extended magazine). Wikipedia gives only the P320 platform figures for length and weight (203 mm, 833 g), and those match the M17. The rpm is a practical aimed semi-auto rate. Reload times are trained figures: about 1.8 s with a round chambered, about 2.3 s from slide-lock using the slide release.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/SIG_Sauer_P320",
+    "https://www.americanrifleman.org/content/m1152-m1153-the-army-s-new-9-mm-luger-loads",
+    "https://www.shootingillustrated.com/articles/2020/1/23/new-for-2020-winchester-active-duty-ammunition"
+   ]
+  },
+  {
+   "id": "glock19",
+   "name": "Glock 19 Gen5",
+   "category": "pistol",
+   "cartridge": "9x19",
+   "muzzle_velocity_ms": 365,
+   "rpm": 190,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 15,
+   "weight_kg": 0.67,
+   "length_mm": 185,
+   "barrel_in": 4.02,
+   "reload_s": 1.7,
+   "empty_reload_s": 2.2,
+   "accuracy_moa": 4,
+   "iron_sights": true,
+   "default_optic": "none (MOS variants accept a red dot)",
+   "muzzle_device": "none",
+   "rails": [
+    "bottom"
+   ],
+   "stock": "none",
+   "looks": "A compact, all-black Glock with a boxy, flat-topped slide (nDLC finish) that has front and rear serrations. The polymer frame has a short accessory rail with one cross-slot under the dust cover and no finger grooves. The grip has textured panels and a flared magwell, and the frame front is cut out slightly under the trigger guard. It has polymer sights (a white dot front and a U-notch rear outlined in white; Army SOF guns often carry tritium night sights) and a flush 15-round black polymer magazine. It is visibly shorter in both slide and grip than the G17.",
+   "notes": "Glock's figures: 102 mm (4.02 in) barrel, 185 mm overall length, 670 g with an empty magazine (610 g without a magazine); about 0.85 kg loaded. It also accepts G17 17-round magazines. The Army has no general-issue G19. It is used by Army special operations units, and the USMC version is the M007 (G19M). MV is an estimate for the 4.02 in barrel with 124 gr M882 (scaled from 375 m/s at 4.9 in); M1152 115 gr would give about 380-390 m/s. The rpm is a practical aimed rate.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Glock",
+    "https://us.glock.com/en/Pistols/G19-Gen5-FS-US",
+    "https://eu.glock.com/en/Products/Pistols/G19-Gen5"
+   ]
+  },
+  {
+   "id": "glock17",
+   "name": "Glock 17 Gen5",
+   "category": "pistol",
+   "cartridge": "9x19",
+   "muzzle_velocity_ms": 371,
+   "rpm": 185,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 17,
+   "weight_kg": 0.71,
+   "length_mm": 202,
+   "barrel_in": 4.49,
+   "reload_s": 1.7,
+   "empty_reload_s": 2.2,
+   "accuracy_moa": 3.5,
+   "iron_sights": true,
+   "default_optic": "none (MOS variants accept a red dot)",
+   "muzzle_device": "none",
+   "rails": [
+    "bottom"
+   ],
+   "stock": "none",
+   "looks": "A full-size, all-black Glock with a long, slab-sided, flat-topped slide that has front and rear serrations. The black polymer frame has a short accessory rail under the dust cover, a grip with no finger grooves, and a flared magwell. Its polymer sights are a white dot front and a white-outlined U-notch rear. The full-length grip takes a flush 17-round polymer magazine. It looks like a longer G19, with about 17 mm more slide and a taller grip.",
+   "notes": "Gen5 figures: 114 mm (4.49 in) barrel, 202 mm overall length, about 705-710 g with an empty magazine (about 0.91 kg loaded). Sources vary slightly with sight options. Optional +2 baseplates and 24- and 33-round magazines exist. Army use is limited to some special operations and specialist units; it is not general issue. MV is an estimate with 124 gr M882 (scaled from 375 m/s at 4.9 in); about 385-395 m/s with M1152 115 gr.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Glock",
+    "https://eu.glock.com/en/Products/Pistols/G19-Gen5"
+   ]
+  },
+  {
+   "id": "apc9",
+   "name": "B&T APC9K Pro (US Army Sub Compact Weapon)",
+   "category": "smg",
+   "cartridge": "9x19",
+   "muzzle_velocity_ms": 368,
+   "rpm": 1080,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 30,
+   "weight_kg": 2.7,
+   "length_mm": 551,
+   "length_folded_mm": 373,
+   "barrel_in": 4.33,
+   "reload_s": 2.3,
+   "empty_reload_s": 2.9,
+   "accuracy_moa": 4,
+   "iron_sights": true,
+   "default_optic": "compact red dot (Aimpoint Micro-class)",
+   "muzzle_device": "B&T three-lug flash hider / suppressor mount",
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "side-folding, length-adjustable B&T stock",
+   "looks": "A short, boxy, black anodized aluminium upper receiver with a full-length top Picatinny rail. The very short handguard has short rail or M-LOK sections on the sides and bottom, and the stubby barrel ends in a three-lug muzzle. A black polymer lower carries an AR-style pistol grip, and the curved magazine is a translucent smoke-coloured B&T polymer 30-rounder. A non-reciprocating charging handle sits at the rear of the upper. The low pop-up ghost-ring rear sight and post front sight fold flat into the rail. A skeletal side-folding stock folds to the right.",
+   "notes": "In March 2019 the Army awarded B&T the SCW contract ($2.6M, 350 APC9K with an option for up to 1,000 more) for Personal Security Detachments. The B&T datasheet lists the K PRO with a 110 mm barrel (138 mm optional), 373/551 mm minimum/maximum length, 335 mm stock pull and about 2.7 kg empty. US retailers list the stockless pistol version at 1.9-2.0 kg, so weight depends on the stock. 1,080 rpm is the cyclic rate Wikipedia gives for the APC9 SMG family; the datasheet's rate-of-fire row is ambiguous, so the K-specific cyclic rate is not confirmed. MV is an estimate for 110 mm with 124 gr M882. Magazines are 30-round B&T MP9-type; a Glock-magazine lower also exists.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Br%C3%BCgger_%26_Thomet_APC",
+    "https://bt-ag.ch/wp-content/uploads/2020/07/APC_PRO-04-20201.pdf",
+    "https://www.twz.com/27261/this-is-the-armys-new-submachine-gun",
+    "https://www.imfdb.org/wiki/Br%C3%BCgger_%26_Thomet_APC9_K_PRO"
+   ]
+  },
+  {
+   "id": "mpx",
+   "name": "SIG Sauer MPX (8 in barrel, Army COTS order)",
+   "category": "smg",
+   "cartridge": "9x19",
+   "muzzle_velocity_ms": 400,
+   "rpm": 850,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 30,
+   "weight_kg": 2.7,
+   "length_mm": 610,
+   "length_folded_mm": 425,
+   "barrel_in": 8,
+   "reload_s": 2.3,
+   "empty_reload_s": 2.9,
+   "accuracy_moa": 3,
+   "iron_sights": false,
+   "default_optic": "red dot (SIG Romeo / Aimpoint class)",
+   "muzzle_device": "SIG three-lug flash hider (suppressor-ready)",
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "collapsible telescoping stock (folding versions exist)",
+   "looks": "All black, and it looks like a short AR-15: a flat-top upper with a continuous top Picatinny rail and a slim free-float M-LOK handguard with slots on the sides and bottom. The magazine well is pistol-sized and holds a slim, slightly curved 30-round black polymer magazine. It has an AR-style pistol grip, ambidextrous AR-style controls and an AR-type T-charging handle. The stock is a thin collapsible or telescoping one. There are no fixed iron sights, so it usually carries a red dot and often flip-up BUIS. The barrel ends in a short three-lug flash hider.",
+   "notes": "Reports of the December 2018 Army COTS order mention up to 1,000 MPX with 4.5 in barrels and up to 1,000 with 8 in barrels, each with a 30-round SIG magazine. This entry is the 8 in version; a 4.5 in MPX-K would give about 370 m/s and be about 50 mm shorter. Wikipedia disagrees with itself on weight (2.7 kg in the infobox, 2.1 kg in the text) and length (425/610 mm folded/extended). Cyclic rate is about 850 rpm. MV is an estimate for 8 in with 124 gr M882 (typically 1,300-1,350 fps from 8 in barrels). Magazines of 10, 20, 35 and 50 rounds (drum) also exist.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/SIG_MPX",
+    "https://athlonoutdoors.com/article/army-sig-mpx-mcx-contract/",
+    "https://soldiersystems.net/2018/12/20/u-s-army-contracting-command-issues-award-to-sig-sauer-for-mcx-mpx-and-716g2-rifles-along-with-sp2022-pistols-tango6-riflescopes-and-suppressors/"
+   ]
+  },
+  {
+   "id": "m26mass",
+   "name": "M26 Modular Accessory Shotgun System (stand-alone)",
+   "category": "shotgun",
+   "cartridge": "12ga_00",
+   "muzzle_velocity_ms": 335,
+   "rpm": 40,
+   "fire_modes": [
+    "straight_pull"
+   ],
+   "feed_type": "box",
+   "capacity": 5,
+   "weight_kg": 2.27,
+   "length_mm": 670,
+   "length_folded_mm": 610,
+   "barrel_in": 7.75,
+   "reload_s": 2.8,
+   "empty_reload_s": 3.8,
+   "accuracy_moa": 8,
+   "iron_sights": true,
+   "default_optic": "none",
+   "muzzle_device": "stand-off breaching device (integral, crenellated)",
+   "rails": [
+    "top"
+   ],
+   "stock": "collapsible M4-style buttstock module (removable)",
+   "looks": "A short, boxy, matte-black 12-gauge with a stubby barrel that ends in a wide, crenellated stand-off breaching tip. It has a straight-pull bolt worked by a charging lever on the side (it can be set to either side), a slim detachable box magazine (3 or 5 rounds) ahead of the trigger guard, and a large pistol grip. In stand-alone form it has a top Picatinny rail with simple flip-up iron sights and attaches to an M4-style collapsible stock. Overall it is compact and squarish rather than shaped like a traditional shotgun.",
+   "notes": "Stand-alone with stock: 5 lb (2.27 kg), 26.5 in (670 mm) with the stock extended, 24 in (610 mm) collapsed. With the stock removed it is about 1.59 kg and 460 mm. Wikipedia gives conflicting stand-alone weights (3.5 lb without stock vs 4 lb 3 oz). The 7.75 in barrel includes the stand-off adapter. 3- and 5-round magazines were both issued, and 5 is used here. MV is an estimate for 00 buck from a very short barrel (about 1,100 fps, versus 1,325 fps nominal). The rpm covers straight-pull cycling.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M26_Modular_Accessory_Shotgun_System"
+   ]
+  },
+  {
+   "id": "m590",
+   "name": "Mossberg M590A1 (military issue)",
+   "category": "shotgun",
+   "cartridge": "12ga_00",
+   "muzzle_velocity_ms": 400,
+   "rpm": 60,
+   "fire_modes": [
+    "pump"
+   ],
+   "feed_type": "tube",
+   "capacity": 8,
+   "weight_kg": 3.4,
+   "length_mm": 1041,
+   "barrel_in": 20,
+   "reload_s": 0.65,
+   "empty_reload_s": 1.7,
+   "accuracy_moa": 6,
+   "iron_sights": true,
+   "default_optic": "none",
+   "muzzle_device": "none (cylinder bore)",
+   "rails": [],
+   "stock": "fixed black synthetic buttstock",
+   "looks": "A long pump shotgun with a dark grey/black Parkerized finish and black synthetic furniture: a fixed straight buttstock with a sling swivel and a ribbed slide-action forend. The heavy-walled 20 in barrel has a perforated black metal heat shield on top and a bayonet lug under the muzzle that takes the M9/M7 bayonet. The full-length magazine tube runs to the muzzle with a cap at the end. It has a metal trigger guard and the top-tang safety on the receiver, with either a ghost-ring rear and blade front or a bead front sight.",
+   "notes": "US military 590A1: heavy-walled 20 in cylinder-bore barrel, metal trigger guard and safety (MIL-S-3443G), bayonet lug and heat shield. Mossberg sells this as '9-shot' (8 in the tube + 1 chambered); capacity here is the tube count. Weight is listed between 7.0 and 7.8 lb depending on SKU and sights (3.4 kg used here); length is 41 in. Sights vary by contract (ghost ring or bead). reload_s is seconds per shell; empty_reload_s is one shell loaded through the ejection port plus racking the slide. MV is an estimate for 00 buck from 20 in.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mossberg_500",
+    "https://www.sportsmanswarehouse.com/shooting-gear-gun-supplies/shotguns/mossberg-590a1-parkerized-12-gauge-3in-pump-action-shotgun-20in/p/1477348",
+    "https://blackstoneshooting.com/mossberg-590a1-12ga-20-barrel-9-rds-parkerized-015813516600"
+   ]
+  },
+  {
+   "id": "benelli_m4",
+   "name": "Benelli M4 Super 90 / M1014 JSCS",
+   "category": "shotgun",
+   "cartridge": "12ga_00",
+   "muzzle_velocity_ms": 395,
+   "rpm": 180,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "tube",
+   "capacity": 7,
+   "weight_kg": 3.82,
+   "length_mm": 1010,
+   "length_folded_mm": 889,
+   "barrel_in": 18.5,
+   "reload_s": 0.6,
+   "empty_reload_s": 1.5,
+   "accuracy_moa": 5,
+   "iron_sights": true,
+   "default_optic": "none",
+   "muzzle_device": "none (fixed cylinder bore choke)",
+   "rails": [
+    "top"
+   ],
+   "stock": "collapsible telescoping stock with pistol grip (fixed stocks also available)",
+   "looks": "A matte-black semi-auto shotgun with a flat-topped aluminium receiver carrying a Picatinny rail. Protective 'ears' on the rail hold an adjustable ghost-ring rear sight, and the front sight is a blade post on the barrel. Twin stainless gas pistons under the forend make it bulge below the barrel, with the magazine tube running to near the muzzle. It has a separate polymer pistol grip and a skeletal collapsible stock with a cheek rest. The bolt handle is large and the bolt release button oversized.",
+   "notes": "ARGO gas-operated, rotating bolt. Wikipedia gives a 470 mm (18.5 in) barrel, 3.82 kg, 1,010 mm with the stock extended and 889 mm collapsed, and 408 m/s nominal MV (the 395 m/s here is a more conservative 00-buck estimate). Tube capacity is 7 for military and law-enforcement guns (5 for civilian). The M1014 designation was adopted for the USMC in 1999 with Army ARDEC testing; Army use is limited. reload_s is seconds per shell; empty_reload_s is one shell through the ejection port plus pressing the bolt release. The rpm is a practical rate for aimed semi-auto fire with heavy recoil.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Benelli_M4"
+   ]
+  },
+  {
+   "id": "m7",
+   "name": "SIG Sauer M7 (XM7, NGSW-Rifle)",
+   "category": "battle_rifle",
+   "cartridge": "68x51",
+   "muzzle_velocity_ms": 915,
+   "rpm": 750,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 20,
+   "weight_kg": 4.46,
+   "length_mm": 914,
+   "length_folded_mm": 740,
+   "barrel_in": 13,
+   "reload_s": 2.6,
+   "empty_reload_s": 3.2,
+   "accuracy_moa": 1.5,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Side-folding, multi-position telescoping stock with cheek rest (the folding hinge was removed on the later PIE M7)",
+   "default_optic": "M157 Fire Control (Vortex XM157 1-8x30 LPVO with laser rangefinder and ballistic computer)",
+   "muzzle_device": "SIG SLX suppressor (standard issue, about 7 in / 0.66 kg)",
+   "looks": "Long, thick-barrelled MCX-family rifle in coyote/FDE with a slab-sided upper receiver, a continuous top Picatinny rail and a long free-float M-LOK handguard that runs almost to the muzzle. A large boxy suppressor nearly as thick as the handguard extends past it. It takes a deep, slightly curved polymer 20-round SR-25-pattern magazine, has an AR-style pistol grip, ambidextrous controls, a side-folding skeletal telescoping stock and a bulky XM157 optic box with a laser module on top.",
+   "notes": "Weight 3.80 kg (8.38 lb) bare and 4.46 kg (9.84 lb) with the issued suppressor, both without optic; the 4.46 kg figure is used here. Length is about 914 mm (36 in) with suppressor; Army figures give about 31 in without it, and TFB lists 37 in. The folded length is an estimate. Barrel is 13 in per SIG and TFB; Wikipedia's M7 page says 13.5 in, and the PIE update is reported as 13.5 in / 7.6 lb. SIG and the Army publish no cyclic rate; 750 rpm is an estimate typical of the MCX short-stroke piston family. Muzzle velocity of about 3,000 fps (915 m/s) is from the Wikipedia/SIG infobox. Whether backup iron sights are issued is unconfirmed (set to false). Accuracy is an estimate. Selector: safe/semi/auto.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M7_rifle",
+    "https://en.wikipedia.org/wiki/SIG_MCX_Spear",
+    "https://www.thefirearmblog.com/blog/goodbye-m7-hello-xm8-44829283",
+    "https://boisegunclub.com/handbook/sig-mcx-spear-xm7-m7-rifle",
+    "https://gunsamerica.com/digest/sig-sauer-m7-shot-show-2026"
+   ]
+  },
+  {
+   "id": "xm8",
+   "name": "SIG Sauer M8 carbine (XM8, carbine variant of the M7)",
+   "category": "carbine",
+   "cartridge": "68x51",
+   "muzzle_velocity_ms": 884,
+   "rpm": 750,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 25,
+   "weight_kg": 3.92,
+   "length_mm": 870,
+   "length_folded_mm": 833,
+   "barrel_in": 10.5,
+   "reload_s": 2.5,
+   "empty_reload_s": 3.1,
+   "accuracy_moa": 2,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Non-folding, collapsible (length-adjustable) stock",
+   "default_optic": "M157 Fire Control (Vortex 1-8x30 LPVO); alternate optics are also authorised",
+   "muzzle_device": "Redesigned SIG suppressor with heat shield (6 in / 0.59 kg)",
+   "looks": "A shortened, slimmer M7 in coyote/FDE: same flat-sided upper with a full-length top Picatinny rail and an M-LOK handguard, but a noticeably slimmer barrel and a shorter 6 in suppressor wrapped in a heat-shield sleeve. It takes a new, longer 25-round 6.8 mm polymer magazine, has an AR-type pistol grip and a non-folding collapsible buttstock (the M7's side-folding hinge block is gone), and carries a large optic up top.",
+   "notes": "This is not the 2000s Heckler & Koch XM8; the Army reused the designation, and the carbine was type-classified as the M8 in October 2026. Barrel length varies by source: 10.4 in (TFB), 10.5 in (Wikipedia), 11 in (19FortyFive, early TFB), about 10 in (Army Recognition); 10.5 in is used here. SIG puts velocity at about 2,900 fps (884 m/s), 100-200 fps below the M7. Weight is 7.33 lb (3.33 kg) bare and 3.92 kg with the 1.31 lb suppressor; Wikipedia's infobox gives 8.8 lb (4.0 kg) suppressed. Length with suppressor is 833 mm (32.79 in) with the stock collapsed; the extended length is an estimate. TFB calls the stock 'fixed', while Wikipedia gives a 'stock collapsed' length, so it is treated here as non-folding but adjustable. No published cyclic rate; it is assumed the same as the M7.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M7_rifle",
+    "https://www.thefirearmblog.com/blog/goodbye-m7-hello-xm8-44829283",
+    "https://www.americanrifleman.org/content/army-testing-new-xm8-carbine-no-not-that-xm8/",
+    "https://www.armyrecognition.com/news/army-news/2026/u-s-army-to-field-new-m8-carbine-in-december-2026-with-lighter-6-8mm-caliber-design"
+   ]
+  },
+  {
+   "id": "m16a4",
+   "name": "M16A4",
+   "category": "assault_rifle",
+   "cartridge": "556",
+   "muzzle_velocity_ms": 945,
+   "rpm": 800,
+   "fire_modes": [
+    "semi",
+    "burst"
+   ],
+   "burst_count": 3,
+   "feed_type": "box",
+   "capacity": 30,
+   "weight_kg": 3.4,
+   "length_mm": 1000,
+   "barrel_in": 20,
+   "reload_s": 2.4,
+   "empty_reload_s": 2.9,
+   "accuracy_moa": 3.5,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Fixed A2 polymer buttstock with trapdoor (rifle-length buffer tube)",
+   "default_optic": "M68 CCO (Aimpoint CompM2) red dot; detachable carry handle with A2 rear aperture sight is also issued",
+   "muzzle_device": "A2 birdcage flash suppressor/compensator",
+   "looks": "Classic long black AR-15-family service rifle: flat-top upper with a full-length Picatinny rail, a fixed A2 'triangle' front sight post on the gas block, and a long, slim 20 in barrel. It carries a full-length KAC M5 RAS quad-rail handguard (rails on all four sides), a fixed solid A2 buttstock, an A2 pistol grip with finger nub, a curved 30-round STANAG magazine, and a forward assist and brass deflector on the right side.",
+   "notes": "Wikipedia gives 3.40 kg unloaded and 4.00 kg loaded with 30 rounds and a sling. The 800 rpm cyclic rate is from Wikipedia; other references quote 700-950 rpm. Muzzle velocity is M855 from a 20 in barrel, about 3,100 fps: the ATK spec is 3,025 ±40 fps at 78 ft, and the rifleconfigurator figure is 3,100 fps at 20 in. The Wikipedia figure of 3,150 fps is for M855A1. Selector: safe/semi/burst (3-round, non-resetting burst cam). Accuracy is an estimate: about 2 MOA for the rifle, about 4 MOA with M855.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M16_rifle",
+    "https://www.rifleconfigurator.com/articles/m855a1-explained",
+    "https://en.wikipedia.org/wiki/5.56%C3%9745mm_NATO"
+   ]
+  },
+  {
+   "id": "mk17",
+   "name": "FN SCAR-H Mk 17 Mod 0 (STD 16 in)",
+   "category": "battle_rifle",
+   "cartridge": "762x51",
+   "muzzle_velocity_ms": 870,
+   "rpm": 600,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 20,
+   "weight_kg": 3.58,
+   "length_mm": 965,
+   "length_folded_mm": 711,
+   "barrel_in": 16,
+   "reload_s": 2.5,
+   "empty_reload_s": 3,
+   "accuracy_moa": 1.5,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Side-folding, telescoping polymer stock with adjustable cheek riser",
+   "default_optic": "EOTech 553 holographic or Elcan SpecterDR (typical SOF fit)",
+   "muzzle_device": "FN birdcage flash hider",
+   "looks": "Distinctive two-tone-free flat dark earth (FDE) rifle with a long rectangular aluminium upper receiver carrying an uninterrupted top Picatinny rail, plus short removable side rails and a bottom rail on the forend. It has a polymer lower with an M16-type pistol grip, a flared magazine well and a straight steel 20-round box magazine. The triangular side-folding telescoping stock has an adjustable cheek riser, the reciprocating charging handle sticks out of the left (or right) side of the upper, and there are folding front and rear iron sights.",
+   "notes": "Muzzle velocity is estimated for M80A1 from a 16 in barrel (about 2,850-2,900 fps). Wikipedia's 710 m/s figure is suspiciously low and contradicts the other 7.62 data. For the cyclic rate, Wikipedia's specification table says 550 rpm while its Adoption section says 600 rpm (marked citation needed); FN literature quotes 625 ±50, and 600 is used here. Barrel variants: CQC 13 in, STD 16 in, LB 20 in. Weight 3.58 kg empty. Colour: FDE (Mk 17 Mod 0); black also exists. The rifle was used by USSOCOM and the Army's 75th Ranger Regiment. Selector: safe/semi/auto.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/FN_SCAR",
+    "https://en.wikipedia.org/wiki/7.62%C3%9751mm_NATO"
+   ]
+  },
+  {
+   "id": "hk416",
+   "name": "Heckler & Koch HK416 D14.5RS (Delta Force)",
+   "category": "carbine",
+   "cartridge": "556",
+   "muzzle_velocity_ms": 884,
+   "rpm": 850,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 30,
+   "weight_kg": 3.49,
+   "length_mm": 900,
+   "length_folded_mm": 804,
+   "barrel_in": 14.5,
+   "reload_s": 2.3,
+   "empty_reload_s": 2.8,
+   "accuracy_moa": 2,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Multi-position (6-position) telescoping stock on an AR-type buffer tube",
+   "default_optic": "EOTech EXPS3 holographic sight with G33 magnifier (typical Delta fit)",
+   "muzzle_device": "HK birdcage flash hider",
+   "looks": "Black AR-style carbine with a thick, boxy free-floating HK quad-rail handguard (Picatinny rails on all four sides) ending in a pronounced front lip, and a flip-up front sight on the gas block plus an HK diopter flip-up rear sight on the flat-top rail. It has a curved 30-round STANAG magazine (often the HK steel or Magpul PMAG), an AR pistol grip, a telescoping stock, and a 14.5 in barrel with a heavier profile than an M4's.",
+   "notes": "Weight 3.49 kg without magazine (Warrior Lodge; Modern Firearms gives 3.5 kg). Length is 900 mm extended / 804 mm collapsed per Wikipedia-derived data; Modern Firearms and the HK spec sheet give 886 / 787 mm. The 850 rpm cyclic rate is Wikipedia's family figure. Muzzle velocity is M855 from 14.5 in (about 2,870-2,910 fps measured, per TFB testing). Delta Force replaced its M4s with HK416Ds in March 2005.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Heckler_%26_Koch_HK416",
+    "https://www.warriorlodge.com/products/heckler-koch-hk416",
+    "https://modernfirearms.net/en/assault-rifles/germany-assault-rifles/hk-416-eng/",
+    "https://cdn-fastly.thefirearmblog.com/blog/2018/01/08/big-freakin-cartridge-test-007-pmc-m855-5-56x45mm-62gr-lap-14-5%e2%80%b3-barrel-accuracy/",
+    "https://americanspecialops.com/delta-force/weapons/hk416.php"
+   ]
+  },
+  {
+   "id": "mcx",
+   "name": "SIG MCX Virtus 5.56 (11.5 in SBR)",
+   "category": "carbine",
+   "cartridge": "556",
+   "muzzle_velocity_ms": 810,
+   "rpm": 850,
+   "fire_modes": [
+    "semi",
+    "auto"
+   ],
+   "feed_type": "box",
+   "capacity": 30,
+   "weight_kg": 3,
+   "length_mm": 787,
+   "length_folded_mm": 566,
+   "barrel_in": 11.5,
+   "reload_s": 2.3,
+   "empty_reload_s": 2.8,
+   "accuracy_moa": 2,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Side-folding, 5-position telescoping stock (works folded, no buffer tube)",
+   "default_optic": "Aimpoint Micro T-2 red dot (typical SOF fit)",
+   "muzzle_device": "SIG 3-prong flash hider",
+   "looks": "Compact black (or FDE) carbine with a slim flat-sided upper and a continuous top Picatinny rail, flowing into a slender free-float M-LOK handguard with slots at 3, 6 and 9 o'clock. The rear of the receiver is flat, with no AR buffer tube, so the skeletal telescoping stock folds flat against the left side. It has a curved 30-round STANAG magazine, an AR pistol grip, an ambidextrous AR-style charging handle and a short 11.5 in barrel with a 3-prong flash hider.",
+   "notes": "Configuration chosen: the 11.5 in Virtus SBR, a common military/SOF 5.56 MCX setup. Wikipedia lists the 5.56 MCX with 9, 11.5, 14.5 and 16 in barrels; the original-model 11.5 in weighs 2.72 kg. Virtus SBR weight varies by source: 2.9 kg (6.4 lb) vs 3.4 kg (7.4 lb); 3.0 kg is used here. Length is 787 mm (31 in) extended and 559-566 mm folded. Cyclic rate is 800-900 rpm per Wikipedia. M855 from 11.5 in has no published value: estimated about 2,650 fps (810 m/s), interpolated between measured 14.5 in (about 2,890 fps) and the published 10.5-12.5 in estimates of 2,450-2,825 fps. The US Army bought up to 100 MCXs via COTS (December 2018); JSOC uses several MCX variants. No standard iron sights.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/SIG_MCX",
+    "https://www.lawfuldefense.com/products/nfa-class-iii-sig-sauer-rmcx11btapfdesbr-798681579051-223",
+    "https://www.budsgunshop.com/mobile/product/415001952/sig+sauer+mcx+556nato+115%22+tele-fold+stock+sbr",
+    "https://cdn-fastly.thefirearmblog.com/blog/2019/11/26/sig-sauer-mcx-rifle/",
+    "https://ar15.build/tools/velocity"
+   ]
+  },
+  {
+   "id": "m250",
+   "name": "SIG Sauer M250 (XM250, NGSW-Automatic Rifle)",
+   "category": "lmg",
+   "cartridge": "68x51",
+   "muzzle_velocity_ms": 945,
+   "rpm": 800,
+   "fire_modes": [
+    "auto"
+   ],
+   "feed_type": "belt",
+   "capacity": 100,
+   "weight_kg": 6.6,
+   "length_mm": 1063,
+   "length_folded_mm": 990,
+   "barrel_in": 16,
+   "reload_s": 7,
+   "empty_reload_s": 6,
+   "accuracy_moa": 3,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Collapsible (telescoping), non-folding stock; a Magpul stock is fitted on the M250A1",
+   "default_optic": "M157 Fire Control (Vortex 1-8x30 LPVO with laser rangefinder and ballistic computer)",
+   "muzzle_device": "SIG SLX suppressor (issued)",
+   "looks": "Compact, rifle-like belt-fed in coyote/FDE that looks like a scaled-up MCX: a squared-off receiver with a top-hinged feed cover carrying a full-length Picatinny rail, an M-LOK free-float handguard and a folding bipod under the front. It has an AR-type pistol grip, a telescoping stock and a long, thick suppressor. A semi-rigid 100-round belt pouch clips beneath the left side of the receiver, and there is no rifle magazine well.",
+   "notes": "Barrel length differs by source. Wikipedia and the original Army fact sheet say 17.5 in (444 mm), but TWZ (2026, quoting SIG) says the fielded gun has a roughly 16 in (406 mm) barrel, and the M250A1 adds a tapered 13 in option and a quick-change handle; 16 in is used here. Weight is 5.9 kg with bipod and 6.6 kg with suppressor and bipod (the latter is used here). Length is 933 mm (36.75 in) bare and 1,063 mm with suppressor; the collapsed length is an estimate. Wikipedia gives a cyclic rate of 700-950 rpm, and 800 is the commonly cited nominal figure. Muzzle velocity is an estimate (no published figure): about 3,100 fps for the XM1186 from 16 in, extrapolated from the M7's 3,000 fps at 13 in. Feed is 50- or 100-round pouches; the basic load is 4 x 100. Fires from an open bolt with a short-stroke piston. Belt-change times are estimates.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/XM250",
+    "https://www.twz.com/land/sig-sauers-m250-machine-gun-gets-shorter-and-lighter-after-army-feedback",
+    "https://armyrecognition.com/news/army-news/2025/how-the-u-s-armys-m250-machine-gun-compares-to-the-m249-as-the-service-adopts-6-8-mm-firepower",
+    "https://www.imfdb.org/wiki/M250"
+   ]
+  },
+  {
+   "id": "m249",
+   "name": "M249 SAW",
+   "category": "lmg",
+   "cartridge": "556",
+   "muzzle_velocity_ms": 915,
+   "rpm": 850,
+   "fire_modes": [
+    "auto"
+   ],
+   "feed_type": "box_or_belt",
+   "capacity": 200,
+   "weight_kg": 7.5,
+   "length_mm": 1035,
+   "barrel_in": 20.5,
+   "reload_s": 9,
+   "empty_reload_s": 7,
+   "accuracy_moa": 4,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Fixed polymer PIP buttstock with hydraulic buffer (collapsible stock available)",
+   "default_optic": "M145 Machine Gun Optic (3.4x)",
+   "muzzle_device": "Birdcage flash suppressor",
+   "looks": "Boxy black/parkerized-grey stamped-steel light machine gun with a hinged top feed cover carrying a Picatinny rail, a ribbed polymer handguard (later railed with bottom and side Picatinny) above a folding bipod, and a long barrel with a folding carry/barrel-change handle and a birdcage flash suppressor. The fixed polymer buttstock has a hollow skeletal outline, and the pistol grip is angled. A tan or green 100/200-round soft belt pouch hangs on the left side, and a STANAG magazine well sticks out at an angle under the left side of the receiver.",
+   "notes": "Weight is 7.5 kg empty and 10 kg with a 200-round pouch. Barrel is 521 mm (20.5 in) standard; the 465 mm short barrel is for the Para/SPW. Cyclic rate is 850 rpm (750-1,000 rpm depending on gas and conditions); the sustained rate is about 50 rpm. Feed is M27-linked belt in 100- or 200-round pouches, or a STANAG magazine as backup (box_or_belt). Rail fit depends on the configuration: the SEP/RFI kits added a feed-cover rail and a railed handguard. Belt-change times are trained-gunner estimates; Wikipedia gives no figure. Fires from an open bolt.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M249_light_machine_gun"
+   ]
+  },
+  {
+   "id": "m240",
+   "name": "M240B (M240L lightweight variant noted)",
+   "category": "gpmg",
+   "cartridge": "762x51",
+   "muzzle_velocity_ms": 935,
+   "rpm": 700,
+   "fire_modes": [
+    "auto"
+   ],
+   "feed_type": "belt",
+   "capacity": 100,
+   "weight_kg": 12.5,
+   "length_mm": 1245,
+   "barrel_in": 24.8,
+   "reload_s": 9,
+   "empty_reload_s": 7,
+   "accuracy_moa": 3.5,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+   ],
+   "stock": "Fixed polymer buttstock with hydraulic buffer (M240L: collapsible stock option)",
+   "default_optic": "M145 Machine Gun Optic (3.4x)",
+   "muzzle_device": "Conical flash suppressor",
+   "looks": "Long, heavy black medium machine gun with a rectangular steel receiver, a hinged top feed cover with a Picatinny rail, and a ventilated metal heat shield and handguard over the rear of the barrel. It has a folding integral bipod at the gas block, a carrying handle on the barrel and a conical flash suppressor. The front blade sight sits on the barrel and a folding leaf rear sight on the receiver. There is a fixed black polymer buttstock, the pistol grip and trigger group hang beneath, and a 100-round M13-linked belt usually feeds from a pouch on the left.",
+   "notes": "Weight is 12.5 kg (27.6 lb) for the M240B and 10.1 kg (22.3 lb) for the titanium-receiver M240L. Overall length varies by source: 1,260 mm per the Wikipedia infobox, 48.5 in (1,232 mm) per the USMC handout, 1,245 mm per other references. Barrel is 24.8 in (630 mm). Cyclic rate also varies: 550-650 (Wikipedia), 650-950 (Army TM/other), 650-850 (ArmyProperty); 700 is used here. The Army also specifies a sustained rate of 100 rpm and a rapid rate of 200 rpm. Muzzle velocity is 853 m/s (2,800 fps) with legacy M80 ball; with M80A1 (the standard load used here) it is estimated at about 935 m/s from the 24.8 in barrel. Feed is M13 disintegrating links, with 100-round belts normally carried. Belt-change times are estimates.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M240_machine_gun",
+    "https://www.globalsecurity.org/military/systems/ground/m240g-specs.htm",
+    "https://www.trngcmd.marines.mil/Portals/207/Docs/TBS/B3M4178%20M240B%20Medium%20Machine%20Gun.pdf",
+    "https://www.armyproperty.com/Equipment-Info/M240.htm"
+   ]
+  },
+  {
+   "id": "m2a1",
+   "name": "M2A1 .50 Caliber Heavy Machine Gun",
+   "category": "heavy_machine_gun",
+   "cartridge": "50bmg",
+   "muzzle_velocity_ms": 887,
+   "rpm": 550,
+   "fire_modes": [
+    "auto",
+    "semi"
+   ],
+   "feed_type": "belt",
+   "capacity": 100,
+   "weight_kg": 38.2,
+   "length_mm": 1654,
+   "barrel_in": 45,
+   "reload_s": 8,
+   "empty_reload_s": 10,
+   "accuracy_moa": 4,
+   "iron_sights": true,
+   "rails": [],
+   "stock": "none (spade grips with a butterfly trigger)",
+   "default_optic": "none (leaf iron sights; optional AN/PAS-13 thermal sight or M145 optic on a side bracket)",
+   "muzzle_device": "slotted M2A1 flash hider (reduces muzzle flash by about 95%)",
+   "looks": "A long, boxy, rectangular steel receiver in Parkerized black/dark grey, with a hinged feed cover on top and two spade grips plus a butterfly trigger at the rear. A perforated barrel support sleeve leads into a very long, thick 45 in heavy barrel with a removable carrying handle (the quick-change barrel feature) and a slotted conical flash hider. A folding leaf rear sight sits on top of the receiver and a front post sits on the barrel support. Usually shown on an M3 tripod or vehicle mount, with an OD-green 100-round M2A1 ammo can feeding a linked belt from the left.",
+   "notes": "Type-classified Oct 2010 (formerly M2E2). Changes from the M2HB: a quick-change barrel, fixed headspace and timing, a slotted flash hider, a manual trigger-block safety and a modified bolt. Cyclic rate sources give 450-600 rpm (GD-OTS datasheet) and 450-575 rpm (Wikipedia body text), so 550 is used here. Muzzle velocity is 887-890 m/s with M33 ball (measured 78 ft from the muzzle), and the TM gives 930 m/s. Gun weight is 38 kg (84 lb), the barrel alone about 10.9 kg, and the M3 tripod with T&E adds about 20 kg. Fire modes: automatic, plus single shot using the bolt latch release. A 100-round belt per can is standard. Reload time is a trained full belt change: open cover, lay belt, close, charge. Usual belt mix: M33 ball or a 4:1 M33/M17 tracer, M8/M20 API is also issued. A barrel swap takes about 10 s against about 90 s for the older M2HB.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M2_Browning",
+    "https://www.gdots.com/wp-content/uploads/2018/01/M2A1-50CAL-Heavy-Machine-Gun.pdf",
+    "https://athlonoutdoors.com/article/m2a1-ma-deuce-machine-gun/",
+    "https://navweaps.com/Weapons/WNUS_50cal-M2_MG.php"
+   ]
+  },
+  {
+   "id": "m110",
+   "name": "KAC M110 Semi-Automatic Sniper System (SASS)",
+   "category": "designated_marksman_rifle",
+   "cartridge": "762_m118lr",
+   "muzzle_velocity_ms": 783,
+   "rpm": 120,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 20,
+   "weight_kg": 6.27,
+   "length_mm": 1029,
+   "barrel_in": 20,
+   "reload_s": 2.5,
+   "empty_reload_s": 3.3,
+   "accuracy_moa": 1,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "fixed buttstock with a hand-tightened length-of-pull adjustment knob and QD sling sockets",
+   "default_optic": "Leupold Mk 4 LR/T M3 3.5-10x40mm (one-piece 30 mm mount)",
+   "muzzle_device": "flash hider / KAC QD suppressor mount (KAC 7.62 QDC suppressor issued)",
+   "looks": "An AR-10/SR-25-style rifle, usually in flat dark earth or coyote with some black parts. It has a 20 in free-floated heavy barrel inside a long KAC URX quad-rail handguard with Picatinny rails at 12, 3, 6 and 9 o'clock. A folding 600 m front backup iron sight and a rear folding BUIS sit on the continuous top rail under a Leupold scope in a one-piece mount. The rear has a fixed A2-length buttstock with an LOP knob and the standard AR pistol grip. A straight steel SR-25-pattern 20-round box magazine feeds it, and it is often shown with the long cylindrical KAC suppressor (about +150 mm) and a Harris bipod.",
+   "notes": "Overall length is 1,029 mm without the suppressor and 1,181 mm with it. Weight is 6.27 kg unloaded, without optic. Muzzle velocity is 783 m/s (2,570 ft/s) with 175 gr M118LR from the 20 in barrel. Magazines are 10 or 20 rounds, and 20 is used here. The practical semi-auto rate is an estimate. The accuracy figure is the nominal program requirement (about 1 MOA), not a measured value. The Army is replacing the M110 with the M110A1. The later M110A2 is 4.76 kg with M-LOK rails.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M110_Semi-Automatic_Sniper_System"
+   ]
+  },
+  {
+   "id": "m110a1",
+   "name": "HK M110A1 CSASS / SDMR",
+   "category": "designated_marksman_rifle",
+   "cartridge": "762_m118lr",
+   "muzzle_velocity_ms": 750,
+   "rpm": 120,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 20,
+   "weight_kg": 3.81,
+   "length_mm": 1009,
+   "length_folded_mm": 899,
+   "barrel_in": 16.3,
+   "reload_s": 2.4,
+   "empty_reload_s": 3.2,
+   "accuracy_moa": 1.5,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "collapsible stock with adjustable cheek comb (the SDMR has a different, simpler buttstock)",
+   "default_optic": "Schmidt & Bender 3-20x50 PM II Ultra Short in a Geissele mount (CSASS); the SDMR uses a SIG TANGO6 1-6x24",
+   "muzzle_device": "flash hider / OSS SRM6 suppressor mount",
+   "looks": "A compact HK417/G28-based rifle finished in RAL 8000 flat dark earth/tan. It has an aluminum upper with a continuous top Picatinny rail and a slim Geissele free-float M-LOK handguard (M-LOK slots at 3, 6 and 9 o'clock). The 16.3 in barrel ends in a flash hider that usually wears the stubby OSS SRM6 suppressor. The rear has an HK-style collapsible stock with a raised adjustable cheek comb. It feeds from a slightly curved, translucent-tan polymer HK417 10/20-round magazine, often with a Harris bipod under the handguard and a large-objective S&B scope in a Geissele one-piece mount.",
+   "notes": "Figures here are for the CSASS: 3.81 kg unloaded (6.80 kg with scope and suppressor), 899 mm collapsed and 1,009 mm extended. The SDMR is 4.15 kg unloaded (6.35 kg loaded) and 1,019 mm with suppressor, and has a different buttstock, barrel twist and optic (SIG TANGO6 1-6x24). The 750 m/s figure with M118LR is tagged 'citation needed' on Wikipedia. HK press material gives the 16.3 in barrel. The SDMR is issued with M80A1 EPR or XM1158 ADVAP rather than match ammunition, so for an SDMR variant switch the cartridge to '762x51'. No integral iron sights are fitted. Accuracy is an estimate (program requirement about 1.5 MOA).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M110A1_rifle",
+    "https://en.wikipedia.org/wiki/Heckler_%26_Koch_G28",
+    "https://en.wikipedia.org/wiki/M110_Semi-Automatic_Sniper_System",
+    "https://www.19fortyfive.com/2023/04/hk-squad-designated-marksmanship-rifle-sdmr-the-armys-best-gun/"
+   ]
+  },
+  {
+   "id": "mk13",
+   "name": "Mk 13 Mod 7 Sniper Rifle",
+   "category": "sniper_rifle",
+   "cartridge": "300wm",
+   "muzzle_velocity_ms": 869,
+   "rpm": 40,
+   "fire_modes": [
+    "bolt"
+   ],
+   "feed_type": "box",
+   "capacity": 5,
+   "weight_kg": 6.1,
+   "length_mm": 1207,
+   "length_folded_mm": 997,
+   "barrel_in": 26.5,
+   "reload_s": 3.5,
+   "empty_reload_s": 4.5,
+   "accuracy_moa": 0.6,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "sides"
+   ],
+   "stock": "Accuracy International AICS 2.0 side-folding stock with height/lateral adjustable cheekpiece and LOP spacers",
+   "default_optic": "Nightforce ATACR 5-25x56 F1",
+   "muzzle_device": "threaded muzzle with brake / suppressor mount",
+   "looks": "A long bolt-action rifle in an Accuracy International AICS 2.0 chassis: an aluminum skeleton with polymer side panels, usually flat dark earth/tan or OD for the USMC. It has a skeletonised, side-folding thumbhole-style stock with a raised adjustable cheekpiece and a thick rubber butt pad. The long, plain, heavy 26.5 in Lilja barrel is threaded for a muzzle device or suppressor and runs out of a short tubular/railed forend with a folding bipod. A short rectangular AI double-stack 5-round magazine sits ahead of the trigger guard, and the bolt has a large round knob on the right. A big Nightforce ATACR 5-25x56 sits on the top Picatinny rail.",
+   "notes": "The Mk 13 Mod 7 is a USMC system (Stiller long action, AICS 2.0, Lilja 26 in barrel per a parts list; Wikipedia gives 26.5 in) that replaced the M40A6. The Army used the SOCOM Mk 13 Mod 5 (Remington 700 long action, MARS rails, 5-round magazine). Wikipedia gives 5.17 kg for the Mk 13 family, while other references give 5.5-6.1 kg (13.5 lb). 6.1 kg is used here as a realistic figure for the heavy barrel and AICS 2.0 without optic. Folding saves 210 mm. Muzzle velocity is about 869 m/s (2,850 ft/s) with the 220 gr Sierra MatchKing Mk 248 Mod 1. Rails are a top Picatinny plus short side rails on the forend (the Mod 5 uses a three-sided MARS), and exact Mod 7 rail fit varies. Accuracy is an estimate (requirement about 1 MOA, typically 0.5-0.75 MOA with match ammunition).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mk_13_rifle",
+    "https://athlonoutdoors.com/article/marines-mk-13-rifle-nightforce-atacr/",
+    "https://gunsamerica.com/blog/marines-choose-nightforce-optics-for-300-win-mag-mk13-mod-7-sniper-system"
+   ]
+  },
+  {
+   "id": "mk20",
+   "name": "FN Mk 20 Mod 0 Sniper Support Rifle (SSR)",
+   "category": "designated_marksman_rifle",
+   "cartridge": "762_m118lr",
+   "muzzle_velocity_ms": 783,
+   "rpm": 120,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 20,
+   "weight_kg": 4.85,
+   "length_mm": 1080,
+   "barrel_in": 20,
+   "reload_s": 2.5,
+   "empty_reload_s": 3.3,
+   "accuracy_moa": 1,
+   "iron_sights": true,
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "non-folding precision stock with tool-less LOP adjustment and adjustable cheekpiece (aluminum/polymer)",
+   "default_optic": "variable-power sniper scope (no single standard model published; typically a 3.5-15x to 5-25x class tactical scope)",
+   "muzzle_device": "flash hider optimized for suppressed fire",
+   "looks": "A SCAR-H-based rifle finished in flat dark earth, with a longer aluminum upper receiver carrying a long uninterrupted top Picatinny rail (extended for in-line night/thermal sights) and removable rails at 3, 6 and 9 o'clock. The heavier-profile 20 in barrel ends in a flash hider. Unlike the Mk 17, it has a fixed, non-folding precision buttstock with an adjustable cheek riser and LOP. It has the SCAR's black polymer lower, a straight steel 10/20-round magazine with an extended base pad, folding front and rear BUIS, and the left-side reciprocating charging handle.",
+   "notes": "FN's official data is 10.69 lb (4.85 kg), a 20 in barrel and OAL 40.5-42.5 in (1,029-1,080 mm). Modern Firearms lists 5.05 kg and 1,028 mm. It is semi-auto only, with a strengthened barrel extension and an enhanced modular trigger, and is also offered in 6.5 Creedmoor. SOCOM fires it with Mk 316 Mod 0 (175 gr SMK), which is ballistically almost identical to M118LR. Muzzle velocity is taken from the M110 figure for 175 gr in a 20 in barrel. The practical rate and accuracy are estimates. It is a SOCOM system, not general Army issue.",
+   "sources": [
+    "https://fnamerica.com/products/rifles/fn-scar-mk20-ssr/",
+    "https://en.wikipedia.org/wiki/FN_SCAR",
+    "https://modernfirearms.net/en/sniper-rifles/standart-caliber-rifles/u-s-a-standart-caliber-rifles/fn-scar-ssr-mk-20-mod-0-eng/",
+    "https://gundigest.com/rifles/tactical-rifles/scar-20s-brings-mk20-ssr-accuracy-to-civilians"
+   ]
+  },
+  {
+   "id": "mk21",
+   "name": "Remington Mk 21 Precision Sniper Rifle (PSR)",
+   "category": "sniper_rifle",
+   "cartridge": "338lm",
+   "muzzle_velocity_ms": 905,
+   "rpm": 40,
+   "fire_modes": [
+    "bolt"
+   ],
+   "feed_type": "box",
+   "capacity": 10,
+   "weight_kg": 6.5,
+   "length_mm": 1295,
+   "length_folded_mm": 1040,
+   "barrel_in": 27,
+   "reload_s": 3.5,
+   "empty_reload_s": 4.5,
+   "accuracy_moa": 1,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "side-folding, removable lightweight buttstock with throw-lever LOP and cheek adjustment",
+   "default_optic": "Schmidt & Bender 5-25x56 PM II",
+   "muzzle_device": "AAC reinforced muzzle brake / Titan QD suppressor mount",
+   "looks": "A modular bolt-action rifle with a coyote/flat dark earth finish. A one-piece aluminum chassis has a long round tubular free-float handguard with a monolithic 20 MOA top rail and bolt-on Picatinny sections at 3, 6 and 9 o'clock. The long 27 in barrel (for .338 LM) ends in a squat AAC muzzle brake that takes the AAC Titan QD suppressor. The stock is a skeletal side-folding buttstock with an adjustable cheek riser and butt pad, plus an AR-style pistol grip. It feeds from a straight double-stack detachable box magazine in front of the trigger guard, usually with a large S&B scope and a bipod.",
+   "notes": "The base MSR (22 in barrel) is 5.9 kg (13 lb), 7.7 kg complete, 36 in folded and 46 in extended. A kit listing gives PSR barrels per caliber: 27 in .338 LM, 24 in .300 WM, 20 in 7.62 NATO. The weight and lengths here are adjusted for the 27 in barrel and are estimates (+5 in, about +0.6 kg). Wikipedia lists 1,002 m/s for .338 LM, but that is implausible for 250-300 gr military loads and probably reflects a lighter bullet. 905 m/s (Lapua 250 gr Scenar from a 27 in barrel) is used instead. Magazines hold 5 or 10 rounds in .338 LM and 7.62 and 7 in .300 WM. The caliber swap takes about 1 minute. SOCOM dropped the Mk 21 in 2018 for not meeting requirements, and the Mk 22 replaced it. Accuracy is the program requirement (about 1 MOA).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Remington_Modular_Sniper_Rifle",
+    "https://precisionrifleblog.com/2015/09/24/remington-msr-hands-on-review",
+    "https://www.theoutdoorstrader.com/threads/fs-ft-remington-psr-full-kit-338-lapua-magnum-300-winmag-308-winchester.2796692/",
+    "https://lapua.com/product/338-lapua-mag-tactical-target-cartridge-scenar-162g-250gr-4318017"
+   ]
+  },
+  {
+   "id": "mk22",
+   "name": "Barrett Mk 22 MRAD (ASR / PSR)",
+   "category": "sniper_rifle",
+   "cartridge": "338nm",
+   "muzzle_velocity_ms": 818,
+   "rpm": 40,
+   "fire_modes": [
+    "bolt"
+   ],
+   "feed_type": "box",
+   "capacity": 10,
+   "weight_kg": 7,
+   "length_mm": 1255,
+   "length_folded_mm": 1010,
+   "barrel_in": 27,
+   "reload_s": 3.5,
+   "empty_reload_s": 4.5,
+   "accuracy_moa": 0.8,
+   "iron_sights": false,
+   "rails": [
+    "top",
+    "bottom",
+    "sides"
+   ],
+   "stock": "right-side folding stock (latches to the bolt handle) with single-button LOP and adjustable cheek-rest height; AR-pattern pistol grip",
+   "default_optic": "Leupold Mark 5HD 5-25x56 (Army PSR); SOCOM ASR uses the Nightforce ATACR 7-35x56",
+   "muzzle_device": "Barrett suppressor-ready muzzle brake (AML 338 suppressor issued)",
+   "looks": "A coyote-brown Cerakote bolt-action rifle with an angular, slab-sided aluminum upper receiver that runs into a long, slim free-float handguard with M-LOK slots (Picatinny blocks at 3, 6 and 9 o'clock) and a long continuous 10 MIL top rail. The 27 in fluted heavy barrel ends in a large Barrett multi-port brake, often covered by the long AML 338 suppressor. A polymer lower has the trigger guard and a black AR-style grip. The skeletal stock folds right and has a raised adjustable cheekpiece and rubber butt pad. It feeds from a straight double-stack 10-round magazine, with a long Leupold or Nightforce scope and a bipod at the front.",
+   "notes": "Barrett's Mk 22 data (10 MIL rail) is .338 NM 27 in 1:9.4 barrel, 49.4 in (1,255 mm) OAL, 15.2 lb (7.0 kg), 10 rounds. The .300 NM variant uses a 26 in barrel at 7.0 kg. The 7.62 variant uses a 20 in barrel, 1,077 mm, 6.3 kg. Folded length is not published, and about 1,010 mm is an estimate. The caliber change takes under 2 minutes. No official M1162 (300 gr) muzzle velocity was found. 818 m/s is estimated from Norma's 300 gr OTM (about 810 m/s) scaled to the 27 in barrel. SAAMI quotes 2,670 ft/s from a 24 in barrel, and shooters report about 2,690 ft/s from 22 in. The Army M1162 contract is for a 300 gr armor-piercing load (SIG Sauer). Accuracy is an estimate (the PSR requirement is at or below 1 MOA).",
+   "sources": [
+    "https://barrett.net/products/firearms/mrad-mk22/",
+    "https://en.wikipedia.org/wiki/Barrett_MRAD",
+    "https://en.wikipedia.org/wiki/.338_Norma_Magnum",
+    "https://gunpowdermagazine.com/?p=16330",
+    "https://www.guns.com/news/2022/06/13/sig-sauer-wins-157-million-sniper-rifle-ammo-contract",
+    "https://peo360portfolio.com/product-details/product/203"
+   ]
+  },
+  {
+   "id": "m107",
+   "name": "Barrett M107 (M82A1) Long Range Sniper Rifle",
+   "category": "anti_materiel_rifle",
+   "cartridge": "50bmg",
+   "muzzle_velocity_ms": 853,
+   "rpm": 60,
+   "fire_modes": [
+    "semi"
+   ],
+   "feed_type": "box",
+   "capacity": 10,
+   "weight_kg": 13,
+   "length_mm": 1448,
+   "barrel_in": 29,
+   "reload_s": 4,
+   "empty_reload_s": 5.5,
+   "accuracy_moa": 2,
+   "iron_sights": true,
+   "rails": [
+    "top"
+   ],
+   "stock": "fixed stock with a soft recoil pad, rear grip and monopod socket",
+   "default_optic": "Leupold Mk 4 4.5-14x50",
+   "muzzle_device": "large two-chamber rectangular ('arrowhead') muzzle brake, suppressor-capable on the M107",
+   "looks": "A massive, long semi-auto rifle with a stamped sheet-steel two-part receiver held by cross-pins, finished in matte black/Parkerized grey (later M107A1s in FDE). It has a long top Picatinny rail with folding backup iron sights and a folding carry handle on top. The 29 in heavy barrel is fluted and recoils inside a perforated slotted barrel shroud/jacket, ending in a huge rectangular double-chamber muzzle brake. The rear has a fixed stock with a thick rubber recoil pad, a rear grip and a monopod socket. It has a folding bipod at the front and a big straight 10-round box magazine in front of the pistol grip.",
+   "notes": "Short-recoil semi-automatic. The Wikipedia M82 family figures are 13.5-14.8 kg, 1,219-1,448 mm and 20-29 in barrels. The M107 (29 in) is commonly given as about 12.9-13.0 kg (28.5-28.7 lb) without scope and 1,448 mm (57 in) long, which matches Barrett's M107A1 data. 853 m/s (2,799 ft/s) is Wikipedia's figure. Barrett lists 2,750-2,800 ft/s for 661 gr M33 from the 29 in barrel. The M107 uses a 10-round magazine, and 5-round magazines also exist. The Army also issues Mk 211 Raufoss multipurpose ammunition. The practical rate is an estimate. Accuracy with M33 ball is roughly 2-3 MOA, better with match .50 rounds. The Mk 22 is replacing it in some roles.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Barrett_M82",
+    "https://www.barrett.net/rifles/m107/",
+    "https://archive.org/download/MManuals/UsArmyTm9-1005-239-10LrsrM107SniperRifle2004.pdf",
+    "https://www.deguns.com/barrett-50-bmg-ammunition-10-rounds-661-grain-m33-full-metal-jacket-boat-tail-with-mild-steel-core-projectile-2750fps"
+   ]
+  }
+ ],
+ "cartridges": [
+  {
+   "id": "9x19",
+   "name": "9x19mm NATO M882 Ball (M1152 equivalent)",
+   "bullet_mass_g": 8.04,
+   "powder_mass_g": 0.36,
+   "g7_bc": 0.075,
+   "mv_ms": 375,
+   "mv_barrel_in": 4.9,
+   "fragmentation_ms": 0,
+   "notes": "The reference load is M882, a 124 gr (8.04 g) FMJ round nose. MIL-C-70508 gave 385 m/s from a test barrel, reduced to 375 m/s in a 1998 amendment; the M9 manual gives 375 m/s (1,230 fps) for the 4.9 in M9. American Rifleman measured 1,273 fps in 1985 testing, and commercial M882-style loads (Federal C9N882) are advertised at 1,260 fps from 4 in. The Army's current M17/M18 ball, M1152, is a 115 gr (7.45 g) FMJ flat nose at a nominal 1,320 fps (402 m/s), with similar momentum. Powder charge is an estimate (about 5.5 gr). No G7 BC is published. G1 for a 124 gr RN FMJ is about 0.15, giving a G7 equivalent of about 0.075 (estimate). It does not fragment.",
+   "sources": [
+    "https://www.americanrifleman.org/content/m1152-m1153-the-army-s-new-9-mm-luger-loads",
+    "https://www.shootingillustrated.com/articles/2020/1/23/new-for-2020-winchester-active-duty-ammunition",
+    "https://feedback.bistudio.com/T173684",
+    "https://media.vistaoutdoor.com/presskit/NPS/Federal_Premium/9x19mm-NATO-Military-Grade-Ball/20-NPS_Ammo_Federal_AmericanEagle9x19_FNL.pdf"
+   ]
+  },
+  {
+   "id": "12ga_00",
+   "name": "12 gauge 2-3/4 in 00 Buckshot (M162 / military-grade 9-pellet)",
+   "bullet_mass_g": 31.4,
+   "powder_mass_g": 1.8,
+   "g7_bc": 0.022,
+   "mv_ms": 404,
+   "mv_barrel_in": 30,
+   "fragmentation_ms": 0,
+   "pellets": 9,
+   "pellet_mass_g": 3.49,
+   "pattern_moa": 95,
+   "notes": "Military 00 buckshot (M162, plastic case) carries 9 pellets of 0.33 in lead shot, about 53.8 gr (3.49 g) each, for a total payload of about 31.4 g (1.1 oz). bullet_mass_g is the whole shot charge. Nominal MV is 1,325 fps (404 m/s), the figure for Winchester's Military Grade Q1544 commercial equivalent. Shotshell velocities are normally quoted from long test barrels (about 30 in), so expect about 1,250-1,300 fps from 18-20 in and about 1,100 fps from the M26's 7.75 in barrel. Powder charge is an estimate (about 27 gr). The G7 BC is an estimate per pellet: a 0.33 in lead sphere has G1 BC of about 0.04-0.05, giving a G7 equivalent of about 0.02. pattern_moa is the full pattern diameter from a cylinder bore under the usual rule of about 1 in of spread per yard (about 95 MOA); buffered or FliteControl-wad loads pattern about half that. No official M162 velocity spec document was found; figures are from the commercial military-spec equivalent.",
+   "sources": [
+    "https://www.wbparts.com/rfq/1305-01-043-8343.html",
+    "https://blackstoneshooting.com/winchester-mg-buck-12ga-2-75-9pel-milgrade-q1544/",
+    "https://ammunitionthrough30mm.emilspec.com/MIL-PRF-48656/page3.html",
+    "https://le.vistaoutdoor.com/ammunition/federal/buckshot/details.aspx?id=1012"
+   ]
+  },
+  {
+   "id": "68x51",
+   "name": "6.8x51mm Common Cartridge, XM1186 General Purpose (.277 SIG Fury hybrid case)",
+   "bullet_mass_g": 7.84,
+   "powder_mass_g": 3,
+   "g7_bc": 0.215,
+   "mv_ms": 915,
+   "mv_barrel_in": 13,
+   "fragmentation_ms": 600,
+   "notes": "Bullet mass is disputed. Shephard reports that the M1186 GP design moved from a 135 gr target to a 121 gr (7.84 g) projectile with a reverse-drawn copper jacket, copper slug and steel penetrator (EPR-style); 121 gr is used here. Wikipedia mentions a 113 gr hybrid ball 'developed for NGSW' (3,200 fps from 16 in), and commercial loads are 135 gr. The case has a brass body and steel head; MAP is 80,000 psi. Reference velocity is about 3,000 fps from the M7's 13 in barrel (Wikipedia/SIG); the 135 gr load gives 3,000 fps from 16 in. The G7 BC is an estimate: no published value; the 135 gr Brass Elite has G1 0.475, which converts to G7 about 0.24, and a lighter penetrator bullet is estimated at about 0.42 G1 (x 0.51 ≈ 0.215 G7). The powder charge is also an estimate (about 46 gr, by case capacity). The fragmentation threshold is an EPR-type estimate (breaks up or yaws reliably above about 600 m/s).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/.277_SIG_Fury",
+    "https://en.wikipedia.org/wiki/M7_rifle",
+    "https://plus.shephardmedia.com/analysis/decisive-edge-biting-the-bullet-how-ammunition-design-can-address-training-challenges/",
+    "https://www.army.mil/article/284485/6_8_mm_ammunition_team_wins_maj_gen_harold_j_greene_innovation_award"
+   ]
+  },
+  {
+   "id": "762x51",
+   "name": "7.62x51mm NATO M80A1 EPR (Enhanced Performance Round)",
+   "bullet_mass_g": 8.42,
+   "powder_mass_g": 2.9,
+   "g7_bc": 0.195,
+   "mv_ms": 930,
+   "mv_barrel_in": 22,
+   "fragmentation_ms": 580,
+   "notes": "Bullet is 130 gr (8.42 g), lead-free, three-part: a steel penetrator tip, a copper slug and a reverse-drawn copper jacket (Wikipedia; TFB). Wikipedia gives a muzzle velocity of 930 m/s (3,100 fps) with no barrel length stated; it is assumed here to be a 22 in test barrel like M80. For comparison, legacy M80 ball is 147 gr at 853 m/s (2,800 fps) from 22 in, with G7 0.200. The G7 BC for M80A1 is not officially published; TFB used a conservative 0.185, and 0.195 is an estimate. The powder charge is an estimate (about 45 gr). The Wound Channel/TFB test showed full fragmentation at 1,929 fps (588 m/s), so the threshold is set at about 580 m/s.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/7.62%C3%9751mm_NATO",
+    "https://www.thefirearmblog.com/blog/2016/07/12/extreme-fragmentation-range-from-m80a1-epr-300-blackout-test-from-the-wound-channel"
+   ]
+  },
+  {
+   "id": "762_m118lr",
+   "name": "7.62x51mm NATO M118LR (175 gr Sierra MatchKing HPBT)",
+   "bullet_mass_g": 11.34,
+   "powder_mass_g": 2.8,
+   "g7_bc": 0.243,
+   "mv_ms": 783,
+   "mv_barrel_in": 20,
+   "fragmentation_ms": 0,
+   "notes": "The bullet is a 175 gr Sierra MatchKing #2275 open-tip boat-tail. Sierra lists G1 as 0.505 above 2,800 fps, 0.496 between 2,800 and 1,800 fps, and 0.485 below. G1 × 0.51 would give about 0.253, but 0.243 is used here, the commonly cited Applied Ballistics/Litz measured G7. One retailer lists G7 0.250. Reference velocity is 783 m/s from the M110's 20 in barrel (Wikipedia). Commercial M118LR-equivalent loads list about 2,600-2,620 ft/s (792-799 m/s) from a 24 in barrel. The powder charge (about 43 gr, 2.8 g) is an estimate. The round is known for temperature-sensitive velocity. Match OTM bullets do not reliably fragment, so fragmentation is 0. SOCOM's Mk 316 Mod 0 is ballistically almost identical.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M110_Semi-Automatic_Sniper_System",
+    "https://www.sierrabullets.com/?p=15298",
+    "https://bulkammo.com/20-rounds-of-7-62x51-ammo-by-winchester-175gr-hpbt-matchking-m118lr",
+    "https://www.opticsplanet.com/winchester-m118-7-62x51mm-175gr-sierra-matchking-bthp.html"
+   ]
+  },
+  {
+   "id": "338lm",
+   "name": ".338 Lapua Magnum 250 gr Lapua Scenar OTM (GB488)",
+   "bullet_mass_g": 16.2,
+   "powder_mass_g": 6.1,
+   "g7_bc": 0.322,
+   "mv_ms": 905,
+   "mv_barrel_in": 27.15,
+   "fragmentation_ms": 0,
+   "notes": "Lapua's published data: 250 gr (16.2 g) Scenar OTM, G1 0.648, G7 0.322 (Lapua doppler), 905 m/s (2,970 ft/s) from a 690 mm (27.15 in) test barrel. Commercial 250 gr loads run 880-915 m/s. The powder charge is an estimate (about 94 gr, Vihtavuori N560/N570 class). Case capacity is 7.4-7.53 cm³. US forces also fielded 300 gr loads: Lapua 300 gr Scenar (G1 0.736, about 837-847 m/s) and 300 gr Sierra MatchKing (Black Hills/Barnes), so a 300 gr variant would be about 19.44 g, G7 about 0.38 and about 840 m/s. Fragmentation is 0 for this match OTM bullet.",
+   "sources": [
+    "https://lapua.com/product/338-lapua-mag-tactical-target-cartridge-scenar-162g-250gr-4318017",
+    "https://www.nammo.com/products/ammunition/small-caliber-ammunition/8-6mm-series-338/8-6-mm-x-70-338-lapua-magnum-scenar/",
+    "https://en.wikipedia.org/wiki/.338_Lapua_Magnum"
+   ]
+  },
+  {
+   "id": "338nm",
+   "name": ".338 Norma Magnum 300 gr OTM (M1162 / XM1162 class)",
+   "bullet_mass_g": 19.44,
+   "powder_mass_g": 5.6,
+   "g7_bc": 0.384,
+   "mv_ms": 810,
+   "mv_barrel_in": 26,
+   "fragmentation_ms": 0,
+   "notes": "The 300 gr (19.44 g) Sierra MatchKing-class bullet has a G7 of 0.384 per Norma's Match King data (26 in barrel). Norma's governmental 300 gr OTM lists G1 0.768 (× 0.51 ≈ 0.39, consistent) and about 810 m/s (2,657 ft/s). SAAMI gives 2,670 ft/s with 300 gr from a 24 in barrel. Wikipedia gives 823 m/s (2,700 ft/s) from a 24 in barrel. The Army M1162 is a 300 gr armor-piercing load from SIG Sauer with unpublished specs, so these numbers are match-OTM equivalents. The powder charge (about 86 gr) is an estimate. Case capacity is 6.95 cm³ (107.3 gr H2O).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/.338_Norma_Magnum",
+    "https://norma-ammunition.com/en-us/products/dedicated-precision/centerfire-rifle/norma-match-king-r/norma-match-kingr-338-norma-magnum-300gr---20185272",
+    "https://www.norma-ammunition.com/governmental/products/otm/338-norma-magnum-300gr---91002013",
+    "https://www.guns.com/news/2022/06/13/sig-sauer-wins-157-million-sniper-rifle-ammo-contract"
+   ]
+  },
+  {
+   "id": "50bmg",
+   "name": ".50 BMG (12.7x99mm NATO) M33 Ball",
+   "bullet_mass_g": 42.8,
+   "powder_mass_g": 15.3,
+   "g7_bc": 0.32,
+   "mv_ms": 887,
+   "mv_barrel_in": 45,
+   "fragmentation_ms": 0,
+   "notes": "M33 ball is a 660-661 gr (42.8 g) FMJBT with a mild-steel core. Reference velocity is 887-890 m/s (2,910 ft/s, Lake City spec, measured 78 ft from the muzzle) from the M2's 45 in barrel. The M2 TM gives 930 m/s. Barrett lists 2,750-2,800 ft/s from the M107's 29 in barrel and 2,500 ft/s from 20 in. No official BC was found. G1 is typically quoted around 0.62-0.67, and G7 0.32 is a converted estimate (about G1 × 0.51). The powder charge (about 235 gr of WC860-type ball powder) is an estimate. The round does not fragment. Mk 211 Raufoss multipurpose and M8/M20 API are common alternatives.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/M2_Browning",
+    "https://www.ammunitiontogo.com/100rds-50-bmg-lake-city-660gr-fmj-m33-ammo",
+    "https://kygunco.com/product/barrett-14671-50-bmg-661gr-m33-ball-ammo-250rd",
+    "https://www.deguns.com/barrett-50-bmg-ammunition-10-rounds-661-grain-m33-full-metal-jacket-boat-tail-with-mild-steel-core-projectile-2750fps"
+   ]
+  }
+ ]
+}

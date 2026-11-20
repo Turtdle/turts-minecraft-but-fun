@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "III",
+    "BRT",
+    "B  "
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "B": "minecraft:iron_block",
+    "R": "minecraft:redstone",
+    "T": "minecraft:tripwire_hook"
+  },
+  "result": {
+    "id": "modernarmory:aa12",
+    "count": 1
+  }
+}

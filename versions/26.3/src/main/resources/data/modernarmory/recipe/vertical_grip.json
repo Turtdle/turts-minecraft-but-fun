@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:black_dye",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "id": "modernarmory:vertical_grip",
+    "count": 1
+  }
+}

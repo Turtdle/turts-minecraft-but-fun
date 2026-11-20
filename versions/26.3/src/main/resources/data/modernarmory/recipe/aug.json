@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "III",
+    "DBT",
+    "G  "
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "D": "minecraft:green_dye",
+    "B": "minecraft:iron_block",
+    "T": "minecraft:tripwire_hook",
+    "G": "minecraft:glass_pane"
+  },
+  "result": {
+    "id": "modernarmory:aug",
+    "count": 1
+  }
+}

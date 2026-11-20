@@ -42,7 +42,7 @@ final class TearGasEffect extends SmokeEffect {
         Vec3 p = g.position();
         AABB box = new AABB(p.x - r, p.y - 0.5, p.z - r, p.x + r, p.y + r + 1.5, p.z + r);
         long now = level.getGameTime();
-        for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, box, LivingEntity::isAlive)) {
+        for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, box, e -> e.isAlive() && !e.isSpectator())) {
             double dx = e.getX() - p.x, dz = e.getZ() - p.z;
             if (dx * dx + dz * dz <= r * r) expose(e, now);
         }

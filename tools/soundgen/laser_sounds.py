@@ -87,6 +87,7 @@ def update_sounds_json():
     for event, vol in EVENTS.items():
         data[event] = {"sounds": [{"name": "modernarmory:" + event, "volume": vol}], "subtitle": "subtitles.modernarmory." + event}
     json.dump(data, open(SOUNDS_JSON, "w", encoding="utf-8"), indent=2)
+    __import__("sound_ranges").main()  # keep other players' hearing distances (sound_ranges.py)
 
 
 def main():

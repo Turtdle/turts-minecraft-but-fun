@@ -51,6 +51,7 @@ public final class FlashEffect implements GrenadeEffect {
         level.sendParticles(ParticleTypes.FLASH, p.x, p.y, p.z, 1, 0, 0, 0, 0);
         level.sendParticles(ParticleTypes.POOF, p.x, p.y, p.z, 12, 0.2, 0.2, 0.2, 0.05);
         for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, new AABB(p, p).inflate(FLASH_RANGE))) {
+            if (e.isSpectator()) continue;
             Exposure x = exposure(level, e, p);
             if (x.flash() < THRESHOLD && x.bang() < THRESHOLD) continue;
             if (e instanceof ServerPlayer player) {

@@ -40,6 +40,7 @@ public final class GunCarry {
     private static final int CHECK_EVERY = 10;
     private static final EquipmentSlot[] ARMOR = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
     private static final net.minecraft.resources.Identifier LOAD_ID = ModernArmory.id("gun_load");
+    private static final AttributeModifier LOAD = new AttributeModifier(LOAD_ID, -LOADED_SLOWDOWN, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     /** Last tick each player was told about the limit (so the message doesn't spam). */
     private static final Map<Player, Long> TOLD = new WeakHashMap<>();
 
@@ -116,8 +117,9 @@ public final class GunCarry {
         AttributeInstance speed = p.getAttribute(Attributes.MOVEMENT_SPEED);
         if (speed == null) return;
         boolean loaded = !exempt(p) && heavyVest(p) && mainArms(p) >= 2;
-        if (loaded) speed.addOrUpdateTransientModifier(new AttributeModifier(LOAD_ID, -LOADED_SLOWDOWN, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        else if (speed.hasModifier(LOAD_ID)) speed.removeModifier(LOAD_ID);
+        boolean has = speed.hasModifier(LOAD_ID);
+        if (loaded && !has) speed.addTransientModifier(LOAD);
+        else if (!loaded && has) speed.removeModifier(LOAD_ID);
     }
 
     /** Whether the heavy-load slowdown is on {@code p} right now (read by tests). */

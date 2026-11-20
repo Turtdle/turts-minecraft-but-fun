@@ -73,7 +73,8 @@ public class GrenadeItem extends Item implements GeoItem {
         triggerAnim(player, GeoItem.getOrAssignId(stack, level), ACTIONS, kind.animation);
         player.getCooldowns().addCooldown(this, 10);
         GrenadeThrows.schedule(level, type.releaseTicks(kind.under), () -> {
-            if (!player.isAlive()) return;
+            // gone from the hand meanwhile (dropped with Q, the last one): nothing left to throw
+            if (!player.isAlive() || (stack.isEmpty() && !player.getAbilities().instabuild)) return;
             GrenadeEntity.throwFrom(player, type, kind);
             level.playSound(null, player, ModSounds.GRENADE_SPOON.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
             player.awardStat(Stats.ITEM_USED.get(this));

@@ -3,15 +3,18 @@
     "sounds": [
       {
         "name": "modernarmory:m4_fire_1",
-        "volume": 0.92
+        "volume": 0.92,
+        "attenuation_distance": 192
       },
       {
         "name": "modernarmory:m4_fire_2",
-        "volume": 0.92
+        "volume": 0.92,
+        "attenuation_distance": 192
       },
       {
         "name": "modernarmory:m4_fire_3",
-        "volume": 0.92
+        "volume": 0.92,
+        "attenuation_distance": 192
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -20,15 +23,18 @@
     "sounds": [
       {
         "name": "modernarmory:bullet_crack_1",
-        "volume": 0.6
+        "volume": 0.6,
+        "attenuation_distance": 24
       },
       {
         "name": "modernarmory:bullet_crack_2",
-        "volume": 0.6
+        "volume": 0.6,
+        "attenuation_distance": 24
       },
       {
         "name": "modernarmory:bullet_crack_3",
-        "volume": 0.6
+        "volume": 0.6,
+        "attenuation_distance": 24
       }
     ],
     "subtitle": "subtitles.modernarmory.bullet_crack"
@@ -37,15 +43,18 @@
     "sounds": [
       {
         "name": "modernarmory:ricochet_1",
-        "volume": 0.6
+        "volume": 0.6,
+        "attenuation_distance": 32
       },
       {
         "name": "modernarmory:ricochet_2",
-        "volume": 0.6
+        "volume": 0.6,
+        "attenuation_distance": 32
       },
       {
         "name": "modernarmory:ricochet_3",
-        "volume": 0.6
+        "volume": 0.6,
+        "attenuation_distance": 32
       }
     ],
     "subtitle": "subtitles.modernarmory.ricochet"
@@ -70,11 +79,13 @@
     "sounds": [
       {
         "name": "modernarmory:m2010_fire_1",
-        "volume": 0.59
+        "volume": 0.59,
+        "attenuation_distance": 96
       },
       {
         "name": "modernarmory:m2010_fire_2",
-        "volume": 0.59
+        "volume": 0.59,
+        "attenuation_distance": 96
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -101,11 +112,13 @@
     "sounds": [
       {
         "name": "modernarmory:m2010_fire_loud_1",
-        "volume": 0.81
+        "volume": 0.81,
+        "attenuation_distance": 224
       },
       {
         "name": "modernarmory:m2010_fire_loud_2",
-        "volume": 0.81
+        "volume": 0.81,
+        "attenuation_distance": 224
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -114,11 +127,13 @@
     "sounds": [
       {
         "name": "modernarmory:m4_fire_suppressed_1",
-        "volume": 0.59
+        "volume": 0.59,
+        "attenuation_distance": 64
       },
       {
         "name": "modernarmory:m4_fire_suppressed_2",
-        "volume": 0.59
+        "volume": 0.59,
+        "attenuation_distance": 64
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -127,15 +142,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_12ga_1",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 176
       },
       {
         "name": "modernarmory:fire_12ga_2",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 176
       },
       {
         "name": "modernarmory:fire_12ga_3",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 176
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -162,15 +180,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_9mm_pistol_1",
-        "volume": 0.63
+        "volume": 0.63,
+        "attenuation_distance": 160
       },
       {
         "name": "modernarmory:fire_9mm_pistol_2",
-        "volume": 0.63
+        "volume": 0.63,
+        "attenuation_distance": 160
       },
       {
         "name": "modernarmory:fire_9mm_pistol_3",
-        "volume": 0.63
+        "volume": 0.63,
+        "attenuation_distance": 160
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -179,15 +200,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_9mm_smg_1",
-        "volume": 0.71
+        "volume": 0.71,
+        "attenuation_distance": 160
       },
       {
         "name": "modernarmory:fire_9mm_smg_2",
-        "volume": 0.71
+        "volume": 0.71,
+        "attenuation_distance": 160
       },
       {
         "name": "modernarmory:fire_9mm_smg_3",
-        "volume": 0.71
+        "volume": 0.71,
+        "attenuation_distance": 160
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -196,11 +220,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_9mm_suppressed_1",
-        "volume": 0.31
+        "volume": 0.31,
+        "attenuation_distance": 32
       },
       {
         "name": "modernarmory:fire_9mm_suppressed_2",
-        "volume": 0.31
+        "volume": 0.31,
+        "attenuation_distance": 32
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -209,15 +235,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_68_1",
-        "volume": 0.81
+        "volume": 0.81,
+        "attenuation_distance": 208
       },
       {
         "name": "modernarmory:fire_68_2",
-        "volume": 0.81
+        "volume": 0.81,
+        "attenuation_distance": 208
       },
       {
         "name": "modernarmory:fire_68_3",
-        "volume": 0.81
+        "volume": 0.81,
+        "attenuation_distance": 208
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -226,11 +255,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_68_suppressed_1",
-        "volume": 0.53
+        "volume": 0.53,
+        "attenuation_distance": 72
       },
       {
         "name": "modernarmory:fire_68_suppressed_2",
-        "volume": 0.53
+        "volume": 0.53,
+        "attenuation_distance": 72
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -239,15 +270,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_762_1",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 208
       },
       {
         "name": "modernarmory:fire_762_2",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 208
       },
       {
         "name": "modernarmory:fire_762_3",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 208
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -256,11 +290,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_762_suppressed_1",
-        "volume": 0.7
+        "volume": 0.7,
+        "attenuation_distance": 72
       },
       {
         "name": "modernarmory:fire_762_suppressed_2",
-        "volume": 0.7
+        "volume": 0.7,
+        "attenuation_distance": 72
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -269,11 +305,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_300wm_1",
-        "volume": 0.78
+        "volume": 0.78,
+        "attenuation_distance": 224
       },
       {
         "name": "modernarmory:fire_300wm_2",
-        "volume": 0.78
+        "volume": 0.78,
+        "attenuation_distance": 224
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -282,11 +320,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_300wm_suppressed_1",
-        "volume": 0.61
+        "volume": 0.61,
+        "attenuation_distance": 96
       },
       {
         "name": "modernarmory:fire_300wm_suppressed_2",
-        "volume": 0.61
+        "volume": 0.61,
+        "attenuation_distance": 96
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -295,11 +335,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_338_1",
-        "volume": 0.82
+        "volume": 0.82,
+        "attenuation_distance": 240
       },
       {
         "name": "modernarmory:fire_338_2",
-        "volume": 0.82
+        "volume": 0.82,
+        "attenuation_distance": 240
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -308,11 +350,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_338_suppressed_1",
-        "volume": 0.63
+        "volume": 0.63,
+        "attenuation_distance": 112
       },
       {
         "name": "modernarmory:fire_338_suppressed_2",
-        "volume": 0.63
+        "volume": 0.63,
+        "attenuation_distance": 112
       }
     ],
     "subtitle": "subtitles.modernarmory.m2010_fire"
@@ -321,11 +365,13 @@
     "sounds": [
       {
         "name": "modernarmory:fire_50bmg_1",
-        "volume": 0.88
+        "volume": 0.88,
+        "attenuation_distance": 256
       },
       {
         "name": "modernarmory:fire_50bmg_2",
-        "volume": 0.88
+        "volume": 0.88,
+        "attenuation_distance": 256
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -646,15 +692,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_50ae_1",
-        "volume": 0.78
+        "volume": 0.78,
+        "attenuation_distance": 176
       },
       {
         "name": "modernarmory:fire_50ae_2",
-        "volume": 0.78
+        "volume": 0.78,
+        "attenuation_distance": 176
       },
       {
         "name": "modernarmory:fire_50ae_3",
-        "volume": 0.78
+        "volume": 0.78,
+        "attenuation_distance": 176
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -663,15 +712,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_44mag_1",
-        "volume": 0.48
+        "volume": 0.48,
+        "attenuation_distance": 176
       },
       {
         "name": "modernarmory:fire_44mag_2",
-        "volume": 0.48
+        "volume": 0.48,
+        "attenuation_distance": 176
       },
       {
         "name": "modernarmory:fire_44mag_3",
-        "volume": 0.48
+        "volume": 0.48,
+        "attenuation_distance": 176
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -743,7 +795,8 @@
     "sounds": [
       {
         "name": "modernarmory:flashbang",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 40
       }
     ],
     "subtitle": "subtitles.modernarmory.flashbang"
@@ -780,7 +833,8 @@
       {
         "name": "modernarmory:drone_rotor_scout",
         "volume": 0.7,
-        "stream": false
+        "stream": false,
+        "attenuation_distance": 40
       }
     ],
     "subtitle": "subtitles.modernarmory.drone_rotor"
@@ -790,7 +844,8 @@
       {
         "name": "modernarmory:drone_rotor_fpv",
         "volume": 0.75,
-        "stream": false
+        "stream": false,
+        "attenuation_distance": 48
       }
     ],
     "subtitle": "subtitles.modernarmory.drone_rotor"
@@ -835,7 +890,8 @@
     "sounds": [
       {
         "name": "modernarmory:drone_crash",
-        "volume": 0.9
+        "volume": 0.9,
+        "attenuation_distance": 24
       }
     ],
     "subtitle": "subtitles.modernarmory.drone_crash"
@@ -844,7 +900,8 @@
     "sounds": [
       {
         "name": "modernarmory:drone_detonation",
-        "volume": 1.0
+        "volume": 1.0,
+        "attenuation_distance": 48
       }
     ],
     "subtitle": "subtitles.modernarmory.drone_detonation"
@@ -871,7 +928,8 @@
     "sounds": [
       {
         "name": "modernarmory:laser_hum",
-        "volume": 0.8
+        "volume": 0.8,
+        "attenuation_distance": 40
       }
     ],
     "subtitle": "subtitles.modernarmory.laser_hum"
@@ -880,7 +938,8 @@
     "sounds": [
       {
         "name": "modernarmory:laser_burn",
-        "volume": 0.7
+        "volume": 0.7,
+        "attenuation_distance": 24
       }
     ],
     "subtitle": "subtitles.modernarmory.laser_burn"
@@ -931,15 +990,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_762x39_1",
-        "volume": 0.92
+        "volume": 0.92,
+        "attenuation_distance": 200
       },
       {
         "name": "modernarmory:fire_762x39_2",
-        "volume": 0.92
+        "volume": 0.92,
+        "attenuation_distance": 200
       },
       {
         "name": "modernarmory:fire_762x39_3",
-        "volume": 0.92
+        "volume": 0.92,
+        "attenuation_distance": 200
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"
@@ -948,15 +1010,18 @@
     "sounds": [
       {
         "name": "modernarmory:fire_45acp_1",
-        "volume": 0.66
+        "volume": 0.66,
+        "attenuation_distance": 160
       },
       {
         "name": "modernarmory:fire_45acp_2",
-        "volume": 0.66
+        "volume": 0.66,
+        "attenuation_distance": 160
       },
       {
         "name": "modernarmory:fire_45acp_3",
-        "volume": 0.66
+        "volume": 0.66,
+        "attenuation_distance": 160
       }
     ],
     "subtitle": "subtitles.modernarmory.m4_fire"

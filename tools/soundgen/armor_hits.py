@@ -111,6 +111,7 @@ def main():
     for name in ("armor_hit_soft", "armor_hit_plate"):
         data[name] = {"subtitle": f"subtitles.modernarmory.{name}", "sounds": [{"name": f"modernarmory:{name}", "volume": 0.8}]}
     json.dump(data, open(SOUNDS_JSON, "w", encoding="utf-8"), indent=2)
+    __import__("sound_ranges").main()  # keep other players' hearing distances (sound_ranges.py)
 
 
 if __name__ == "__main__":

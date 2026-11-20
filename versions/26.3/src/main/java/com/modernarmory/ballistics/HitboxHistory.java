@@ -40,7 +40,8 @@ public final class HitboxHistory {
         long now = level.getGameTime();
         var tracks = LEVELS.computeIfAbsent(level, l -> new Int2ObjectOpenHashMap<>());
         for (Entity e : level.getAllEntities()) {
-            if (!(e instanceof LivingEntity) || e.isRemoved()) continue;
+            // players, mobs and drones (fast, and shot at by players who see them where they were)
+            if (!(e instanceof LivingEntity || e instanceof com.modernarmory.drone.DroneEntity) || e.isRemoved()) continue;
             Track t = tracks.computeIfAbsent(e.getId(), id -> new Track());
             int i = (int) Math.floorMod(now, (long) TICKS);
             t.boxes[i] = e.getBoundingBox();

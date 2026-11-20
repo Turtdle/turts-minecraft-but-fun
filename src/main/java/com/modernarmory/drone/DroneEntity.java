@@ -422,6 +422,15 @@ public class DroneEntity extends Entity implements GeoEntity {
             if (!level().isClientSide) player.displayClientMessage(Component.literal("Armed: land it first"), true);
             return InteractionResult.FAIL;
         }
+        // someone else's drone: hands off (and never out from under whoever is flying it)
+        if (owner != null && !owner.equals(player.getUUID())) {
+            if (!level().isClientSide) player.displayClientMessage(Component.literal("Not your drone"), true);
+            return InteractionResult.FAIL;
+        }
+        if (pilotId() >= 0 && pilotId() != player.getId()) {
+            if (!level().isClientSide) player.displayClientMessage(Component.literal("Someone is flying it"), true);
+            return InteractionResult.FAIL;
+        }
         if (!(level() instanceof ServerLevel level)) return InteractionResult.SUCCESS;
         DroneControl.release(this, true);
         ItemStack stack = DroneItem.stackFor(type(), battery());

@@ -60,6 +60,11 @@ public final class GunHandler {
         double cooldown; // seconds until the action can cycle again
         ReloadTask reload;
         int reloadSlot = -1;
+        /**
+         * The trigger went down since the last tick. Online, a quick tap's press and release can reach the server in the
+         * same tick, so "held" alone would never show it: the press is remembered until the tick deals with it.
+         */
+        boolean pendingPress;
 
         boolean reloading() {
             return reload != null;
@@ -74,6 +79,7 @@ public final class GunHandler {
 
     public static void setInput(ServerPlayer player, boolean trigger, boolean aiming) {
         State s = state(player);
+        if (trigger && !s.trigger.held) s.pendingPress = true;
         s.trigger.held = trigger;
         s.aiming = aiming;
     }
@@ -104,6 +110,12 @@ public final class GunHandler {
         STATES.remove(event.getEntity().getUUID());
     }
 
+    /** A reload in progress, a held trigger, the cooldown: none of it survives respawning. */
+    @SubscribeEvent
+    static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        STATES.remove(event.getEntity().getUUID());
+    }
+
     private static void tick(ServerPlayer player) {
         State s = state(player);
         TriggerState t = s.trigger;
@@ -112,10 +124,14 @@ public final class GunHandler {
             s.reload = null;
             t.stopBurst();
             s.prevTrigger = t.held;
+            s.pendingPress = false;
             return;
         }
         GunSpec spec = gun.spec();
-        boolean pressed = t.held && !s.prevTrigger;
+        boolean pressed = (t.held && !s.prevTrigger) || s.pendingPress;
+        // pressed and already let go before this tick: a tap, worth exactly one round
+        boolean tap = pressed && !t.held;
+        s.pendingPress = false;
 
         if (s.reloading()) {
             if (player.getInventory().selected != s.reloadSlot) {
@@ -136,7 +152,7 @@ public final class GunHandler {
 
         // Fire as many rounds as the cyclic rate allows within this 50 ms tick.
         while (s.cooldown < TICK) {
-            if (!mode.trigger().wantsShot(t)) break;
+            if (!mode.trigger().wantsShot(t) && !tap) break;
             int ammo = gun.ammo(stack);
             boolean infinite = player.isCreative() && Config.CREATIVE_INFINITE_AMMO.get();
             if (ammo <= 0 && !infinite) {
@@ -150,6 +166,7 @@ public final class GunHandler {
             if (!infinite) gun.setAmmo(stack, ammo - 1);
             mode.trigger().onShot(t);
             s.cooldown += spec.cycleTime();
+            if (tap) break;
         }
         s.cooldown = Math.max(0, s.cooldown - TICK);
         s.prevTrigger = t.held;

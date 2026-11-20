@@ -105,6 +105,19 @@ cd versions/26.3
 ./gradlew runAutotest      # same script -> versions/26.3/runs/autotest/screenshots/autotest_*.png
 ```
 
+### Multiplayer test
+
+`./gradlew runServer` starts a dedicated server in `run/` (in `versions/26.3/run/` for 26.3). For the scripted
+multiplayer test it needs, once: `eula.txt` with `eula=true` (accepting the Minecraft EULA), and a `server.properties`
+with `online-mode=false` and `server-port=25599`, plus `ops.json` opping the offline test player `Dev`
+(UUID `380df991-f603-344c-a090-369bad2a924a`). Then, while it runs, `./gradlew runAutotestMp` joins it and checks hits,
+mastery sync, reloads, grenades, flashbangs, armour and the gun limit over the network (`[autotest] mp: 12 of 12`).
+
+Known multiplayer gaps (cosmetic): other players don't see your muzzle flash; bolt / pump cycle sounds reach other
+players at the moment of the shot rather than after it; a bullet that enters your view mid-flight restarts its tracer
+burnout; ricochet paths differ slightly between clients; a drone pilot's idle body turns its head with the camera; a
+frag grenade's 250 fragments are 250 network entities.
+
 Code layout, how to add a gun / cartridge / attachment / sound set / view class, and where the
 mod-wide tuning knobs live: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 

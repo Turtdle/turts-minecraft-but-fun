@@ -65,7 +65,23 @@ public final class MasteryHandler {
                     .withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD), true);
             player.playNotifySound(SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.6f, 1.4f);
         }
-        sync(player);
+        // every round on full auto would be ~13 syncs a second: a level-up goes at once, the rest at most once a second
+        long now = player.level().getGameTime();
+        long[] st = SYNCED.computeIfAbsent(player, k -> new long[] {Long.MIN_VALUE / 2, 0});
+        if (newLevel > oldLevel || now - st[0] >= SYNC_EVERY) sync(player);
+        else st[1] = 1; // owed: the tick handler sends it
+    }
+
+    /** Per player: game time of the last sync, and whether one is owed. */
+    private static final java.util.Map<ServerPlayer, long[]> SYNCED = new java.util.WeakHashMap<>();
+    /** Least ticks between two mastery syncs while XP keeps coming in. */
+    private static final int SYNC_EVERY = 20;
+
+    @SubscribeEvent
+    static void onPlayerTickSync(net.neoforged.neoforge.event.tick.PlayerTickEvent.Post e) {
+        if (!(e.getEntity() instanceof ServerPlayer p)) return;
+        long[] st = SYNCED.get(p);
+        if (st != null && st[1] != 0 && p.level().getGameTime() - st[0] >= SYNC_EVERY) sync(p);
     }
 
     private static String gunName(String gunId) {
@@ -74,6 +90,9 @@ public final class MasteryHandler {
     }
 
     public static void sync(ServerPlayer player) {
+        long[] st = SYNCED.computeIfAbsent(player, k -> new long[2]);
+        st[0] = player.level().getGameTime();
+        st[1] = 0;
         PacketDistributor.sendToPlayer(player, new MasterySyncPayload(data(player)));
     }
 

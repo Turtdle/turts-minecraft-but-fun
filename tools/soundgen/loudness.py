@@ -76,6 +76,7 @@ def apply(verbose=True):
             short = "" if abs(got_db - db) < 0.3 else f"   WARNING: {db - got_db:.1f} dB short, raise loud_db"
             print(f"  {event:24s} vol {vol:.2f}  -> {got_db:+5.1f} dB vs {ref} M4 (want {db:+.1f}){short}")
     json.dump(data, open(SOUNDS_JSON, "w", encoding="utf-8"), indent=2)
+    __import__("sound_ranges").main()  # keep other players' hearing distances (sound_ranges.py)
 
 
 if __name__ == "__main__":

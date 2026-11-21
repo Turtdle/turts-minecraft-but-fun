@@ -22,7 +22,7 @@ import net.neoforged.neoforge.common.NeoForge;
 @Mod(value = ModernArmory.MODID, dist = Dist.CLIENT)
 public class ModernArmoryClient {
     public ModernArmoryClient(IEventBus modBus, ModContainer container) {
-        // Mods > Modern Armory > Config: the crosshair editor and every other setting
+        // Mods > Turt's Armory > Config: the crosshair editor and every other setting
         container.registerExtensionPoint(IConfigScreenFactory.class, SettingsScreen::new);
         container.registerConfig(net.neoforged.fml.config.ModConfig.Type.CLIENT, CrosshairConfig.SPEC);
 

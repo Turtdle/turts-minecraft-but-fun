@@ -13,7 +13,7 @@ public final class CrosshairConfig {
     private static final ModConfigSpec.Builder B = new ModConfigSpec.Builder();
 
     static {
-        B.comment("Gun crosshair (edit it in game: Mods > Modern Armory > Config > Crosshair editor)").push("crosshair");
+        B.comment("Gun crosshair (edit it in game: Mods > Turt's Armory > Config > Crosshair editor)").push("crosshair");
     }
 
     public static final ModConfigSpec.IntValue LENGTH = B.comment("Length of each tick, in screen pixels")

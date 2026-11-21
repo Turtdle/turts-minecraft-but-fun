@@ -71,10 +71,12 @@ public class BulletRenderer extends EntityRenderer<BulletEntity, BulletRenderer.
         }
         state.direction = vel.scale(1.0 / speed);
         // distance flown up to this frame (the entity position is interpolated with partialTick)
-        state.flown = bullet.distance() - (1 - partialTick) * speed * 0.05;
+        // (a bullet that stopped short of a whole tick's flight reaches its impact, then its streak collapses into it)
+        state.flown = bullet.distance(partialTick);
         state.glow = bullet.tracerGlow(); // -1: ball round, or the tracer has burnt out
         state.offset = bullet.tracerOffset();
-        state.trailLength = (float) Mth.clamp(state.flown - 0.8, 0, state.glow >= 0 ? TRACER_TRAIL : MAX_TRAIL); // hide the first metre
+        state.trailLength = (float) Mth.clamp(state.flown - 0.8, 0, state.glow >= 0 ? TRACER_TRAIL : MAX_TRAIL) // hide the first metre
+                * bullet.trailShare(partialTick);
     }
 
     @Override

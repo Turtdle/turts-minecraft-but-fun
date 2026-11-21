@@ -303,7 +303,7 @@ public final class DronePilot {
         if (d.type().flightMode() == com.modernarmory.drone.FlightMode.ACRO) {
             // acro: the mouse is the right stick (pitch / roll: the drone turns while it moves and keeps its attitude
             // when it stops), jump / sneak move the throttle stick, A/D yaw, W/S tilt a gimbal; nothing levels it
-            float sens = CrosshairConfig.DRONE_MOUSE.get().floatValue(); // Mods > Modern Armory > Config > All settings
+            float sens = CrosshairConfig.DRONE_MOUSE.get().floatValue(); // Mods > Turt's Armory > Config > All settings
             float rollDeg = free ? Mth.wrapDegrees(player.getYRot() - mouseYaw) * sens : 0, pitchDeg = free ? player.getXRot() * sens : 0;
             setLook(player, mouseYaw, 0);
             throttleStick = Mth.clamp(throttleStick + lift * THROTTLE_PER_TICK, 0, 1);

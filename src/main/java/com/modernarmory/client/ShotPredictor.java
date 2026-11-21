@@ -175,6 +175,9 @@ public final class ShotPredictor {
         if (!(bullet.level() instanceof ClientLevel level)) return;
         bullet.setId(nextPredictedId--);
         level.addEntity(bullet);
+        // its first step now rather than next tick, so the tracer (and a close impact) shows the moment you fire
+        bullet.setOldPosAndRot();
+        bullet.tick();
     }
 
     /** Rounds in the held gun as the HUD should show them: the server's count less our shots still on the way. */

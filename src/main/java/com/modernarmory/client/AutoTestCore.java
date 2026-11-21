@@ -342,7 +342,9 @@ final class AutoTestCore {
         AutoTestGunCarry.script(GUNCARRY_START);
         // inventory icons show the fitted attachments
         AutoTestIcons.script(ICONS_START);
-        at(ICONS_START + AutoTestIcons.LENGTH + 2, AutoTest::finish);
+        // a tracer at a wall a few metres away still shows
+        AutoTestCloseTracer.script(CLOSETRACER_START);
+        at(CLOSETRACER_START + AutoTestCloseTracer.LENGTH + 2, AutoTest::finish);
     }
 
     private AutoTestCore() {}
@@ -452,6 +454,7 @@ final class AutoTestCore {
     /** First tick of the gun carry check (AutoTestGunCarry). */
     private static final int GUNCARRY_START = IRONSIGHTS_START + AutoTestIronSights.LENGTH + 10;
     private static final int ICONS_START = GUNCARRY_START + AutoTestGunCarry.LENGTH + 10;
+    private static final int CLOSETRACER_START = ICONS_START + AutoTestIcons.LENGTH + 10;
 
     static final java.util.List<AutoTest.Section> SECTIONS = java.util.List.of(
             new AutoTest.Section("range", 20, 360, () -> {}),                 // FP idle/aim/fire/reload, third person, impacts
@@ -489,7 +492,8 @@ final class AutoTestCore {
             new AutoTest.Section("fraglethal", FRAGLETHAL_START, FRAGLETHAL_START + AutoTestFragLethal.LENGTH, AutoTestCore::baseSetup), // frag lethality
             new AutoTest.Section("ironsights", IRONSIGHTS_START, IRONSIGHTS_START + AutoTestIronSights.LENGTH, AutoTestCore::baseSetup), // iron sights under optics
             new AutoTest.Section("guncarry", GUNCARRY_START, GUNCARRY_START + AutoTestGunCarry.LENGTH, AutoTestCore::baseSetup), // gun carry limit
-            new AutoTest.Section("icons", ICONS_START, ICONS_START + AutoTestIcons.LENGTH, AutoTestCore::baseSetup)); // icons follow attachments
+            new AutoTest.Section("icons", ICONS_START, ICONS_START + AutoTestIcons.LENGTH, AutoTestCore::baseSetup), // icons follow attachments
+            new AutoTest.Section("closetracer", CLOSETRACER_START, CLOSETRACER_START + AutoTestCloseTracer.LENGTH, AutoTestCore::baseSetup)); // tracer at a close wall
 
     /** Bullets the client is simulating right now (tracer test). */
     private static void logBullets() {

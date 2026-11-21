@@ -7,13 +7,13 @@ import net.minecraft.network.chat.Component;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 
-/** The mod's settings (Mods > Modern Armory > Config): the crosshair editor and every other option. */
+/** The mod's settings (Mods > Turt's Armory > Config): the crosshair editor and every other option. */
 public class SettingsScreen extends Screen {
     private final ModContainer mod;
     private final Screen parent;
 
     public SettingsScreen(ModContainer mod, Screen parent) {
-        super(Component.literal("Modern Armory Settings"));
+        super(Component.literal("Turt's Armory Settings"));
         this.mod = mod;
         this.parent = parent;
     }

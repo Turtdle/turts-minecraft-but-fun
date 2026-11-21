@@ -19,7 +19,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * Creative tabs ("tabs" section): builds the creative inventory and checks each Modern Armory tab has items,
+ * Creative tabs ("tabs" section): builds the creative inventory and checks each Turt's Armory tab has items,
  * every gun is in exactly one tab (its category's), and every mod item is in some tab.
  */
 final class AutoTestTabs {

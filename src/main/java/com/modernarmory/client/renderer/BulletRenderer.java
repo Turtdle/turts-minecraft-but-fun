@@ -50,11 +50,13 @@ public class BulletRenderer extends EntityRenderer<BulletEntity> {
         double speed = vel.length();
         if (speed < 1) return;
         Vec3 dir = vel.scale(1.0 / speed);
-        // distance flown up to this frame (the entity position is interpolated with partialTick)
-        double flown = bullet.distance() - (1 - partialTick) * speed * 0.05;
+        // distance flown up to this frame (interpolated like the entity position; a bullet that stopped
+        // short of a whole tick's flight reaches its impact, then its streak collapses into it)
+        double flown = bullet.distance(partialTick);
         int glow = bullet.tracerGlow(); // -1: ball round, or the tracer has burnt out
         boolean tracer = glow >= 0;
-        float length = (float) Mth.clamp(flown - 0.8, 0, tracer ? TRACER_TRAIL : MAX_TRAIL); // hide the first metre
+        float length = (float) Mth.clamp(flown - 0.8, 0, tracer ? TRACER_TRAIL : MAX_TRAIL) // hide the first metre
+                * bullet.trailShare(partialTick);
         if (length <= 0.01f) return;
 
         // the true path starts at the eye; the visible tracer starts at the muzzle and merges into the path

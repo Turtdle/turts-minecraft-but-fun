@@ -95,6 +95,16 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
     private Vec3 tracerOffset = Vec3.ZERO;
     private boolean inWater;
     private boolean crackPlayed;
+    /** Metres flown at the start of this tick (the renderer interpolates between this and {@link #distance}). */
+    private double prevDistance;
+    /** Client: where the bullet stopped during this tick's flight (what it hit), else null. */
+    private Vec3 endPos;
+    /**
+     * Client: ticks since the bullet stopped, 0 while flying. A bullet that hits something within one tick of
+     * flight (~40 m for a rifle) would otherwise never be drawn: it stays one tick streaking to the impact and one
+     * more collapsing into it, so a shot at a nearby wall shows its tracer too.
+     */
+    private int stoppedTicks;
     private String gunId;
     private boolean lastHeadshot;
     /** Server: ticks to rewind targets by (lag compensation, LagCompensation); 0 = test them where they are. */
@@ -180,6 +190,11 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
     @Override
     public void tick() {
         super.tick();
+        prevDistance = distance;
+        if (stoppedTicks > 0) { // client: drawn reaching the impact last tick; now it collapses into it, then goes
+            if (++stoppedTicks > 2) this.discard();
+            return;
+        }
         if (this.tickCount > MAX_LIFE_TICKS) {
             this.discard();
             return;
@@ -188,6 +203,11 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
         for (int i = 0; i < SUBSTEPS; i++) {
             pos = step(pos);
             if (pos == null) {
+                if (level().isClientSide() && endPos != null) {
+                    this.setPos(endPos); // keep the velocity: the streak still points along the flight
+                    stoppedTicks = 1;
+                    return;
+                }
                 this.discard();
                 return;
             }
@@ -200,7 +220,10 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
     /** Advance one sub-step. Returns the new position, or null if the bullet stopped. */
     private Vec3 step(Vec3 pos) {
         double speed = velocity.length();
-        if (speed < MIN_SPEED) return null;
+        if (speed < MIN_SPEED) {
+            endPos = pos;
+            return null;
+        }
         // Entities only tick inside the simulation distance. A bullet that flew beyond it would freeze
         // in place forever (still loaded and tracked), then reappear as a stray tracer whenever a
         // player came close again. Despawn it the moment it leaves ticking chunks instead.
@@ -235,6 +258,7 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
                 alreadyHit.add(entityHit.getEntity().getId());
                 distance += from.distanceTo(entityHit.getLocation());
                 hitEntity(entityHit.getEntity(), entityHit.getLocation());
+                endPos = entityHit.getLocation();
                 return null; // bullets dump their energy into whatever they hit
             }
 
@@ -246,7 +270,10 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
 
             distance += from.distanceTo(blockHit.getLocation());
             Vec3[] next = hitBlock(blockHit, from, to);
-            if (next == null) return null;
+            if (next == null) {
+                endPos = blockHit.getLocation();
+                return null;
+            }
             from = next[0];
             to = next[1];
         }
@@ -494,6 +521,24 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
     }
 
     /** Metres flown so far (used to grow the tracer streak from the muzzle). */
+    /** Metres flown at this frame: between the last two ticks, like the drawn position. */
+    public double distance(float partialTick) {
+        return Mth.lerp(partialTick, prevDistance, distance);
+    }
+
+    /**
+     * How much of the streak to draw: 1, shrinking to 0 over the tick after the bullet stopped (it collapses into
+     * the impact).
+     */
+    public float trailShare(float partialTick) {
+        return stoppedTicks >= 2 ? 1 - partialTick : 1;
+    }
+
+    /** Client: ticks since the bullet stopped (0 = still flying). */
+    public int stoppedTicks() {
+        return stoppedTicks;
+    }
+
     public double distance() {
         return distance;
     }

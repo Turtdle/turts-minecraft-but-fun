@@ -16,5 +16,10 @@ final class ClientAccess {
         return com.modernarmory.client.TracerOrigin.offset(shooter, dir);
     }
 
+    /** Adds a client-only predicted bullet to the client world (client.ShotPredictor). */
+    static void addPredicted(net.minecraft.world.entity.Entity bullet) {
+        if (FMLEnvironment.getDist().isClient()) com.modernarmory.client.ShotPredictor.addPredicted(bullet);
+    }
+
     private ClientAccess() {}
 }

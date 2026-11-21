@@ -38,6 +38,29 @@ public final class GunAnimations {
     }
 
     /**
+     * Server: plays {@code anim} for everyone watching {@code player} but not the player, whose client
+     * already played it ({@link #playLocal}; the fire animation of a predicted shot).
+     */
+    public static void triggerForOthers(GunItem gun, Player player, ItemStack stack, String anim) {
+        if (player.level() instanceof ServerLevel level) {
+            net.neoforged.neoforge.network.PacketDistributor.sendToPlayersTrackingEntity(player,
+                    new com.modernarmory.network.GunAnimPayload(gun.gunId(), GeoItem.getOrAssignId(stack, level), anim));
+        }
+    }
+
+    /** Client: plays {@code anim} on this stack's GeckoLib instance (nothing if it has no instance id yet). */
+    public static void playLocal(GunItem gun, ItemStack stack, String anim) {
+        long id = GeoItem.getId(stack);
+        if (id != Long.MAX_VALUE) playLocal(gun, id, anim);
+    }
+
+    /** Client: plays {@code anim} on GeckoLib instance {@code instanceId} of {@code gun}. */
+    public static void playLocal(GunItem gun, long instanceId, String anim) {
+        AnimatableManager<GunItem> manager = gun.getAnimatableInstanceCache().getManagerForId(instanceId);
+        if (manager != null) manager.tryTriggerAnimation(ACTIONS, anim);
+    }
+
+    /**
      * Plays {@code anim} from its start even if it is still running (GeckoLib ignores a trigger
      * for the animation that is already playing), e.g. the per-shell "reload" of a tube magazine.
      */

@@ -101,6 +101,13 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
     private int rewind;
     /** Server: entity hits since start (the hit-registration autotest reads it). */
     public static int entityHits;
+    /**
+     * Server, set by GunHandler while it fires a client-predicted shot: the shooter's client already flies
+     * its own copy of these bullets (client.ShotPredictor), so they are only sent to everyone else.
+     */
+    public static boolean shooterPredicts;
+    /** Server: not sent to the shooter, whose client predicted it (see {@link #shooterPredicts}). */
+    private boolean predicted;
 
     /** Item id of the gun that fired this bullet (server side), or null. */
     public String gunId() {
@@ -151,8 +158,21 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
         b.setDeltaMovement(b.velocity.scale(TICK));
         b.updateRotation();
         if (gunId != null) b.rewind = LagCompensation.ticks(shooter); // gunfire is aimed at what the shooter saw
-        level.addFreshEntity(b);
+        if (level.isClientSide()) {
+            // the shooter's own prediction: a client-only copy that flies, hits and leaves holes like the real one
+            b.tracerOffset = ClientAccess.tracerOffset(shooter, b.velocity);
+            ClientAccess.addPredicted(b);
+        } else {
+            b.predicted = shooterPredicts;
+            level.addFreshEntity(b);
+        }
         return b;
+    }
+
+    /** A predicted shot's real bullets go to everyone but the shooter, who sees their own copy. */
+    @Override
+    public boolean broadcastToPlayer(net.minecraft.server.level.ServerPlayer player) {
+        return !(predicted && player == getOwner()) && super.broadcastToPlayer(player);
     }
 
     // ------------------------------------------------------------------ simulation

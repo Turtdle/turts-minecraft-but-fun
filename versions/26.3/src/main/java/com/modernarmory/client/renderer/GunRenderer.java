@@ -86,15 +86,9 @@ public class GunRenderer extends ArmedItemRenderer<GunItem> {
         boolean firstPerson = isFirstPerson(renderPassInfo.renderState());
         for (GeoBone bone : renderPassInfo.model().boneLookup().get().values()) {
             if (isArmBone(bone)) continue;
-            String n = bone.name();
-            boolean hide = false;
-            PartVisibility rule = fitted.parts().get(n);
-            if (rule != null) hide = rule.hidden(fitted.slots().contains(AttachmentType.OPTIC), firstPerson);
-            else if (n.startsWith("att_")) hide = !fitted.ids().contains(n.substring(4));
-            else if (n.equals("muzzle_default")) hide = fitted.slots().contains(AttachmentType.MUZZLE);
-            else if (n.equals("stock_default")) hide = fitted.slots().contains(AttachmentType.STOCK);
-            else if (n.equals("magazine_default")) hide = fitted.slots().contains(AttachmentType.MAGAZINE);
-            else if (PartVisibility.IRON_SIGHTS.contains(n)) hide = fitted.slots().contains(AttachmentType.OPTIC);
+            // the same rule as the inventory icon (GunIcons)
+            boolean hide = Boolean.TRUE.equals(com.modernarmory.gun.GunParts.hidden(bone.name(), fitted.parts(), fitted.ids(),
+                    fitted.slots(), firstPerson));
             // GeckoLib 4's setHidden also hid the bone's children
             if (hide) snapshots.get(bone).skipRender(true).skipChildrenRender(true);
         }

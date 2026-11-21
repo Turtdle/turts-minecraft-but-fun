@@ -8,7 +8,6 @@ import com.modernarmory.gun.ViewClass;
 import com.modernarmory.network.GunActionPayload;
 import com.modernarmory.network.GunInputPayload;
 import com.modernarmory.network.LocalSoundPayload;
-import com.modernarmory.network.ShotFiredPayload;
 import com.modernarmory.server.GunHandler;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -65,6 +64,7 @@ public final class ClientState {
     /** Stop vanilla attack/use (block breaking, swinging) while a gun is in hand. */
     static void onInteraction(InputEvent.InteractionKeyMappingTriggered event) {
         if ((event.isAttack() || event.isUseItem()) && holdingGun(Minecraft.getInstance().player)) {
+            if (event.isAttack()) ShotPredictor.onAttackClick();
             event.setCanceled(true);
             event.setSwingHand(false);
         }
@@ -84,8 +84,12 @@ public final class ClientState {
             sentTrigger = trigger;
             sentAim = aiming;
         }
+        ShotPredictor.tick(p, gun, trigger, aiming); // fires rounds on this side at once (server checks each)
         while (KeyBindings.RELOAD.consumeClick()) {
-            if (gun) ClientPacketDistributor.sendToServer(new GunActionPayload(GunHandler.ACTION_RELOAD));
+            if (gun) {
+                ShotPredictor.onReloadRequested();
+                ClientPacketDistributor.sendToServer(new GunActionPayload(GunHandler.ACTION_RELOAD));
+            }
         }
         while (KeyBindings.FIRE_MODE.consumeClick()) {
             if (gun) ClientPacketDistributor.sendToServer(new GunActionPayload(GunHandler.ACTION_FIRE_MODE));
@@ -99,10 +103,11 @@ public final class ClientState {
         }
     }
 
-    public static void onShotFired(ShotFiredPayload p) {
-        schedule(p.delay(), () -> {
-            pendingPitch += p.pitchKick();
-            pendingYaw += p.yawKick();
+    /** Our own shot (ShotPredictor): camera recoil (degrees) and muzzle flash, {@code delay} s into this tick. */
+    static void onOwnShot(float pitchKick, float yawKick, float delay) {
+        schedule(delay, () -> {
+            pendingPitch += pitchKick;
+            pendingYaw += yawKick;
             lastShotNanos = System.nanoTime();
             shotSeed = (float) Math.random();
         });
@@ -133,8 +138,17 @@ public final class ClientState {
 
     /** Own gun sounds: non-positional (relative to the listener) so they follow you. */
     public static void onLocalSound(LocalSoundPayload p) {
-        schedule(p.delay(), () -> Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(p.sound(), SoundSource.PLAYERS,
-                Math.min(1f, p.volume()), p.pitch(), SoundInstance.createUnseededRandom(), false, 0,
+        playOwnSound(p.sound(), p.volume(), p.pitch(), p.delay());
+    }
+
+    /** One of our own gun sounds (shots predicted here, ShotPredictor), {@code delay} seconds from now. */
+    static void playOwnSound(net.minecraft.sounds.SoundEvent sound, float volume, float pitch, float delay) {
+        playOwnSound(sound.location(), volume, pitch, delay);
+    }
+
+    private static void playOwnSound(net.minecraft.resources.Identifier sound, float volume, float pitch, float delay) {
+        schedule(delay, () -> Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(sound, SoundSource.PLAYERS,
+                Math.min(1f, volume), pitch, SoundInstance.createUnseededRandom(), false, 0,
                 SoundInstance.Attenuation.NONE, 0, 0, 0, true)));
     }
 

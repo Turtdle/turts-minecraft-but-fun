@@ -4,7 +4,6 @@ import com.modernarmory.ModernArmory;
 import com.modernarmory.client.renderer.BulletRenderer;
 import com.modernarmory.network.LocalSoundPayload;
 import com.modernarmory.network.MasterySyncPayload;
-import com.modernarmory.network.ShotFiredPayload;
 import com.modernarmory.registry.ModEntities;
 import com.modernarmory.registry.ModMenus;
 
@@ -28,6 +27,9 @@ public class ModernArmoryClient {
         container.registerConfig(net.neoforged.fml.config.ModConfig.Type.CLIENT, CrosshairConfig.SPEC);
 
         modBus.addListener(KeyBindings::register);
+        // guns' inventory icons show their fitted attachments (GunIcons; item definitions' GUI case)
+        modBus.addListener((net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent e) ->
+                e.register(ModernArmory.id("gun_icon"), GunIconSpecialRenderer.Unbaked.MAP_CODEC));
         modBus.addListener((RegisterMenuScreensEvent e) -> e.register(ModMenus.GUNSMITH.get(), GunsmithScreen::new));
         modBus.addListener((EntityRenderersEvent.RegisterRenderers e) ->
                 e.registerEntityRenderer(ModEntities.BULLET.get(), BulletRenderer::new));
@@ -45,7 +47,9 @@ public class ModernArmoryClient {
         });
         // 26.x: client-bound payload handlers are registered on the client (see ModNetwork)
         modBus.addListener((RegisterClientPayloadHandlersEvent e) -> {
-            e.register(ShotFiredPayload.TYPE, (payload, ctx) -> ClientState.onShotFired(payload));
+            e.register(com.modernarmory.network.ShotAckPayload.TYPE, (payload, ctx) -> ShotPredictor.onAck(payload));
+            e.register(com.modernarmory.network.GunStatePayload.TYPE, (payload, ctx) -> ShotPredictor.onState(payload));
+            e.register(com.modernarmory.network.GunAnimPayload.TYPE, (payload, ctx) -> ShotPredictor.onOthersAnim(payload));
             e.register(LocalSoundPayload.TYPE, (payload, ctx) -> ClientState.onLocalSound(payload));
             e.register(MasterySyncPayload.TYPE, (payload, ctx) -> ClientMastery.onSync(payload));
             e.register(com.modernarmory.network.FlashbangPayload.TYPE, (payload, ctx) -> FlashbangOverlay.onFlash(payload));

@@ -13,16 +13,21 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 public final class ModNetwork {
     @SubscribeEvent
     static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar r = event.registrar("1");
+        PayloadRegistrar r = event.registrar("2"); // 2: client-predicted shots
         r.playToServer(GunInputPayload.TYPE, GunInputPayload.STREAM_CODEC,
                 (p, ctx) -> GunHandler.setInput((ServerPlayer) ctx.player(), p.trigger(), p.aiming()));
         r.playToServer(GrenadeInputPayload.TYPE, GrenadeInputPayload.STREAM_CODEC,
                 (p, ctx) -> com.modernarmory.grenade.GrenadeHandler.setInput((ServerPlayer) ctx.player(), p.left(), p.right()));
         r.playToServer(GunActionPayload.TYPE, GunActionPayload.STREAM_CODEC,
                 (p, ctx) -> GunHandler.action((ServerPlayer) ctx.player(), p.action()));
+        // shots: the shooter's client fires and shows the round at once, the server checks and fires the real one
+        r.playToServer(ShootPayload.TYPE, ShootPayload.STREAM_CODEC,
+                (p, ctx) -> GunHandler.shoot((ServerPlayer) ctx.player(), p));
         // Client-bound handlers are registered from the client side (RegisterClientPayloadHandlersEvent in
         // ModernArmoryClient), which keeps client classes out of common code.
-        r.playToClient(ShotFiredPayload.TYPE, ShotFiredPayload.STREAM_CODEC);
+        r.playToClient(ShotAckPayload.TYPE, ShotAckPayload.STREAM_CODEC);
+        r.playToClient(GunStatePayload.TYPE, GunStatePayload.STREAM_CODEC);
+        r.playToClient(GunAnimPayload.TYPE, GunAnimPayload.STREAM_CODEC);
         r.playToClient(MasterySyncPayload.TYPE, MasterySyncPayload.STREAM_CODEC);
         r.playToClient(FlashbangPayload.TYPE, FlashbangPayload.STREAM_CODEC);
         // laser turret (laser.TurretSeat)

@@ -35,6 +35,8 @@ final class AutoTestMultiplayer {
     private static int ammoBefore, ammoFired;
     private static float flashMax;
     private static boolean grenadeSeen;
+    /** Our own bullets during the first burst: predicted copies seen, and copies the server sent us anyway (must be 0). */
+    private static int predictedSeen, ownServerCopies, sentBefore, acceptedBefore, refusedBefore;
 
     static void script() {
         Minecraft mc = Minecraft.getInstance();
@@ -44,24 +46,41 @@ final class AutoTestMultiplayer {
             cmd("gamemode survival"); cmd("clear @s"); cmd("kill @e[type=!player]");
             cmd("effect give @s resistance 99999 4 true"); cmd("effect give @s saturation 99999 1 true");
             cmd("fill -8 -60 -14 8 -54 6 minecraft:air"); cmd("fill -8 -61 -14 8 -61 6 minecraft:stone");
-            cmd("tp @s 0.5 -60 0.5 180 0"); cmd("time set noon"); cmd("gunmastery set @s m4 0");
+            cmd("tp @s 0.5 -60 0.5 180 0"); cmd("time set noon"); cmd("gunmastery set @s m4a1 0");
         });
         at(26, () -> {
-            cmd("give @s modernarmory:m4"); cmd("give @s modernarmory:ammo_556 64");
+            cmd("give @s modernarmory:m4a1"); cmd("give @s modernarmory:ammo_556 64"); // full auto: a burst over the network
             cmd("summon villager 0.5 -60 -4.5 {NoAI:1b}");
         });
         // 1) shoot the villager
-        at(34, () -> { select(0); look(180, 8); ammoBefore = ammo(); });
+        at(34, () -> { select(0); look(180, 8); ammoBefore = ammo();
+            sentBefore = ShotPredictor.sent; acceptedBefore = ShotPredictor.accepted; refusedBefore = ShotPredictor.refused; });
         at(36, () -> mc.options.keyAttack.setDown(true));
         at(44, () -> mc.options.keyAttack.setDown(false));
+        for (int t = 36; t < 58; t++) at(t, () -> {
+            for (var b : mc.level.getEntitiesOfClass(com.modernarmory.entity.BulletEntity.class, mc.player.getBoundingBox().inflate(64))) {
+                if (ShotPredictor.isPredicted(b)) predictedSeen++;
+                else if (b.getOwner() == mc.player) ownServerCopies++;
+            }
+        });
         at(60, () -> {
             LivingEntity v = villager();
             check("shots hurt the villager (server hit, synced health)", v == null || !v.isAlive() || v.getHealth() < 20,
                     v == null ? "villager gone (killed)" : "health " + v.getHealth());
             ammoFired = ammo();
             check("magazine emptied by firing", ammoFired < ammoBefore, ammoBefore + " -> " + ammoFired);
-            int xp = ClientMastery.data().xp("m4");
-            check("mastery XP synced back", xp > 0, "m4 xp " + xp);
+            int xp = ClientMastery.data().xp("m4a1");
+            check("mastery XP synced back", xp > 0, "m4a1 xp " + xp);
+            // client-side shot prediction (ShotPredictor): shown at once, every round fired for real, no doubles
+            int sent = ShotPredictor.sent - sentBefore, acc = ShotPredictor.accepted - acceptedBefore, ref = ShotPredictor.refused - refusedBefore;
+            check("predicted shots: every one fired by the server", sent > 0 && acc == sent && ref == 0 && ShotPredictor.outstanding() == 0,
+                    sent + " sent, " + acc + " fired, " + ref + " refused, " + ShotPredictor.outstanding() + " unanswered");
+            check("own bullets drawn once (predicted copy, server's not sent back)", predictedSeen > 0 && ownServerCopies == 0,
+                    predictedSeen + " predicted bullet-ticks, " + ownServerCopies + " server copies");
+            var st = mc.player.getMainHandItem();
+            int hud = st.getItem() instanceof GunItem g ? ShotPredictor.ammo(g, st) : -1;
+            check("ammo counter agrees with the server", hud == ammoFired && ammoBefore - ammoFired == acc,
+                    "hud " + hud + ", gun " + ammoFired + ", fired " + (ammoBefore - ammoFired));
         });
         // 2) reload
         at(62, () -> PacketDistributor.sendToServer(new GunActionPayload(GunHandler.ACTION_RELOAD)));

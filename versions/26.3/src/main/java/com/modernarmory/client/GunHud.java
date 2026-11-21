@@ -17,7 +17,7 @@ final class GunHud {
         if (!(stack.getItem() instanceof GunItem gun)) return;
 
         com.modernarmory.attachment.GunStats stats = com.modernarmory.attachment.GunStats.of(gun, stack);
-        int ammo = gun.ammo(stack);
+        int ammo = ShotPredictor.ammo(gun, stack); // less our shots still on the way to the server
         int carried = 0;
         for (ItemStack st : mc.player.getInventory().getNonEquipmentItems()) if (gun.isAmmo(st)) carried += st.getCount();
         Font font = mc.font;

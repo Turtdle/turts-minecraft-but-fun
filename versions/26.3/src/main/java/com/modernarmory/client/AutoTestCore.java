@@ -341,7 +341,9 @@ final class AutoTestCore {
         AutoTestIronSights.script(IRONSIGHTS_START);
         // how many guns you can carry, the heavy-load slowdown, the inventory highlight
         AutoTestGunCarry.script(GUNCARRY_START);
-        at(GUNCARRY_START + AutoTestGunCarry.LENGTH + 2, AutoTest::finish);
+        // inventory icons show the fitted attachments
+        AutoTestIcons.script(ICONS_START);
+        at(ICONS_START + AutoTestIcons.LENGTH + 2, AutoTest::finish);
     }
 
     private AutoTestCore() {}
@@ -456,6 +458,7 @@ final class AutoTestCore {
     private static final int IRONSIGHTS_START = FRAGLETHAL_START + AutoTestFragLethal.LENGTH + 10;
     /** First tick of the gun carry check (AutoTestGunCarry). */
     private static final int GUNCARRY_START = IRONSIGHTS_START + AutoTestIronSights.LENGTH + 10;
+    private static final int ICONS_START = GUNCARRY_START + AutoTestGunCarry.LENGTH + 10;
 
     static final java.util.List<AutoTest.Section> SECTIONS = java.util.List.of(
             new AutoTest.Section("range", 20, 360, () -> {}),                 // FP idle/aim/fire/reload, third person, impacts
@@ -492,7 +495,8 @@ final class AutoTestCore {
             new AutoTest.Section("kevlar", KEVLAR_START, KEVLAR_START + AutoTestKevlar.LENGTH, AutoTestCore::baseSetup), // body armour
             new AutoTest.Section("fraglethal", FRAGLETHAL_START, FRAGLETHAL_START + AutoTestFragLethal.LENGTH, AutoTestCore::baseSetup), // frag lethality
             new AutoTest.Section("ironsights", IRONSIGHTS_START, IRONSIGHTS_START + AutoTestIronSights.LENGTH, AutoTestCore::baseSetup), // iron sights under optics
-            new AutoTest.Section("guncarry", GUNCARRY_START, GUNCARRY_START + AutoTestGunCarry.LENGTH, AutoTestCore::baseSetup)); // gun carry limit
+            new AutoTest.Section("guncarry", GUNCARRY_START, GUNCARRY_START + AutoTestGunCarry.LENGTH, AutoTestCore::baseSetup), // gun carry limit
+            new AutoTest.Section("icons", ICONS_START, ICONS_START + AutoTestIcons.LENGTH, AutoTestCore::baseSetup)); // icons follow attachments
 
     /** Bullets the client is simulating right now (tracer test). */
     private static void logBullets() {

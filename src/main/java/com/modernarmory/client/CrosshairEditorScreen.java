@@ -45,10 +45,11 @@ public class CrosshairEditorScreen extends Screen {
         int x1 = left, x2 = left + colW + 5, w = colW - 5;
 
         int y = top;
-        addRenderableWidget(slider(x1, y, w, "Length", 1, 12, style.length(), "", v -> style = style.withLength(v)));
-        addRenderableWidget(slider(x2, y, w, "Thickness", 1, 4, style.thickness(), "", v -> style = style.withThickness(v)));
+        // sizes are screen pixels, so 1 is as fine as the red dot
+        addRenderableWidget(slider(x1, y, w, "Length", 1, CrosshairConfig.MAX_LENGTH, style.length(), " px", v -> style = style.withLength(v)));
+        addRenderableWidget(slider(x2, y, w, "Thickness", 1, CrosshairConfig.MAX_THICKNESS, style.thickness(), " px", v -> style = style.withThickness(v)));
         y += ROW;
-        addRenderableWidget(slider(x1, y, w, "Gap", 0, 12, style.gap(), "", v -> style = style.withGap(v)));
+        addRenderableWidget(slider(x1, y, w, "Gap", 0, CrosshairConfig.MAX_GAP, style.gap(), " px", v -> style = style.withGap(v)));
         addRenderableWidget(slider(x2, y, w, "Opacity", 10, 100, style.opacity(), "%", v -> style = style.withOpacity(v)));
         y += ROW;
         addRenderableWidget(slider(x1, y, w, "Red", 0, 255, (style.rgb() >> 16) & 255, "",
@@ -107,13 +108,17 @@ public class CrosshairEditorScreen extends Screen {
         g.renderOutline(x0 - 1, y0 - 1, preview + 2, preview + 2, 0xFF000000);
         // with "Moves with spread" on, the gap breathes like walking would open it
         float walk = style.dynamic() ? (float) (0.5 - 0.5 * Math.cos(System.nanoTime() / 1e9 * 2.2)) : 0f;
-        int gap = style.gap() + Math.round(walk * 6);
+        int scale = GunCrosshair.guiScale();
+        int gap = style.gap() + Math.round(walk * 6 * scale);
+        // screen pixels, shown at 2x so small changes are easy to see (1x when a big crosshair wouldn't fit)
+        int reach = style.gap() + 6 * scale + style.length() + style.thickness() + scale;
+        int zoom = reach * 2 / (float) scale <= preview / 2f ? 2 : 1;
         g.pose().pushPose();
         g.pose().translate(x0 + preview / 2f, y0 + preview / 2f, 0);
-        g.pose().scale(2, 2, 1); // shown at 2x so small changes are easy to see
-        GunCrosshair.draw(g, 0, 0, gap, style, 1f);
+        g.pose().scale((float) zoom / scale, (float) zoom / scale, 1);
+        GunCrosshair.draw(g, 0, 0, gap, style, 1f, scale);
         g.pose().popPose();
-        g.drawString(font, style.dynamic() ? "Preview 2x, walking" : "Preview 2x", x0, y1 + 5, 0xFFA0A0A0, false);
+        g.drawString(font, "Preview " + zoom + "x" + (style.dynamic() ? ", walking" : ""), x0, y1 + 5, 0xFFA0A0A0, false);
     }
 
     @Override

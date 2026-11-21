@@ -8,18 +8,27 @@ import net.neoforged.neoforge.common.ModConfigSpec;
  * only writes it back when you press Done.
  */
 public final class CrosshairConfig {
+    /** Editor / config limits, in screen pixels (the red dot is about 2 px; a GUI pixel is 2-4 px). */
+    public static final int MAX_LENGTH = 48, MAX_THICKNESS = 16, MAX_GAP = 48;
     private static final ModConfigSpec.Builder B = new ModConfigSpec.Builder();
 
     static {
         B.comment("Gun crosshair (edit it in game: Mods > Modern Armory > Config > Crosshair editor)").push("crosshair");
     }
 
-    public static final ModConfigSpec.IntValue LENGTH = B.comment("Length of each tick, in GUI pixels")
-            .defineInRange("length", 3, 1, 12);
-    public static final ModConfigSpec.IntValue THICKNESS = B.comment("Thickness of the ticks and dot, in GUI pixels")
-            .defineInRange("thickness", 1, 1, 4);
-    public static final ModConfigSpec.IntValue GAP = B.comment("Extra gap between the centre and the ticks, in GUI pixels")
-            .defineInRange("gap", 0, 0, 12);
+    public static final ModConfigSpec.IntValue LENGTH = B.comment("Length of each tick, in screen pixels")
+            .defineInRange("length", 3, 1, MAX_LENGTH);
+    public static final ModConfigSpec.IntValue THICKNESS = B.comment("Thickness of the ticks and dot, in screen pixels")
+            .defineInRange("thickness", 1, 1, MAX_THICKNESS);
+    public static final ModConfigSpec.IntValue GAP = B.comment("Extra gap between the centre and the ticks, in screen pixels")
+            .defineInRange("gap", 0, 0, MAX_GAP);
+    /**
+     * Older versions measured length / thickness / gap in GUI pixels (1 GUI pixel = GUI-scale screen pixels).
+     * False until those values have been converted once ({@link Style#current()}), so a saved crosshair keeps its size.
+     */
+    public static final ModConfigSpec.BooleanValue SCREEN_PIXELS = B
+            .comment("Internal: true once the sizes above are in screen pixels (older versions used GUI pixels)")
+            .define("screenPixels", false);
     public static final ModConfigSpec.IntValue OPACITY = B.comment("Opacity, percent")
             .defineInRange("opacity", 90, 10, 100);
     public static final ModConfigSpec.IntValue COLOR = B.comment("Colour, 0xRRGGBB")
@@ -50,16 +59,28 @@ public final class CrosshairConfig {
 
     public static final ModConfigSpec SPEC = B.build();
 
-    /** One crosshair look. */
+    /** One crosshair look; length, thickness and gap are in screen pixels. */
     public record Style(int length, int thickness, int gap, int opacity, int rgb, boolean dot, boolean outline,
                         boolean dynamic, boolean tStyle) {
-        public static final Style DEFAULT = new Style(3, 1, 0, 90, 0xFFFFFF, true, true, true, false);
+        /** The old default (3 / 1 / 0 GUI pixels) at GUI scale 3. */
+        public static final Style DEFAULT = new Style(9, 3, 0, 90, 0xFFFFFF, true, true, true, false);
 
         /** What the config says now (defaults until the config has loaded). */
         public static Style current() {
             if (!SPEC.isLoaded()) return DEFAULT;
+            if (!SCREEN_PIXELS.get()) convertFromGuiPixels();
             return new Style(LENGTH.get(), THICKNESS.get(), GAP.get(), OPACITY.get(), COLOR.get(), DOT.get(),
                     OUTLINE.get(), DYNAMIC.get(), T_STYLE.get());
+        }
+
+        /** One-off: sizes saved in GUI pixels become the same size in screen pixels at the current GUI scale. */
+        private static void convertFromGuiPixels() {
+            int s = Math.max(1, (int) Math.round(net.minecraft.client.Minecraft.getInstance().getWindow().getGuiScale()));
+            LENGTH.set(Math.min(MAX_LENGTH, LENGTH.get() * s));
+            THICKNESS.set(Math.min(MAX_THICKNESS, THICKNESS.get() * s));
+            GAP.set(Math.min(MAX_GAP, GAP.get() * s));
+            SCREEN_PIXELS.set(true);
+            SPEC.save();
         }
 
         /** Write this style to the config file. */
@@ -73,6 +94,7 @@ public final class CrosshairConfig {
             OUTLINE.set(outline);
             DYNAMIC.set(dynamic);
             T_STYLE.set(tStyle);
+            SCREEN_PIXELS.set(true);
             SPEC.save();
         }
 

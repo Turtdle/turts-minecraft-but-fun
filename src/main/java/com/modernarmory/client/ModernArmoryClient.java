@@ -24,6 +24,7 @@ public class ModernArmoryClient {
         container.registerConfig(net.neoforged.fml.config.ModConfig.Type.CLIENT, CrosshairConfig.SPEC);
 
         modBus.addListener(KeyBindings::register);
+        modBus.addListener(GunGuiModel::wrap); // guns' inventory icons show their fitted attachments (GunIcons)
         modBus.addListener((RegisterMenuScreensEvent e) -> e.register(ModMenus.GUNSMITH.get(), GunsmithScreen::new));
         modBus.addListener((EntityRenderersEvent.RegisterRenderers e) ->
                 e.registerEntityRenderer(ModEntities.BULLET.get(), BulletRenderer::new));

@@ -149,7 +149,12 @@ var prepareSharedAssets = tasks.register('prepareSharedAssets') {
                         ? [type: 'minecraft:special', base: "${ns}:item/${drawnItem}".toString(), model: [type: 'geckolib:geckolib']]
                         : [type: 'minecraft:model', model: "${ns}:item/${item}".toString()]
                 if (geckolib && guiSprite) { // GUIs show the sprite, unless the stack asks for 3D (the gunsmith preview)
-                    def flat = [type: 'minecraft:model', model: guiSprite]
+                    // guns: the sprite repainted for the attachments fitted (client.GunIconSpecialRenderer), the sprite
+                    // model giving the transforms
+                    boolean paintedIcon = new File(src, "icon_geometry/${drawnItem}.json").isFile()
+                    def flat = paintedIcon
+                            ? [type: 'minecraft:special', base: guiSprite, model: [type: "${ns}:gun_icon".toString()]]
+                            : [type: 'minecraft:model', model: guiSprite]
                     def gui = [type: 'minecraft:condition', property: 'minecraft:has_component',
                                component: "${ns}:render_3d".toString(), on_true: definition, on_false: flat]
                     definition = [type: 'minecraft:select', property: 'minecraft:display_context',

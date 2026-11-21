@@ -11,6 +11,7 @@ import com.modernarmory.attachment.AttachmentType;
 import com.modernarmory.attachment.GunAttachments;
 import com.modernarmory.attachment.GunStats;
 import com.modernarmory.client.ClientState;
+import com.modernarmory.gun.GunParts;
 import com.modernarmory.gun.PartVisibility;
 import com.modernarmory.item.GunItem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -37,6 +38,17 @@ public class GunRenderer extends ArmedItemRenderer<GunItem> {
     private String flashBone = "muzzle_flash";
     private boolean laserOn;
 
+    /** In GUIs the gun is its flat icon, painted for the attachments fitted (GunIcons; GunGuiModel sends GUIs here). */
+    @Override
+    public void renderByItem(net.minecraft.world.item.ItemStack stack, ItemDisplayContext context, PoseStack poseStack,
+                             MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        if (context == ItemDisplayContext.GUI && stack.getItem() instanceof GunItem gun) {
+            com.modernarmory.client.GunIcons.drawGui(gun, stack, poseStack, bufferSource, packedLight, packedOverlay);
+            return;
+        }
+        super.renderByItem(stack, context, poseStack, bufferSource, packedLight, packedOverlay);
+    }
+
     /**
      * Show only the fitted attachments: every attachment is a bone {@code att_<id>} in the gun's model
      * (tools/modelgen/attachments.py). Default parts they replace are hidden, the flip-up rear
@@ -49,11 +61,7 @@ public class GunRenderer extends ArmedItemRenderer<GunItem> {
         if (!isReRender && currentItemStack != null) {
             GunStats stats = GunStats.of(animatable, currentItemStack);
             GunAttachments atts = stats.attachments();
-            Set<String> fitted = new HashSet<>();
-            for (AttachmentType t : AttachmentType.values()) {
-                Attachment a = atts.get(t);
-                if (a != null && animatable.spec().slots().contains(t)) fitted.add(a.id());
-            }
+            Set<String> fitted = GunParts.fitted(animatable, atts);
             Attachment muzzle = atts.get(AttachmentType.MUZZLE);
             boolean hasMuzzle = muzzle != null && fitted.contains(muzzle.id());
             for (GeoBone b : model.topLevelBones()) applyVisibility(b, fitted, atts, animatable);
@@ -65,21 +73,9 @@ public class GunRenderer extends ArmedItemRenderer<GunItem> {
     }
 
     private void applyVisibility(GeoBone bone, Set<String> fitted, GunAttachments atts, GunItem gun) {
-        String n = bone.getName();
-        Boolean hide = null;
-        PartVisibility rule = gun.spec().parts().get(n);
-        if (rule != null) hide = rule.hidden(has(atts, gun, AttachmentType.OPTIC), isFirstPerson());
-        else if (n.startsWith("att_")) hide = !fitted.contains(n.substring(4));
-        else if (n.equals("muzzle_default")) hide = has(atts, gun, AttachmentType.MUZZLE);
-        else if (n.equals("stock_default")) hide = has(atts, gun, AttachmentType.STOCK);
-        else if (n.equals("magazine_default")) hide = has(atts, gun, AttachmentType.MAGAZINE);
-        else if (PartVisibility.IRON_SIGHTS.contains(n)) hide = has(atts, gun, AttachmentType.OPTIC);
+        Boolean hide = GunParts.hidden(bone.getName(), gun, atts, fitted, isFirstPerson()); // same rule as the icon (GunIcons)
         if (hide != null) bone.setHidden(hide);
         for (GeoBone c : bone.getChildBones()) applyVisibility(c, fitted, atts, gun);
-    }
-
-    private static boolean has(GunAttachments atts, GunItem gun, AttachmentType t) {
-        return atts.get(t) != null && gun.spec().slots().contains(t);
     }
 
     @Override

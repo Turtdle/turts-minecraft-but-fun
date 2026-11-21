@@ -11,15 +11,16 @@ import com.modernarmory.gun.FireMode;
 import com.modernarmory.gun.GunSpec;
 import com.modernarmory.gun.ReloadContext;
 import com.modernarmory.gun.ReloadTask;
-import com.modernarmory.gun.ShooterSpread;
+import com.modernarmory.gun.ShotMath;
 import com.modernarmory.gun.SoundSet;
-import com.modernarmory.gun.Support;
-import com.modernarmory.gun.TriggerState;
 import com.modernarmory.item.GunAnimations;
 import com.modernarmory.item.GunItem;
 import com.modernarmory.mastery.MasteryHandler;
+import com.modernarmory.entity.BulletEntity;
+import com.modernarmory.network.GunStatePayload;
 import com.modernarmory.network.LocalSoundPayload;
-import com.modernarmory.network.ShotFiredPayload;
+import com.modernarmory.network.ShootPayload;
+import com.modernarmory.network.ShotAckPayload;
 import com.modernarmory.registry.ModSounds;
 
 import net.minecraft.core.particles.ParticleTypes;
@@ -28,43 +29,53 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import com.modernarmory.ballistics.Tracer;
-import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
+import software.bernie.geckolib.animatable.GeoItem;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
- * Server-authoritative trigger, fire-rate, ammo and reload handling. Clients only send
- * "trigger held / aiming" state and reload / fire-select requests.
+ * Server-authoritative shots, ammo and reloads. The shooter's client decides when the trigger fires a round
+ * (fire mode, cyclic rate: client.ShotPredictor, so the shot shows at once) and sends a {@link ShootPayload};
+ * the server checks the gun may fire (in that slot, loaded, not reloading, not faster than its cyclic rate)
+ * and fires the real projectiles from the same random seed ({@link ShotMath}), so they fly where the
+ * client's did. Damage is only ever done here. Clients also send "trigger held / aiming" state and reload /
+ * fire-select requests.
  *
- * <p>Nothing here is gun-specific: what a trigger pull does is the fire mode's
- * {@link FireMode.Trigger} strategy, reloading is the spec's {@link com.modernarmory.gun.Feed}, and
+ * <p>Nothing here is gun-specific: reloading is the spec's {@link com.modernarmory.gun.Feed}, and
  * what leaves the muzzle is the cartridge's {@link com.modernarmory.gun.ProjectileLoad}.
  */
 @EventBusSubscriber(modid = ModernArmory.MODID)
 public final class GunHandler {
     public static final int ACTION_RELOAD = 0;
     public static final int ACTION_FIRE_MODE = 1;
-    private static final double TICK = 0.05;
+    /**
+     * Shots a client may fire ahead of the cyclic rate, to absorb network jitter (packets arrive bunched);
+     * over any longer stretch it can't beat the rate.
+     */
+    private static final double MAX_CREDIT = 4;
+    /** A client's aim may differ from the server's latest by this much (degrees) before the server's is used. */
+    private static final float MAX_AIM_DIFF = 30f;
+    /** The client's spread is used (so its tracer matches) unless tighter than this share of the server's own. */
+    private static final double MIN_SPREAD_SHARE = 0.75;
 
     private static final class State {
-        final TriggerState trigger = new TriggerState();
-        boolean aiming, prevTrigger;
-        double cooldown; // seconds until the action can cycle again
+        boolean aiming;
         ReloadTask reload;
         int reloadSlot = -1;
-        /**
-         * The trigger went down since the last tick. Online, a quick tap's press and release can reach the server in the
-         * same tick, so "held" alone would never show it: the press is remembered until the tick deals with it.
-         */
-        boolean pendingPress;
+        /** Rounds that may be fired now (fire-rate limit), refilled at the gun's cyclic rate. */
+        double credit = MAX_CREDIT;
+        long creditNanos = System.nanoTime();
+        /** What the client was last told (GunStatePayload); null = nothing yet. */
+        Boolean sentReloading, sentInfinite;
 
         boolean reloading() {
             return reload != null;
@@ -78,10 +89,53 @@ public final class GunHandler {
     }
 
     public static void setInput(ServerPlayer player, boolean trigger, boolean aiming) {
+        state(player).aiming = aiming;
+    }
+
+    private static boolean infiniteAmmo(ServerPlayer player) {
+        return player.isCreative() && Config.CREATIVE_INFINITE_AMMO.get();
+    }
+
+    /** Tells the shooter's client the reload / ammo state it predicts with, if it changed (or {@code force}). */
+    private static void sendState(ServerPlayer player, State s, boolean force) {
+        boolean reloading = s.reloading(), infinite = infiniteAmmo(player);
+        if (!force && Boolean.valueOf(reloading).equals(s.sentReloading) && Boolean.valueOf(infinite).equals(s.sentInfinite)) return;
+        s.sentReloading = reloading;
+        s.sentInfinite = infinite;
+        int slot = player.getInventory().selected;
+        ItemStack stack = player.getInventory().getItem(slot);
+        int ammo = stack.getItem() instanceof GunItem g ? g.ammo(stack) : 0;
+        PacketDistributor.sendToPlayer(player, new GunStatePayload(reloading, reloading && s.reload.interruptible(), slot, ammo, infinite));
+    }
+
+    /** A round the shooter's client fired (and already shows): fire the real one, or refuse it. */
+    public static void shoot(ServerPlayer player, ShootPayload p) {
         State s = state(player);
-        if (trigger && !s.trigger.held) s.pendingPress = true;
-        s.trigger.held = trigger;
-        s.aiming = aiming;
+        int slot = player.getInventory().selected;
+        ItemStack stack = player.getMainHandItem();
+        boolean ok = p.slot() == slot && stack.getItem() instanceof GunItem && player.isAlive() && !player.isSpectator();
+        GunItem gun = ok ? (GunItem) stack.getItem() : null;
+        if (ok && s.reloading()) {
+            if (s.reload.interruptible()) {
+                s.reload = null; // tube magazine: stop loading and fire the chambered round
+                sendState(player, s, false);
+            } else ok = false;
+        }
+        if (ok) {
+            long now = System.nanoTime();
+            s.credit = Math.min(MAX_CREDIT, s.credit + (now - s.creditNanos) / 1e9 / gun.spec().cycleTime());
+            s.creditNanos = now;
+            ok = s.credit >= 1 - 1e-6;
+        }
+        boolean infinite = infiniteAmmo(player);
+        if (ok && gun.ammo(stack) <= 0 && !infinite) ok = false;
+        if (ok) {
+            s.credit -= 1;
+            fire(player, stack, gun, s, p);
+            if (!infinite) gun.setAmmo(stack, gun.ammo(stack) - 1);
+        }
+        PacketDistributor.sendToPlayer(player, new ShotAckPayload(p.seq(), ok, slot,
+                stack.getItem() instanceof GunItem g ? g.ammo(stack) : 0));
     }
 
     public static void action(ServerPlayer player, int action) {
@@ -118,130 +172,70 @@ public final class GunHandler {
 
     private static void tick(ServerPlayer player) {
         State s = state(player);
-        TriggerState t = s.trigger;
         ItemStack stack = player.getMainHandItem();
-        if (!(stack.getItem() instanceof GunItem gun) || player.isSpectator()) {
+        if (!(stack.getItem() instanceof GunItem) || player.isSpectator()) {
             s.reload = null;
-            t.stopBurst();
-            s.prevTrigger = t.held;
-            s.pendingPress = false;
-            return;
-        }
-        GunSpec spec = gun.spec();
-        boolean pressed = (t.held && !s.prevTrigger) || s.pendingPress;
-        // pressed and already let go before this tick: a tap, worth exactly one round
-        boolean tap = pressed && !t.held;
-        s.pendingPress = false;
-
-        if (s.reloading()) {
-            if (player.getInventory().selected != s.reloadSlot) {
-                s.reload = null; // switching weapons cancels the reload
-            } else if (pressed && s.reload.interruptible()) {
-                s.reload = null; // tube magazine: stop loading and fire the chambered round
-            } else {
-                if (s.reload.tick()) s.reload = null;
-                s.cooldown = Math.max(0, s.cooldown - TICK);
-                s.prevTrigger = t.held;
-                return;
+        } else {
+            // the GeckoLib instance id, so the shooter's client can play the fire animation itself (ShotPredictor)
+            GeoItem.getOrAssignId(stack, player.serverLevel());
+            if (s.reloading()) {
+                if (player.getInventory().selected != s.reloadSlot) s.reload = null; // switching weapons cancels the reload
+                else if (s.reload.tick()) s.reload = null;
             }
         }
-
-        FireMode mode = gun.fireMode(stack);
-        if (pressed) t.press(mode, spec);
-        if (!t.held) t.stopBurst();
-
-        // Fire as many rounds as the cyclic rate allows within this 50 ms tick.
-        while (s.cooldown < TICK) {
-            if (!mode.trigger().wantsShot(t) && !tap) break;
-            int ammo = gun.ammo(stack);
-            boolean infinite = player.isCreative() && Config.CREATIVE_INFINITE_AMMO.get();
-            if (ammo <= 0 && !infinite) {
-                if (pressed) {
-                    gunSound(player, ModSounds.DRY_FIRE.get(), 1.0f, 1.0f);
-                }
-                t.dryFire();
-                break;
-            }
-            shoot(player, stack, gun, s, (float) s.cooldown);
-            if (!infinite) gun.setAmmo(stack, ammo - 1);
-            mode.trigger().onShot(t);
-            s.cooldown += spec.cycleTime();
-            if (tap) break;
-        }
-        s.cooldown = Math.max(0, s.cooldown - TICK);
-        s.prevTrigger = t.held;
+        sendState(player, s, false);
     }
 
     /**
-     * Where the muzzle smoke puff goes: ~1.3 m ahead of the eye, under the line of sight when
-     * aiming; from the hip, out to the gun-hand side and lower, where the muzzle is, so the puff
-     * does not sit on the crosshair and hide the impacts.
+     * The real round for the client's shot {@code p}: rolled from the client's seed, so it follows the
+     * client's prediction exactly (same spread, same pellets), aimed where the client aimed unless that
+     * is implausibly far from where the server last saw the player look.
      */
-    private static Vec3 muzzleSmoke(ServerPlayer player, boolean aiming) {
-        Vec3 look = player.getLookAngle();
-        Vec3 muzzle = player.getEyePosition().add(look.scale(1.3)).add(0, -0.15, 0);
-        Vec3 right = look.cross(new Vec3(0, 1, 0));
-        if (aiming || right.lengthSqr() < 1e-6) return muzzle;
-        double side = player.getMainArm() == HumanoidArm.RIGHT ? 0.25 : -0.25;
-        return muzzle.add(right.normalize().scale(side)).add(0, -0.1, 0);
-    }
-
-    /** @param offset seconds into this 50 ms tick at which the round fires (keeps the cadence even) */
-    private static void shoot(ServerPlayer player, ItemStack stack, GunItem gun, State s, float offset) {
+    private static void fire(ServerPlayer player, ItemStack stack, GunItem gun, State s, ShootPayload p) {
         GunSpec spec = gun.spec();
         ServerLevel level = player.serverLevel();
-        RandomSource rand = player.getRandom();
-
+        RandomSource rand = RandomSource.create(p.seed());
         GunStats stats = GunStats.of(gun, stack);
-        Support support = spec.support();
-        boolean crouching = player.isCrouching();
-        boolean braced = support.braced(crouching, stats.bipod());
-        // Spread: gun+ammo mechanical accuracy, plus shooter-induced error.
-        double spread = spec.mechanicalMoa() / 60.0
-                + (s.aiming ? spec.adsSpreadDeg() * (braced ? Support.BRACED_AIM_SPREAD : 1)
-                            : spec.hipSpreadDeg() * stats.hipSpread() * MasteryHandler.effects(player, gun).hipSpread()); // mastery: tighter from the hip
-        float masteryMove = MasteryHandler.effects(player, gun).movingSpread(); // mastery: steadier on the move
-        double moving = ShooterSpread.movement(player, s.aiming);
-        if (moving > 0) spread += moving * masteryMove;
-        if (crouching) spread *= ShooterSpread.CROUCH;
-        spread *= support.spread(crouching); // e.g. a tripod gun fired standing
-        double angle = Math.abs(rand.nextGaussian()) * spread * 0.5;
-        double azimuth = rand.nextDouble() * Math.PI * 2;
-        float pitch = player.getXRot() + (float) (angle * Math.sin(azimuth));
-        float yaw = player.getYRot() + (float) (angle * Math.cos(azimuth));
-        Vec3 dir = Vec3.directionFromRotation(pitch, yaw);
+
+        boolean aimOk = Math.abs(Mth.wrapDegrees(p.yRot() - player.getYRot())) < MAX_AIM_DIFF
+                && Math.abs(p.xRot() - player.getXRot()) < MAX_AIM_DIFF;
+        float xRot = aimOk ? p.xRot() : player.getXRot(), yRot = aimOk ? p.yRot() : player.getYRot();
+        double ours = ShotMath.spreadDeg(player, gun, stack, s.aiming);
+        double spread = p.spread() >= ours * MIN_SPREAD_SHARE ? p.spread() : ours;
+        ShotMath.Plan plan = ShotMath.plan(player, gun, stack, s.aiming, xRot, yRot, spread, rand);
 
         Tracer tracer = gun.loadedTracer(stack) ? spec.cartridge().tracer() : null;
-        spec.projectileLoad().launch(level, player, player.getEyePosition(), dir, spec,
-                spec.muzzleVelocity() * stats.velocity(), gun.gunId(), tracer, rand);
+        BulletEntity.shooterPredicts = true; // the shooter already drew these; only others are sent them
+        try {
+            spec.projectileLoad().launch(level, player, player.getEyePosition(), plan.dir(), spec,
+                    spec.muzzleVelocity() * stats.velocity(), gun.gunId(), tracer, rand);
+        } finally {
+            BulletEntity.shooterPredicts = false;
+        }
         MasteryHandler.onShot(player, gun, stack);
 
+        // the shooter's client played its own report, smoke and fire animation; everyone else gets them here
         SoundSet sounds = spec.sounds();
         SoundEvent shot = (stats.suppressed() ? sounds.fireSuppressed() : sounds.fire()).get();
-        gunSound(player, shot, 1.0f, 0.95f + rand.nextFloat() * 0.1f, offset);
+        level.playSound(player, player.getX(), player.getEyeY(), player.getZ(), shot, SoundSource.PLAYERS, 1.0f, plan.soundPitch());
         // manual action (bolt / pump) sound only in a manual mode (the SPAS-12 also fires semi-auto)
         if (sounds.cycle() != null && gun.fireMode(stack).manualCycle())
-            gunSound(player, sounds.cycle().get(), 1.0f, 1.0f, offset + sounds.cycleDelay());
-        Vec3 smoke = muzzleSmoke(player, s.aiming);
-        level.sendParticles(ParticleTypes.SMOKE, smoke.x, smoke.y, smoke.z, 1, 0.02, 0.02, 0.02, 0.01);
-
-        // Recoil from free-recoil energy (~5 J for an M4), less when aiming, scaled by attachments
-        // and by stance: a bipod / tripod deployed (crouching) soaks up most of it (gun.Support).
-        float kick = (float) (spec.recoilEnergy() * 0.14) * stats.recoil();
-        if (s.aiming) kick *= 0.8f;
-        kick *= support.recoil(crouching, stats.bipod());
-        float side = (rand.nextFloat() - 0.45f) * kick * 0.6f;
-        PacketDistributor.sendToPlayer(player, new ShotFiredPayload(kick, side, offset));
-        GunAnimations.trigger(gun, player, stack, GunAnimations.FIRE);
+            level.playSound(player, player.getX(), player.getEyeY(), player.getZ(), sounds.cycle().get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+        Vec3 smoke = ShotMath.muzzleSmoke(player, s.aiming);
+        for (ServerPlayer other : level.players())
+            if (other != player) level.sendParticles(other, ParticleTypes.SMOKE, false, smoke.x, smoke.y, smoke.z, 1, 0.02, 0.02, 0.02, 0.01);
+        GunAnimations.triggerForOthers(gun, player, stack, GunAnimations.FIRE);
     }
 
     private static void startReload(ServerPlayer player, GunItem gun, State s) {
-        if (s.reloading()) return;
-        ReloadTask task = gun.spec().feed().startReload(new Reloading(player, gun, player.getInventory().selected));
-        if (task == null) return;
-        s.reload = task;
-        s.reloadSlot = player.getInventory().selected;
-        s.trigger.stopBurst();
+        if (!s.reloading()) {
+            ReloadTask task = gun.spec().feed().startReload(new Reloading(player, gun, player.getInventory().selected));
+            if (task != null) {
+                s.reload = task;
+                s.reloadSlot = player.getInventory().selected;
+            }
+        }
+        sendState(player, s, true); // the client holds its fire until it hears whether a reload started
     }
 
     /** The server side of a reload: the shooter's gun stack, inventory, sounds and animations. */

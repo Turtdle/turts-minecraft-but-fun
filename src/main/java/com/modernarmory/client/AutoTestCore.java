@@ -352,7 +352,9 @@ final class AutoTestCore {
         AutoTestScopeSwitch.script(SCOPESWITCH_START);
         // the body stays put while you fly a drone
         AutoTestDroneStill.script(DRONESTILL_START);
-        at(DRONESTILL_START + AutoTestDroneStill.LENGTH + 2, AutoTest::finish);
+        // your own frag hurts you too
+        AutoTestSelfFrag.script(SELFFRAG_START);
+        at(SELFFRAG_START + AutoTestSelfFrag.LENGTH + 2, AutoTest::finish);
     }
 
     private AutoTestCore() {}
@@ -467,6 +469,7 @@ final class AutoTestCore {
     private static final int FLASHCOVER_START = JUMPSPREAD_START + AutoTestJumpSpread.LENGTH + 10;
     private static final int SCOPESWITCH_START = FLASHCOVER_START + AutoTestFlashCover.LENGTH + 10;
     private static final int DRONESTILL_START = SCOPESWITCH_START + AutoTestScopeSwitch.LENGTH + 10;
+    private static final int SELFFRAG_START = DRONESTILL_START + AutoTestDroneStill.LENGTH + 10;
 
     static final java.util.List<AutoTest.Section> SECTIONS = java.util.List.of(
             new AutoTest.Section("range", 20, 360, () -> {}),                 // FP idle/aim/fire/reload, third person, impacts
@@ -509,7 +512,8 @@ final class AutoTestCore {
             new AutoTest.Section("jumpspread", JUMPSPREAD_START, JUMPSPREAD_START + AutoTestJumpSpread.LENGTH, AutoTestCore::baseSetup), // jumping spoils aim
             new AutoTest.Section("flashcover", FLASHCOVER_START, FLASHCOVER_START + AutoTestFlashCover.LENGTH, AutoTestCore::baseSetup), // flashed: hand over the eyes
             new AutoTest.Section("scopeswitch", SCOPESWITCH_START, SCOPESWITCH_START + AutoTestScopeSwitch.LENGTH, AutoTestCore::baseSetup), // weapon switch drops the scope
-            new AutoTest.Section("dronestill", DRONESTILL_START, DRONESTILL_START + AutoTestDroneStill.LENGTH, AutoTestCore::baseSetup)); // the body stays put while flying
+            new AutoTest.Section("dronestill", DRONESTILL_START, DRONESTILL_START + AutoTestDroneStill.LENGTH, AutoTestCore::baseSetup), // the body stays put while flying
+            new AutoTest.Section("selffrag", SELFFRAG_START, SELFFRAG_START + AutoTestSelfFrag.LENGTH, AutoTestCore::baseSetup)); // your own frag hurts you
 
     /** Bullets the client is simulating right now (tracer test). */
     private static void logBullets() {

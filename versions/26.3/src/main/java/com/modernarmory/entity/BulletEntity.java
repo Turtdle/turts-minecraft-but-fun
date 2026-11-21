@@ -406,9 +406,16 @@ public class BulletEntity extends Projectile implements IEntityWithComplexSpawn 
         return null;
     }
 
+    /**
+     * Vanilla spares a projectile's owner until it has flown clear of them, judged on the box it sweeps in a tick;
+     * a fragment sweeps ~75 m, so one flying at its thrower never counts as clear and could never hit them. A
+     * fragment (no gun) comes from the blast, not the thrower's hands: it hits the thrower like anyone else.
+     */
     @Override
     protected boolean canHitEntity(Entity target) {
-        return !alreadyHit.contains(target.getId()) && super.canHitEntity(target);
+        if (alreadyHit.contains(target.getId())) return false;
+        if (gunId == null && target == getOwner()) return target.canBeHitByProjectile();
+        return super.canHitEntity(target);
     }
 
     // ------------------------------------------------------------------ client effects

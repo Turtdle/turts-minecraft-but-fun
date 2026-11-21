@@ -345,7 +345,15 @@ final class AutoTestCore {
         AutoTestIcons.script(ICONS_START);
         // a tracer at a wall a few metres away still shows
         AutoTestCloseTracer.script(CLOSETRACER_START);
-        at(CLOSETRACER_START + AutoTestCloseTracer.LENGTH + 2, AutoTest::finish);
+        // shots fired mid-jump spray
+        AutoTestJumpSpread.script(JUMPSPREAD_START);
+        // a flashed player covers their eyes
+        AutoTestFlashCover.script(FLASHCOVER_START);
+        // switching weapons drops the scope
+        AutoTestScopeSwitch.script(SCOPESWITCH_START);
+        // the body stays put while you fly a drone
+        AutoTestDroneStill.script(DRONESTILL_START);
+        at(DRONESTILL_START + AutoTestDroneStill.LENGTH + 2, AutoTest::finish);
     }
 
     private AutoTestCore() {}
@@ -462,6 +470,10 @@ final class AutoTestCore {
     private static final int GUNCARRY_START = IRONSIGHTS_START + AutoTestIronSights.LENGTH + 10;
     private static final int ICONS_START = GUNCARRY_START + AutoTestGunCarry.LENGTH + 10;
     private static final int CLOSETRACER_START = ICONS_START + AutoTestIcons.LENGTH + 10;
+    private static final int JUMPSPREAD_START = CLOSETRACER_START + AutoTestCloseTracer.LENGTH + 10;
+    private static final int FLASHCOVER_START = JUMPSPREAD_START + AutoTestJumpSpread.LENGTH + 10;
+    private static final int SCOPESWITCH_START = FLASHCOVER_START + AutoTestFlashCover.LENGTH + 10;
+    private static final int DRONESTILL_START = SCOPESWITCH_START + AutoTestScopeSwitch.LENGTH + 10;
 
     static final java.util.List<AutoTest.Section> SECTIONS = java.util.List.of(
             new AutoTest.Section("range", 20, 360, () -> {}),                 // FP idle/aim/fire/reload, third person, impacts
@@ -500,7 +512,11 @@ final class AutoTestCore {
             new AutoTest.Section("ironsights", IRONSIGHTS_START, IRONSIGHTS_START + AutoTestIronSights.LENGTH, AutoTestCore::baseSetup), // iron sights under optics
             new AutoTest.Section("guncarry", GUNCARRY_START, GUNCARRY_START + AutoTestGunCarry.LENGTH, AutoTestCore::baseSetup), // gun carry limit
             new AutoTest.Section("icons", ICONS_START, ICONS_START + AutoTestIcons.LENGTH, AutoTestCore::baseSetup), // icons follow attachments
-            new AutoTest.Section("closetracer", CLOSETRACER_START, CLOSETRACER_START + AutoTestCloseTracer.LENGTH, AutoTestCore::baseSetup)); // tracer at a close wall
+            new AutoTest.Section("closetracer", CLOSETRACER_START, CLOSETRACER_START + AutoTestCloseTracer.LENGTH, AutoTestCore::baseSetup), // tracer at a close wall
+            new AutoTest.Section("jumpspread", JUMPSPREAD_START, JUMPSPREAD_START + AutoTestJumpSpread.LENGTH, AutoTestCore::baseSetup), // jumping spoils aim
+            new AutoTest.Section("flashcover", FLASHCOVER_START, FLASHCOVER_START + AutoTestFlashCover.LENGTH, AutoTestCore::baseSetup), // flashed: hand over the eyes
+            new AutoTest.Section("scopeswitch", SCOPESWITCH_START, SCOPESWITCH_START + AutoTestScopeSwitch.LENGTH, AutoTestCore::baseSetup), // weapon switch drops the scope
+            new AutoTest.Section("dronestill", DRONESTILL_START, DRONESTILL_START + AutoTestDroneStill.LENGTH, AutoTestCore::baseSetup)); // the body stays put while flying
 
     /** Bullets the client is simulating right now (tracer test). */
     private static void logBullets() {

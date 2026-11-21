@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 public final class ModNetwork {
     @SubscribeEvent
     static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar r = event.registrar("2"); // 2: client-predicted shots
+        PayloadRegistrar r = event.registrar("3"); // 2: client-predicted shots; 3: flash cover
         r.playToServer(GunInputPayload.TYPE, GunInputPayload.STREAM_CODEC,
                 (p, ctx) -> GunHandler.setInput((ServerPlayer) ctx.player(), p.trigger(), p.aiming()));
         r.playToServer(GrenadeInputPayload.TYPE, GrenadeInputPayload.STREAM_CODEC,
@@ -30,6 +30,7 @@ public final class ModNetwork {
         r.playToClient(GunAnimPayload.TYPE, GunAnimPayload.STREAM_CODEC);
         r.playToClient(MasterySyncPayload.TYPE, MasterySyncPayload.STREAM_CODEC);
         r.playToClient(FlashbangPayload.TYPE, FlashbangPayload.STREAM_CODEC);
+        r.playToClient(FlashCoverPayload.TYPE, FlashCoverPayload.STREAM_CODEC);
         // laser turret (laser.TurretSeat)
         r.playToServer(LaserCommandPayload.TYPE, LaserCommandPayload.STREAM_CODEC, (p, ctx) -> {
             if (ctx.player().getVehicle() instanceof com.modernarmory.laser.TurretSeat s)

@@ -40,6 +40,10 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 public final class ClientState {
     private static boolean sentTrigger, sentAim;
     private static boolean aiming;
+    /** The held slot and item aiming was last about; aim still held from before a weapon switch (ignored). */
+    private static int aimSlot = -1;
+    private static net.minecraft.world.item.Item aimItem;
+    private static boolean aimHeldOver;
 
     // recoil
     private static float pendingPitch, pendingYaw, recoverPool;
@@ -78,7 +82,18 @@ public final class ClientState {
         // flying a drone: the body's hands are on the controller, not the gun
         boolean gun = holdingGun(p) && mc.gui.screen() == null && !p.isSpectator() && !DronePilot.active();
         boolean trigger = gun && mc.options.keyAttack.isDown();
-        aiming = gun && mc.options.keyUse.isDown();
+        // switching weapons drops the aim (and any scope) at once; holding aim through the switch doesn't
+        // raise the new gun's sights until aim is pressed again
+        int slot = p.getInventory().getSelectedSlot();
+        net.minecraft.world.item.Item item = p.getMainHandItem().getItem();
+        if (slot != aimSlot || item != aimItem) {
+            aimSlot = slot;
+            aimItem = item;
+            aimProgress = prevAimProgress = 0;
+            aimHeldOver = mc.options.keyUse.isDown();
+        }
+        if (!mc.options.keyUse.isDown()) aimHeldOver = false;
+        aiming = gun && mc.options.keyUse.isDown() && !aimHeldOver;
         if (trigger != sentTrigger || aiming != sentAim) {
             ClientPacketDistributor.sendToServer(new GunInputPayload(trigger, aiming));
             sentTrigger = trigger;

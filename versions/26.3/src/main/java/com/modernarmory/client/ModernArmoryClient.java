@@ -27,6 +27,7 @@ public class ModernArmoryClient {
         container.registerConfig(net.neoforged.fml.config.ModConfig.Type.CLIENT, CrosshairConfig.SPEC);
 
         modBus.addListener(KeyBindings::register);
+        modBus.addListener(FlashCover::registerStateModifier); // a flashed player's hand over the eyes (render state)
         // guns' inventory icons show their fitted attachments (GunIcons; item definitions' GUI case)
         modBus.addListener((net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent e) ->
                 e.register(ModernArmory.id("gun_icon"), GunIconSpecialRenderer.Unbaked.MAP_CODEC));
@@ -53,6 +54,7 @@ public class ModernArmoryClient {
             e.register(LocalSoundPayload.TYPE, (payload, ctx) -> ClientState.onLocalSound(payload));
             e.register(MasterySyncPayload.TYPE, (payload, ctx) -> ClientMastery.onSync(payload));
             e.register(com.modernarmory.network.FlashbangPayload.TYPE, (payload, ctx) -> FlashbangOverlay.onFlash(payload));
+            e.register(com.modernarmory.network.FlashCoverPayload.TYPE, (payload, ctx) -> FlashCover.onCover(payload));
             e.register(com.modernarmory.network.DroneViewPayload.TYPE, (payload, ctx) -> DronePilot.onView(payload));
             e.register(com.modernarmory.network.DroneSpotPayload.TYPE, (payload, ctx) -> DronePilot.onSpot(payload));
             e.register(com.modernarmory.network.DroneCorrectPayload.TYPE, (payload, ctx) -> DronePilot.onCorrect(payload));

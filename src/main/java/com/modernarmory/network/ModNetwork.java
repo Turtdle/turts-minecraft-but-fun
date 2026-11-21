@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 public final class ModNetwork {
     @SubscribeEvent
     static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar r = event.registrar("2"); // 2: client-predicted shots
+        PayloadRegistrar r = event.registrar("3"); // 2: client-predicted shots; 3: flash cover
         r.playToServer(GunInputPayload.TYPE, GunInputPayload.STREAM_CODEC,
                 (p, ctx) -> GunHandler.setInput((ServerPlayer) ctx.player(), p.trigger(), p.aiming()));
         r.playToServer(GrenadeInputPayload.TYPE, GrenadeInputPayload.STREAM_CODEC,
@@ -34,6 +34,8 @@ public final class ModNetwork {
                 (p, ctx) -> com.modernarmory.client.ClientMastery.onSync(p));
         r.playToClient(FlashbangPayload.TYPE, FlashbangPayload.STREAM_CODEC,
                 (p, ctx) -> com.modernarmory.client.FlashbangOverlay.onFlash(p));
+        r.playToClient(FlashCoverPayload.TYPE, FlashCoverPayload.STREAM_CODEC,
+                (p, ctx) -> com.modernarmory.client.FlashCover.onCover(p));
         // drones (drone.DroneControl server side, client.DronePilot client side)
         r.playToServer(DronePilotPayload.TYPE, DronePilotPayload.STREAM_CODEC,
                 (p, ctx) -> com.modernarmory.drone.DroneControl.pilotUpdate((ServerPlayer) ctx.player(), p));

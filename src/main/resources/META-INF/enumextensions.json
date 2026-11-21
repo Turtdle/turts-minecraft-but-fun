@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "MODERNARMORY_FLASHED",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {"class": "com/modernarmory/client/FlashCover", "field": "ARM_POSE"}
+    }
+  ]
+}

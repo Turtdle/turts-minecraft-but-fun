@@ -177,6 +177,10 @@ public final class DronePilot {
             savedInput = player.input;
             player.input = new net.minecraft.client.player.ClientInput(); // does nothing on tick: the body stands still
             player.input.keyPresses = new net.minecraft.world.entity.player.Input(false, false, false, false, false, savedCrouch, false);
+            // the body stops where it is: no run-up or jump carrying it on while you fly (it still falls)
+            player.setSprinting(false);
+            var v = player.getDeltaMovement();
+            player.setDeltaMovement(0, Math.min(0, v.y), 0);
         }
         droneId = d.getId();
         pendingId = -1;
@@ -258,6 +262,7 @@ public final class DronePilot {
         Minecraft mc = Minecraft.getInstance();
         LocalPlayer player = mc.player;
         if (player == null || mc.level == null) return;
+        if (active()) stopBody(player);
         if (pendingId >= 0) {
             tryEnter();
             if (pendingId >= 0 && --pendingTicks <= 0) pendingId = -1;
@@ -350,6 +355,18 @@ public final class DronePilot {
             if (now >= e.getValue() || target == null || !target.isAlive()) it.remove();
         }
         DroneSounds.tick(mc);
+    }
+
+    /**
+     * While the camera is the drone, vanilla stops feeding the body its movement input (it only does for the camera
+     * entity), so the body would go on with whatever it was last given: walking forward, jumping. Zero it every tick.
+     */
+    private static void stopBody(LocalPlayer player) {
+        player.xxa = 0;
+        player.zza = 0;
+        player.yya = 0;
+        player.setJumping(false);
+        player.setSprinting(false);
     }
 
     // ---- input / view hooks -------------------------------------------------------------------------

@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
  */
 public final class ShooterSpread {
     /** Extra spread while airborne / sprinting / walking (from the hip; aimed walking is steadier). */
-    public static final double AIRBORNE = 3.0, SPRINTING = 2.5, WALKING_HIP = 1.0, WALKING_AIMED = 0.4;
+    public static final double AIRBORNE = 10.0, SPRINTING = 2.5, WALKING_HIP = 1.0, WALKING_AIMED = 0.4; // jumping: a 10 degree cone, aimed or not
     /** Crouching multiplies the whole spread by this. */
     public static final double CROUCH = 0.7;
     /** Horizontal movement per tick (blocks) above which the shooter counts as walking. */

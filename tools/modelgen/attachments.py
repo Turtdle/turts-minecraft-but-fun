@@ -225,8 +225,8 @@ def add_micro_red_dot(m: Model, parent: str, origin):
 def add_suppressor_556(m: Model, parent: str, origin):
     """5.56 can (KAC NT4 style): 5.5 long, 2 across, knurled rear collar. No flash locator."""
     a = _Att(m, "suppressor_556", parent, origin)
-    a.cyl((0, 0, -2.75), 2.0, 5.5, "att_can", sides=8)                      # body (2 cubes)
-    a.cyl((0, 0, -0.5), 2.3, 0.75, "att_metal", sides=8, pattern="knurl")   # QD collar (2 cubes)
+    a.cyl((0, 0, -2.75), 2.0, 5.5, "att_can", sides="round")                      # body (round: 3 cubes)
+    a.cyl((0, 0, -0.5), 2.3, 0.75, "att_metal", sides="round", pattern="knurl")   # QD collar (round: 3 cubes)
     a.box((-0.5, -0.5, -5.75), (1, 1, 0.25), "att_metal")                   # front cap
     return a.bone
 
@@ -247,7 +247,7 @@ def add_compensator_556(m: Model, parent: str, origin):
 def add_suppressor_300(m: Model, parent: str, origin):
     """AAC Titan-QD (.300 Win Mag): 7.5 long, 2 across. No flash locator."""
     a = _Att(m, "suppressor_300", parent, origin)
-    a.cyl((0, 0, -3.75), 2.0, 7.5, "att_can", sides=8)                      # body (2 cubes)
+    a.cyl((0, 0, -3.75), 2.0, 7.5, "att_can", sides="round")                      # body (round: 3 cubes)
     a.box((-0.5, -0.5, -7.75), (1, 1, 0.25), "att_metal")                   # front cap
     return a.bone
 
@@ -255,8 +255,8 @@ def add_suppressor_300(m: Model, parent: str, origin):
 def add_suppressor_9mm(m: Model, parent: str, origin):
     """9 mm pistol / SMG can: 5 long, 1.75 across, slim booster collar. No flash locator."""
     a = _Att(m, "suppressor_9mm", parent, origin)
-    a.cyl((0, 0, -2.5), 1.75, 5.0, "att_can", sides=8)                      # body (2 cubes)
-    a.cyl((0, 0, -0.3), 1.4, 0.6, "att_metal", sides=8, pattern="knurl")    # booster / piston housing
+    a.cyl((0, 0, -2.5), 1.75, 5.0, "att_can", sides="round")                      # body (round: 3 cubes)
+    a.cyl((0, 0, -0.3), 1.4, 0.6, "att_metal", sides="round", pattern="knurl")    # booster / piston housing
     a.box((-0.4, -0.4, -5.2), (0.8, 0.8, 0.2), "att_metal")                 # front cap
     return a.bone
 
@@ -265,8 +265,8 @@ def add_suppressor_762(m: Model, parent: str, origin):
     """.30-cal can (fits 7.62 NATO / 7.62x39 / 6.8 / .300 BLK; SureFire SOCOM762 style):
     6.5 long, 2.25 across, knurled QD collar. No flash locator."""
     a = _Att(m, "suppressor_762", parent, origin)
-    a.cyl((0, 0, -3.25), 2.25, 6.5, "att_can", sides=8)                     # body (2 cubes)
-    a.cyl((0, 0, -0.5), 2.6, 0.75, "att_metal", sides=8, pattern="knurl")   # QD collar (2 cubes)
+    a.cyl((0, 0, -3.25), 2.25, 6.5, "att_can", sides="round")                     # body (round: 3 cubes)
+    a.cyl((0, 0, -0.5), 2.6, 0.75, "att_metal", sides="round", pattern="knurl")   # QD collar (round: 3 cubes)
     a.box((-0.5, -0.5, -6.75), (1, 1, 0.25), "att_metal")                   # front cap
     return a.bone
 
@@ -275,9 +275,9 @@ def add_suppressor_68_short(m: Model, parent: str, origin):
     """SIG SLX68-style short 6.8 can for the carbine: 4.5 long, 2 across, with a 2.5-wide
     heat-shield sleeve over the middle and a knurled QD collar. No flash locator."""
     a = _Att(m, "suppressor_68_short", parent, origin)
-    a.cyl((0, 0, -2.25), 2.0, 4.5, "att_can", sides=8)                      # body (2 cubes)
-    a.cyl((0, 0, -2.5), 2.5, 3.0, "att_shield", sides=8, pattern="slots")   # heat-shield sleeve (2 cubes)
-    a.cyl((0, 0, -0.4), 2.3, 0.6, "att_metal", sides=8, pattern="knurl")    # QD collar (2 cubes)
+    a.cyl((0, 0, -2.25), 2.0, 4.5, "att_can", sides="round")                      # body (round: 3 cubes)
+    a.cyl((0, 0, -2.5), 2.5, 3.0, "att_shield", sides="round", pattern="slots")   # heat-shield sleeve (round: 3 cubes)
+    a.cyl((0, 0, -0.4), 2.3, 0.6, "att_metal", sides="round", pattern="knurl")    # QD collar (round: 3 cubes)
     a.box((-0.5, -0.5, -4.7), (1, 1, 0.2), "att_metal")                     # flow-through front cap
     return a.bone
 
@@ -286,8 +286,8 @@ def add_suppressor_762_short(m: Model, parent: str, origin):
     """Short .30-cal can (Surgeon / SilencerCo SRM6 style): 4 long (60% of `suppressor_762`),
     a stubby 2.5 across, knurled QD collar. No flash locator."""
     a = _Att(m, "suppressor_762_short", parent, origin)
-    a.cyl((0, 0, -2.0), 2.5, 4.0, "att_can", sides=8)                       # body (2 cubes)
-    a.cyl((0, 0, -0.5), 2.8, 0.75, "att_metal", sides=8, pattern="knurl")   # QD collar (2 cubes)
+    a.cyl((0, 0, -2.0), 2.5, 4.0, "att_can", sides="round")                       # body (round: 3 cubes)
+    a.cyl((0, 0, -0.5), 2.8, 0.75, "att_metal", sides="round", pattern="knurl")   # QD collar (round: 3 cubes)
     a.box((-0.5, -0.5, -4.25), (1, 1, 0.25), "att_metal")                   # front cap
     return a.bone
 
@@ -296,8 +296,8 @@ def add_suppressor_338(m: Model, parent: str, origin):
     """.338 magnum can (AI / TiTAN style): 8.5 long, 2.5 across, stepped rear over the brake.
     No flash locator."""
     a = _Att(m, "suppressor_338", parent, origin)
-    a.cyl((0, 0, -4.25), 2.5, 8.5, "att_can", sides=8)                      # body (2 cubes)
-    a.cyl((0, 0, -0.75), 2.85, 1.0, "att_metal", sides=8, pattern="knurl")  # locking collar (2 cubes)
+    a.cyl((0, 0, -4.25), 2.5, 8.5, "att_can", sides="round")                      # body (round: 3 cubes)
+    a.cyl((0, 0, -0.75), 2.85, 1.0, "att_metal", sides="round", pattern="knurl")  # locking collar (round: 3 cubes)
     a.box((-0.6, -0.6, -8.75), (1.2, 1.2, 0.25), "att_metal")               # front cap
     return a.bone
 

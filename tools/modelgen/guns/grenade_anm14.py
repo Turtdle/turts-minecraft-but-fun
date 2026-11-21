@@ -53,8 +53,8 @@ def model() -> Model:
     m.material("g_rim", (124, 126, 124), 6, 0.80)
     m.material("g_fuze", (112, 114, 110), 6, 0.76)
     m.material("g_spoon", (128, 130, 126), 6, 0.76)
-    m.material("g_band", (124, 58, 156), 6, 0.85)    # purple: incendiary
-    m.material("g_mark", (40, 38, 44), 4, 0.9)       # dark lettering
+    m.material("g_band", (186, 40, 36), 6, 0.85)     # red band: incendiary (swapped with the M7A3's purple, to read as fire)
+    m.material("g_mark", (176, 46, 42), 5, 0.9)      # red lettering
     g = G.body(m)
     G.octagon(g, A, -HALF + RIM, HALF - RIM, "g_body")
     G.octagon(g, A + 0.04, -HALF, -HALF + RIM, "g_rim")

@@ -43,7 +43,7 @@ public final class FlashbangOverlay {
 
     /** Seconds the white-out lasts at this strength (hold + fade): ~1 s for the weakest, 7 s point blank. */
     static float duration(float s) {
-        return 0.8f + 6.2f * Mth.clamp(s, 0, 1);
+        return FlashEffect.whiteoutSeconds(s); // the same time the hand stays over the eyes (FlashCover)
     }
 
     private static float remaining() {

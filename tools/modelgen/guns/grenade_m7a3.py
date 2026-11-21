@@ -52,8 +52,8 @@ def model() -> Model:
     m.material("g_rim", (108, 112, 114), 6, 0.80)
     m.material("g_fuze", (104, 108, 92), 6, 0.78)
     m.material("g_spoon", (116, 120, 100), 6, 0.78)
-    m.material("g_band", (186, 40, 36), 6, 0.85)     # red band
-    m.material("g_mark", (176, 46, 42), 5, 0.9)      # red lettering
+    m.material("g_band", (124, 58, 156), 6, 0.85)    # purple band: gas (swapped with the AN-M14's red)
+    m.material("g_mark", (40, 38, 44), 4, 0.9)       # dark lettering
     g = G.body(m)
     G.octagon(g, A, -HALF + RIM, HALF - RIM, "g_body")
     G.octagon(g, A + 0.04, -HALF, -HALF + RIM, "g_rim")

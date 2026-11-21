@@ -166,6 +166,10 @@ public final class DronePilot {
             savedYaw = player.getYRot();
             savedPitch = player.getXRot();
             savedCrouch = player.isShiftKeyDown();
+            // the body stops where it is: no run-up or jump carrying it on while you fly (it still falls)
+            player.setSprinting(false);
+            var v = player.getDeltaMovement();
+            player.setDeltaMovement(0, Math.min(0, v.y), 0);
         }
         droneId = d.getId();
         pendingId = -1;
@@ -246,6 +250,7 @@ public final class DronePilot {
         Minecraft mc = Minecraft.getInstance();
         LocalPlayer player = mc.player;
         if (player == null || mc.level == null) return;
+        if (active()) stopBody(player);
         if (pendingId >= 0) {
             tryEnter();
             if (pendingId >= 0 && --pendingTicks <= 0) pendingId = -1;
@@ -350,6 +355,18 @@ public final class DronePilot {
         if (want != flags) data.set(SHARED_FLAGS, want);
     }
 
+    /**
+     * While the camera is the drone, vanilla stops feeding the body its movement input (it only does for the camera
+     * entity), so the body would go on with whatever it was last given: walking forward, jumping. Zero it every tick.
+     */
+    private static void stopBody(LocalPlayer player) {
+        player.xxa = 0;
+        player.zza = 0;
+        player.yya = 0;
+        player.setJumping(false);
+        player.setSprinting(false);
+    }
+
     // ---- input / view hooks -------------------------------------------------------------------------
 
     private static void onMovementInput(MovementInputUpdateEvent event) {
@@ -359,6 +376,7 @@ public final class DronePilot {
         in.leftImpulse = 0;
         in.up = in.down = in.left = in.right = in.jumping = false;
         in.shiftKeyDown = savedCrouch; // the body keeps the stance it had
+        event.getEntity().setSprinting(false);
     }
 
     private static void onInteraction(InputEvent.InteractionKeyMappingTriggered event) {

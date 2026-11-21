@@ -16,6 +16,8 @@ license="${mod_license}"
 
 # The modid of the mod
 modId="${mod_id}" #mandatory
+# extra enum constants (HumanoidModel.ArmPose MODERNARMORY_FLASHED: client.FlashCover); not enumextensions.json, which is the 1.21.1 one among the shared resources
+enumExtensions="META-INF/enumextensions-26.json"
 
 # The version number of the mod
 version="${mod_version}" #mandatory

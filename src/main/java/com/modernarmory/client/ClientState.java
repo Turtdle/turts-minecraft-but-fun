@@ -39,6 +39,10 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public final class ClientState {
     private static boolean sentTrigger, sentAim;
     private static boolean aiming;
+    /** The held slot and item aiming was last about; aim still held from before a weapon switch (ignored). */
+    private static int aimSlot = -1;
+    private static net.minecraft.world.item.Item aimItem;
+    private static boolean aimHeldOver;
 
     // recoil
     private static float pendingPitch, pendingYaw, recoverPool;
@@ -76,7 +80,18 @@ public final class ClientState {
         // flying a drone: the body's hands are on the controller, not the gun
         boolean gun = holdingGun(p) && mc.screen == null && !p.isSpectator() && !DronePilot.active();
         boolean trigger = gun && mc.options.keyAttack.isDown();
-        aiming = gun && mc.options.keyUse.isDown();
+        // switching weapons drops the aim (and any scope) at once; holding aim through the switch doesn't
+        // raise the new gun's sights until aim is pressed again
+        int slot = p.getInventory().selected;
+        net.minecraft.world.item.Item item = p.getMainHandItem().getItem();
+        if (slot != aimSlot || item != aimItem) {
+            aimSlot = slot;
+            aimItem = item;
+            aimProgress = prevAimProgress = 0;
+            aimHeldOver = mc.options.keyUse.isDown();
+        }
+        if (!mc.options.keyUse.isDown()) aimHeldOver = false;
+        aiming = gun && mc.options.keyUse.isDown() && !aimHeldOver;
         if (trigger != sentTrigger || aiming != sentAim) {
             PacketDistributor.sendToServer(new GunInputPayload(trigger, aiming));
             sentTrigger = trigger;
@@ -406,6 +421,8 @@ public final class ClientState {
         // the crossbow hold for hip and aim alike: both arms at eye level following the look, the hands meeting on
         // the gun (the bow pose puts the support hand out to the side, off the gun)
         HumanoidModel.ArmPose pose = HumanoidModel.ArmPose.CROSSBOW_HOLD;
+        // flashbanged: the free hand over the eyes, the gun held one-handed (FlashCover)
+        if (FlashCover.progress(player.getId()) > 0) pose = FlashCover.ARM_POSE.getValue();
         if (player.getMainArm() == HumanoidArm.RIGHT) model.rightArmPose = pose;
         else model.leftArmPose = pose;
     }

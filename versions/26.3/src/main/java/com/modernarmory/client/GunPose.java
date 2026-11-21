@@ -26,7 +26,9 @@ public final class GunPose {
     public static final IClientItemExtensions EXTENSIONS = new IClientItemExtensions() {
         @Override
         public HumanoidModel.ArmPose getArmPose(LivingEntity entity, InteractionHand hand, ItemStack stack) {
-            return hand == InteractionHand.MAIN_HAND ? HumanoidModel.ArmPose.CROSSBOW_HOLD : null;
+            if (hand != InteractionHand.MAIN_HAND) return null;
+            // flashbanged: the free hand over the eyes, the gun held one-handed (FlashCover)
+            return FlashCover.progress(entity.getId()) > 0 ? FlashCover.ARM_POSE.getValue() : HumanoidModel.ArmPose.CROSSBOW_HOLD;
         }
     };
 

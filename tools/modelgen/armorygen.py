@@ -181,10 +181,21 @@ class Bone:
     def cyl(self, center: Vec, diameter: float, length: float, mat: str = "black_metal",
             axis: str = "z", sides: int = 8, **kw) -> "Bone":
         """Cylinder approximation: sides=4 -> one box, 8 -> two boxes (one rotated 45 deg),
-        12 -> three boxes (0/30/60 deg). `center` is the centre of the cylinder."""
+        12 -> three boxes (0/30/60 deg); sides="round" -> a stepped pixel circle: three boxes kept square to
+        the axis (the rectangles that fit in the circle at 30, 45 and 60 degrees), so the end reads as a circle
+        with no corners poking out the way the turned boxes make a star. `center` is the centre of the cylinder."""
+        if sides == "round":
+            r = diameter / 2 * 1.1  # the steps cut in a little: grown so it looks as wide as the other kinds
+            for k, ang in enumerate((30.0, 45.0, 60.0)):
+                a = math.radians(ang)
+                cw, ch = 2 * r * math.cos(a), 2 * r * math.sin(a)
+                ln = length + (0.0, 0.04, 0.02)[k]  # the ends a hair apart, so they don't flicker into each other
+                size = {"x": (ln, ch, cw), "y": (cw, ln, ch), "z": (cw, ch, ln)}[axis]
+                self.cbox(center, size, mat, **kw)
+            return self
         n = {4: 1, 8: 2, 12: 3}.get(sides)
         if n is None:
-            raise ValueError("sides must be 4, 8 or 12")
+            raise ValueError('sides must be 4, 8, 12 or "round"')
         w = diameter if n == 1 else diameter * (0.86 if n == 2 else 0.92)
         size = {"x": (length, w, w), "y": (w, length, w), "z": (w, w, length)}[axis]
         for i in range(n):

@@ -32,6 +32,11 @@ public final class FlashEffect implements GrenadeEffect {
     static final double FLASH_RANGE = 40;
     /** Below this a flash or bang does nothing. */
     public static final float THRESHOLD = 0.03f;
+    /** Seconds a flash of this strength whites you out (hold + fade): ~1 s for the weakest, 7 s point blank. */
+    public static float whiteoutSeconds(float flash) {
+        return 0.8f + 6.2f * Math.max(0, Math.min(1, flash));
+    }
+
     /** Share of the bang a wall in between lets through. */
     static final float WALL_MUFFLE = 0.6f;
     /** How fast the flash falls off as you turn from it: (1 + cos angle)/2 to this power (side-on ~1/4). */
@@ -56,6 +61,9 @@ public final class FlashEffect implements GrenadeEffect {
             if (x.flash() < THRESHOLD && x.bang() < THRESHOLD) continue;
             if (e instanceof ServerPlayer player) {
                 PacketDistributor.sendToPlayer(player, new FlashbangPayload(x.flash(), x.bang(), x.glance()));
+                // blinded: everyone watching (and the player, in third person) sees a hand go over their eyes
+                if (x.flash() >= THRESHOLD) PacketDistributor.sendToPlayersTrackingEntityAndSelf(player,
+                        new com.modernarmory.network.FlashCoverPayload(player.getId(), whiteoutSeconds(x.flash())));
             } else if (e instanceof Mob mob) {
                 float s = Math.max(x.flash(), 0.3f * x.bang()); // dazzled, or just deafened
                 if (s < THRESHOLD) continue;
